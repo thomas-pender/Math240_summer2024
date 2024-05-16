@@ -1,0 +1,390 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amssymb, amsmath, amsthm, mathrsfs}
+\usepackage[left=1.0in,right=1.0in,top=1.0in,bottom=1.0in]{geometry}
+\usepackage[inline,shortlabels]{enumitem}
+\usepackage{times}
+\usepackage{xcolor}
+
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\BB}[1]{\textcolor{blue}{#1}}
+\newcommand{\abs}[1]{\vert #1 \vert}
+\newcommand{\bb}{\backslash}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries Math 240 Tutorial \\ Solutions}
+\end{center}
+\begin{center}
+  {\bfseries May 16}
+\end{center}
+
+\noindent{\bfseries Question 1.} Place the following augmented matrices into
+an echelon form. Does the corresponding system of linear equations admit any
+solutions?
+\begin{enumerate}[(a)]
+\item
+  \[
+    \left(
+      \begin{array}{cccc|c}
+        4 & 8 & 12 & 4 & 7 \\
+        2 & 5 & 6 & 6 & 11 \\
+        0 & 5 & 1 & 26 & 13 \\
+        0 & 5 & 0 & 21 & 17
+      \end{array}
+    \right).
+  \]
+
+  \BB{
+    An echelon form:
+    \[
+      \left(
+        \begin{array}{cccc|c}
+          2 & 5 & 6 & 6 & 11 \\
+          0 & 2 & 0 & 8 & 15 \\
+          0 & 0 & 1 & 5 & -4 \\
+          0 & 0 & 0 & 2 & -41
+        \end{array}
+      \right).
+    \]
+    Every column except the last is a pivot column, so the system has a unique
+    solution.  \\
+  }
+
+\item
+  \[
+    \left(
+      \begin{array}{cccc|c}
+        4 & 8 & 12 & 4 & 0 \\
+        2 & 5 & 6 & 6 & 0 \\
+        0 & 5 & 1 & 25 & 0 \\
+        0 & 5 & 0 & 20 & 0       
+      \end{array}
+    \right).
+  \]
+
+  \BB{
+    An echelon form:
+    \[
+      \left(
+        \begin{array}{cccc|c}
+          2 & 5 & 6 & 6 & 0 \\
+          0 & 1 & 0 & 4 & 0 \\
+          0 & 0 & 1 & 5 & 0 \\
+          0 & 0 & 0 & 0 & 0
+        \end{array}
+      \right).
+    \]
+    The corresponding system has infinitely many solutions. \\
+  }
+
+\item
+  \[
+    \left(
+      \begin{array}{cccc|c}
+        4 & 8 & 12 & 4 & 7 \\
+        2 & 5 & 6 & 6 & 11 \\
+        0 & 5 & 1 & 25 & 13 \\
+        0 & 5 & 0 & 20 & 17       
+      \end{array}
+    \right).
+  \]
+
+  \BB{
+    An echelon form:
+    \[
+      \left(
+        \begin{array}{cccc|c}
+          2 & 5 & 6 & 6 & 11 \\
+          0 & 2 & 0 & 8 & 15 \\
+          0 & 0 & 1 & 5 & -4 \\
+          0 & 0 & 0 & 0 & 41
+        \end{array}
+      \right).
+    \]
+    Since the last column is a pivot column, the corresponding system of linear
+    equations is inconsistent. \\
+  }
+\end{enumerate}
+
+\noindent{\bfseries Question 2.} Consider the following system of equations
+\begin{align*}
+  w + x + y + z &= 6, \\
+  w + y + z &= 4, \\
+  w + y &=2.
+\end{align*}
+\begin{enumerate}[(a)]
+\item List the leading variables. \\
+
+  \BB{
+    The augmented matrix for the linear system of equations is given by
+    \begin{equation}\label{Q2: augmented matrix}
+      \left(
+        \begin{array}{cccc|c}
+          1 & 1 & 1 & 1 & 6 \\
+          1 & 0 & 1 & 1 & 4 \\
+          1 & 0 & 1 & 0 & 2
+        \end{array}
+      \right).
+    \end{equation}
+    The Gauss--Jordan form of this augmented matrix is then seen to be
+    \begin{equation}\label{Q2: gaussian form}
+      \left(
+        \begin{array}{cccc|c}
+          1 & 0 & 1 & 0 & 2 \\
+          0 & 1 & 0 & 0 & 2 \\
+          0 & 0 & 0 & 1 & 2
+        \end{array}
+      \right).
+    \end{equation}
+    The leading variables corresponding to the pivot columns are then
+    $w,\,y,\text{ and }z$. \\
+  }
+
+\item List the free variables. \\
+
+  \BB{
+    Recall the free variables are those variables of the system of linear
+    equations that do not correspond to pivot columns. By \eqref{Q2: gaussian
+      form}, we have the single free variable $y$. \\
+  }
+
+\item Write the general solution to the equation (expressed in terms of the free
+  variables). \\
+
+  \BB{
+    By the Gauss--Jordan form \eqref{Q2: augmented matrix} of the augmented
+    matrix, we have the general solution is then
+    \[
+      (w,x,y,z) = (2-y,2,y,2).
+    \]
+  }
+
+\item Suppose a fourth equation $-2w+y=5$ is added to the system. What is the
+  solution of the resulting system? \\
+
+  \BB{
+    The augmented matrix for the new system is
+    \[
+      \left(
+        \begin{array}{rrrr|r}
+          1 & 1 & 1 & 1 & 6 \\
+          1 & 0 & 1 & 1 & 4 \\
+          1 & 0 & 1 & 0 & 2 \\
+          -2 & 0 & 1 & 0 & 5
+        \end{array}
+      \right).
+    \]
+    The corresponding Gauss--Jordan form is then seen to be
+    \[
+      \left(
+        \begin{array}{rrrr|r}
+          1 & 0 & 0 & 0 & -1 \\
+          0 & 1 & 0 & 0 & 2 \\
+          0 & 0 & 1 & 0 & 3 \\
+          0 & 0 & 0 & 1 & 2
+        \end{array}
+      \right)
+    \]
+    Therefore, this system has a unique solution given by
+    \[
+      (w,x,y,z) = (-1,2,3,2).
+    \]
+  }
+  
+\item Suppose the fourth equation is $-2w-2y=-3$. What can we say about the
+  solutions for the resulting system? \\
+
+  \BB{
+    The augmented matrix for the new system is
+    \[
+      \left(
+        \begin{array}{rrrr|r}
+          1 & 1 & 1 & 1 & 6 \\
+          1 & 0 & 1 & 1 & 4 \\
+          1 & 0 & 1 & 0 & 2 \\
+          -2 & 0 & -2 & 0 &-3 
+        \end{array}
+      \right).
+    \]
+    In order for this system to be consistent, the third and fourth rows must be
+    proportional. Clearly, they are not; so, the system is inconsistent. We can
+    also see this by the Gaussian form which is given by
+    \[
+      \left(
+        \begin{array}{rrrr|r}
+          1 & 0 & 1 & 0 & 0 \\
+          0 & 1 & 0 & 0 & 0 \\
+          0 & 0 & 0 & 1 & 0 \\
+          0 & 0 & 0 & 0 & 1
+        \end{array}
+      \right).
+    \]
+    Since the last column is a pivot column, the system is inconsistent. \\
+  }
+\end{enumerate}
+
+\noindent{\bfseries Question 3.} Find the values of $k$ for which the system of
+equations
+\begin{align*}
+  x + ky &= 1, \\
+  kx + y &= 1,
+\end{align*}
+has
+\begin{enumerate}[(a)]
+\item no solution, \\
+
+  \BB{
+    The augmented matrix for the system of linear equations is given by
+    \[
+      \left(
+        \begin{array}{rr|r}
+          1 & k & 1 \\
+          k & 1 & 1
+        \end{array}
+      \right).
+    \]
+    If $k=0$, then there is a unique solution given by $(x,y)=(1,1)$; so, we
+    assume that $k \neq 0$. The Gaussian form of the matrix is then
+    \[
+      \left(
+        \begin{array}{rr|r}
+          1 & k & 1 \\
+          0 & \frac{1}{k}-k & \frac{1}{k}-1
+        \end{array}
+      \right)
+    \]
+    If $\frac{1}{k}-k \neq 0$, that is, if $\abs{k} \neq 1$, then there is a
+    unique solution given by $(x,y) = ((1+k)^{-1},(1+k)^{-1})$.
+  }
+
+  \BB{
+    It remains to examine the case that $\abs{k}=1$. If $k=1$, then we have the
+    equation $x+y=1$. This has infinitely many solutions. If $k=-1$, then we
+    have the have the system
+    \begin{align*}
+      x-y &= 1, \\
+      -x+y &= 1.
+    \end{align*}
+    Adding these two equations gives $0=2$, a contradiction. Therefore, there
+    is no solution only in the case that $k=-1$. \\
+  }
+  
+\item a unique solution, and \\
+
+  \BB{
+    From our work in part (a), there is a unique solution whenever $\abs{k} \neq
+    1$. \\
+  }
+
+\item infinitely many solutions. \\
+
+  \BB{
+    From our work in part (a), there are infinitely many solutions in the case
+    that $k=1$. \\
+  }
+  
+\item When there is exactly one solution, what are the values of $x$ and $y$. \\
+
+  \BB{
+    By part (a), this happens whenever $\abs{k} \neq 1$. If $k=0$, then
+    $(x,y)=(1,1)$. If $k \neq 0$ and $\abs{k} \neq 1$, then 
+    \[
+      (x,y) = \left( \frac{1}{1+k}, \frac{1}{1+k} \right).
+    \]
+  }
+\end{enumerate}
+
+
+\noindent{\bfseries Question 4.} Consider the following system of linear equations
+\begin{align*}
+  u+2v-w-2x+3y &= b_1, \\
+  x-y+2z &= b_2, \\
+  2u+4v-2w-4x+7y-4z &= b_3, \\
+  -x+y-2z &= b_4, \\
+  3u+6v-3w-6x+7y+8z &= b_5,
+\end{align*}
+where $b_1,\,b_2,\,b_3,\,b_4,\,b_5 \in \R$.
+\begin{enumerate}[(a)]
+\item What are the leading and free variables? \\
+
+  \BB{
+    The augmented matrix for the system of linear equations is given by
+    \[
+      \left(
+        \begin{array}{rrrrrr|r}
+          1 & 2 & -1 & -2 & 3 & 0 & b_{1} \\
+          0 & 0 & 0 & 1 & -1 & 2 & b_{2} \\
+          2 & 4 & -2 & -4 & 7 & -4 & b_{3} \\
+          0 & 0 & 0 & -1 & 1 & -2 & b_{4} \\
+          3 & 6 & -3 & -6 & 7 & 8 & b_{5}
+        \end{array}
+      \right).
+    \]
+    The Gaussian form is then seen to be
+    \begin{equation}\label{Q4: gaussian form}
+      \left(
+        \begin{array}{rrrrrr|r}
+          1 & 2 & -1 & -2 & 3 & 0 & b_1 \\
+          0 & 0 & 0 & 1 & -1 & 2 & b_2 \\
+          0 & 0 & 0 & 0 & 1 & -4 & b_3-2b_1 \\
+          0 & 0 & 0 & 0 & 0 & 0 & b_2+b_4 \\
+          0 & 0 & 0 & 0 & 0 & 0 & 2b_3+b_5-7b_1
+        \end{array}
+      \right).
+    \end{equation}
+    The leading variables correspond to the pivot columns. So, the leading
+    variables are given by $u,\,x,\text{ and }y$. The free variables, which
+    correspond the non-pivot columns, are given by $v,\,w,\text{ and }z$.
+  }
+  
+\item\label{Q2:conditions} What conditions must the real constants
+  $b_1,\,b_2,\,b_3,\,b_4,\,b_5$ satisfy in order that the system be consistent? \\
+
+  \BB{
+    From \eqref{Q4: gaussian form}, we see that $b_2=-b_4$ and $2b_3+b_5=7b_1$. \\
+  }
+
+\item Do the numbers $b_1=1$, $b_2=-3$, $b_3=2$, $b_4=b_5=3$ satisfy the
+  conditions of part \ref{Q2:conditions}? If so, find the general solution in
+  terms of the free variables. \\
+
+  \BB{
+    With the given values, we have that $b_2=-3=-b_4$ and
+    $2b_3+b_5=4+3=7(1)=7b_1$; so, the given constant satisfy the requirements
+    given in part (b). The Gaussian form \eqref{Q4: gaussian form} becomes
+    \begin{equation}\label{Q4: gaussian form 2}
+      \left(
+        \begin{array}{rrrrrr|r}
+          1 & 2 & -1 & -2 & 3 & 0 & 1 \\
+          0 & 0 & 0 & 1 & -1 & 2 & -3 \\
+          0 & 0 & 0 & 0 & 1 & -4 & 0 \\
+          0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+          0 & 0 & 0 & 0 & 0 & 0 & 0
+        \end{array}
+      \right).
+    \end{equation}
+    The Gauss--Jordan form is then
+    \begin{equation}\label{Q4: gauss--jordan form}
+      \left(
+        \begin{array}{rrrrrr|r}
+          1 & 2 & -1 & 0 & 0 & 8 & -5 \\
+          0 & 0 & 0 & 1 & 0 & -2 & -3 \\
+          0 & 0 & 0 & 0 & 1 & -4 & 0 \\
+          0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+          0 & 0 & 0 & 0 & 0 & 0 & 0
+        \end{array}
+      \right).
+    \end{equation}
+    It follows from \eqref{Q4: gauss--jordan form} that the general solution is
+    given by
+    \[
+      (u,v,w,x,y,z) = (w-2v-8z-5,v,w,2z-3,4z,z).
+    \]
+  }
+\end{enumerate}
+
+\end{document}

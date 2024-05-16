@@ -1,0 +1,111 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amssymb, amsmath, amsthm, mathrsfs}
+\usepackage[left=1.0in,right=1.0in,top=1.0in,bottom=1.0in]{geometry}
+\usepackage[inline,shortlabels]{enumitem}
+\usepackage{times}
+\usepackage{xcolor}
+
+\newcommand{\R}{\mathbf{R}}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries Math 240 Tutorial \\ Questions}
+\end{center}
+\begin{center}
+  {\bfseries May 16}
+\end{center}
+
+\noindent{\bfseries Question 1.} Place the following augmented matrices into
+an echelon form. Does the corresponding system of linear equations admit any
+solutions?
+\begin{enumerate}[(a)]
+\item
+  \[
+    \left(
+      \begin{array}{cccc|c}
+        4 & 8 & 12 & 4 & 7 \\
+        2 & 5 & 6 & 6 & 11 \\
+        0 & 5 & 1 & 26 & 13 \\
+        0 & 5 & 0 & 21 & 17
+      \end{array}
+    \right).
+  \]
+\item
+  \[
+    \left(
+      \begin{array}{cccc|c}
+        4 & 8 & 12 & 4 & 0 \\
+        2 & 5 & 6 & 6 & 0 \\
+        0 & 5 & 1 & 25 & 0 \\
+        0 & 5 & 0 & 20 & 0       
+      \end{array}
+    \right).
+  \]
+\item
+  \[
+    \left(
+      \begin{array}{cccc|c}
+        4 & 8 & 12 & 4 & 7 \\
+        2 & 5 & 6 & 6 & 11 \\
+        0 & 5 & 1 & 25 & 13 \\
+        0 & 5 & 0 & 20 & 17       
+      \end{array}
+    \right).
+  \]
+\end{enumerate}
+
+\noindent{\bfseries Question 2.} Consider the following system of equations
+\begin{align*}
+  w + x + y + z &= 6, \\
+  w + y + z &= 4, \\
+  w + y &=2.
+\end{align*}
+\begin{enumerate}[(a)]
+\item List the leading variables.
+\item List the free variables.
+\item Write the general solution to the equation (expressed in terms of the free
+  variables).
+\item Suppose a fourth equation $-2w+y=5$ is added to the system. What is the
+  solution of the resulting system?
+\item Suppose the fourth equation is $-2w-2y=-3$. What can we say about the
+  solutions for the resulting system? \\
+\end{enumerate}
+
+\noindent{\bfseries Question 3.} Find the values of $k$ for which the system of
+equations
+\begin{align*}
+  x + ky &= 1, \\
+  kx + y &= 1,
+\end{align*}
+has
+\begin{enumerate}[(a)]
+\item no solution,
+\item a unique solution, and
+\item infinitely many solutions.
+\item When there is exactly one solution, what are the values of $x$ and $y$. \\
+\end{enumerate}
+
+
+\noindent{\bfseries Question 4.} Consider the following system of linear equations
+\begin{align*}
+  u+2v-w-2x+3y &= b_1, \\
+  x-y+2z &= b_2, \\
+  2u+4v-2w-4x+7y-4z &= b_3, \\
+  -x+y-2z &= b_4, \\
+  3u+6v-3w-6x+7y+8z &= b_5,
+\end{align*}
+where $b_1,\,b_2,\,b_3,\,b_4,\,b_5 \in \R$.
+\begin{enumerate}[(a)]
+\item What are the leading and free variables?
+\item\label{Q2:conditions} What conditions must the real constants
+  $b_1,\,b_2,\,b_3,\,b_4,\,b_5$ satisfy in order that the system be consistent?
+\item Do the numbers $b_1=1$, $b_2=-3$, $b_3=2$, $b_4=b_5=3$ satisfy the
+  conditions of part \ref{Q2:conditions}? If so, find the general solution in
+  terms of the free variables.
+\end{enumerate}
+
+\end{document}
