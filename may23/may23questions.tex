@@ -1,0 +1,127 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amssymb, amsmath, amsthm, mathrsfs}
+\usepackage[left=1.0in,right=1.0in,top=1.0in,bottom=1.0in]{geometry}
+\usepackage[inline,shortlabels]{enumitem}
+\usepackage{times}
+\usepackage{xcolor}
+
+\newcommand{\R}{\mathbf{R}}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries Math 240 Tutorial \\ Questions}
+\end{center}
+\begin{center}
+  {\bfseries May 23}
+\end{center}
+
+\noindent{\bfseries Question 1.} For each part, explain whether or not the stated
+matrix--vector multiplication can be carried out. If it can, do the multiplication.
+\begin{enumerate}[(a)]
+\item
+  \[
+    \begin{pmatrix}
+      1&1\\1&-1
+    \end{pmatrix}
+    \begin{pmatrix}
+      1\\1\\0
+    \end{pmatrix}.
+  \]
+\item
+  \[
+    \begin{pmatrix}
+      x & 1 & 1 \\
+      1 & x & 1 \\
+      1 & 1 & x
+    \end{pmatrix}
+    \begin{pmatrix}
+      1\\0\\0
+    \end{pmatrix}.
+  \] \\
+\end{enumerate}
+
+\noindent{\bfseries Question 2.} Write the following linear system first as a
+vector equation and then as a matrix equation
+\begin{align*}
+  u+2v-w-2x+3y &= b_1, \\
+  x-y+2z &= b_2, \\
+  2u+4v-2w-4x+7y-4z &= b_3, \\
+  -x+y-2z &= b_4, \\
+  3u+6v-3w-6x+7y+8z &= b_5,
+\end{align*}
+where $b_1,\,b_2,\,b_3,\,b_4,\,b_5 \in \R$. \\
+
+\noindent{\bfseries Question 3.} For each of the following lists of row vectors in
+$\R^3$, determine whether the first vector can be expressed as a linear
+combination of the other two vectors.
+\begin{enumerate}[(a)]
+\item $(-2,0,3)$, $(1,3,0)$, $(2,4,-1)$.
+\item $(1,2,-3)$, $(-3,2,1)$, $(2,-1,-1)$.
+\item $(3,4,1)$, $(1,-2,1)$, $(-2,-1,1)$.
+\item $(2,-1,0)$, $(1,2,-3)$, $(1,-3,2)$.
+\item $(5,1,-5)$, $(1,-2,-3)$, $(-2,3,-4)$.
+\item $(-2,2,2)$, $(1,2,-1)$, $(-3,-3,3)$. \\
+\end{enumerate}
+
+\noindent{\bfseries Question 4.} Consider the following three vectors in $\R^3$
+\[
+  \vec u_1 = \begin{pmatrix}1\\1\\0\end{pmatrix},\quad
+  \vec u_2 = \begin{pmatrix}0\\1\\1\end{pmatrix},\quad
+  \vec u_3 = \begin{pmatrix}1\\0\\1\end{pmatrix}.
+\]
+Show that $\R^3=\text{span}\{\vec u_1,\,\vec u_2,\,\vec u_3\}$. \\
+
+\noindent{\bfseries Question 5.} Show that
+$\text{span}\{\vec u,\,\vec v,\,\vec w\}=\text{span}\{\vec u,\,\vec v+\vec
+w,\,\vec v-\vec w\}$. \\
+
+\noindent{\bfseries Question 6.} Consider the following four vectors in $\R^4$
+given by
+\[
+  \vec v_1 = \begin{pmatrix}+1 \\ -1 \\ -1 \\ -1\end{pmatrix},  \quad
+  \vec v_2 = \begin{pmatrix}-1 \\ +1 \\ -1 \\ -1\end{pmatrix}, \quad
+  \vec v_3 = \begin{pmatrix}-1 \\ -1 \\ +1 \\ -1\end{pmatrix}, \quad
+  \vec v_4 = \begin{pmatrix}-1 \\ -1 \\ -1 \\ +1\end{pmatrix}.
+\]
+\begin{enumerate}[(a)]
+% \item Calculate the following vectors:
+%   \begin{enumerate*}[(1)]
+%   \item $2\vec v_1+3\vec v_4$,
+%   \item $-6\vec v_2+-\vec v_3+\vec v_4$, and
+%   \item $x_1\vec v_1 - 3x_2\vec v_3+v_4$ where $x_1$ and $x_2$ are indeterminants.
+%   \end{enumerate*}
+\item\label{Q1: span} Show whether $\vec v_1 \in \text{span}\{\vec v_2,\,\vec
+  v_3,\,\vec v_4\}$ 
+  or not by solving the corresponding system of linear equations.
+\item\label{Q1: lin indep} Let $a_1,\,a_2,\,a_3,\,a_4 \in \R$. Under what
+  conditions on $a_1,\,a_2,\,a_3,\,a_4$ is $a_1\vec v_1+a_2\vec v_2+a_3\vec
+  v_3+a_4\vec v_4=\vec{0}$ true?
+\item How can we use part \ref{Q1: lin indep} to provide a second proof of part
+  \ref{Q1: span}? Can you generalize to answer the following question: Is $\vec
+  v_i \in \text{span}\{\vec v_j,\,\vec v_k,\,\vec v_l\}$ for $i,\,j,\,k,\,l$
+  distinct? \\
+\end{enumerate}
+
+\noindent{\bfseries Question 7.} Let $\vec v_1,\,\vec v_2,\dots,\,\vec v_n \in
+\R^n$ be such that if $a_1\vec v_1 + a_2\vec v_2 + \cdots + a_n\vec v_n=\vec 0$
+then $a_1=a_2=\cdots=a_n=0$. Show this implies that every vector in
+$\text{span}\{\vec v_1,\,\vec v_2,\dots,\,\vec v_n\}$ can be written {\it
+  uniquely} as a linear combination of $\vec v_1,\,\vec v_2,\dots,\,\vec v_n$. \\
+
+\noindent{\bfseries Question 8.} Let $V_1$ and $V_2$ be two subsets of $\R^n$, and
+define $V_1+V_2=\{\vec v_1 + \vec v_2 : \vec v_1 \in V_1 \text{ and } \vec v_2
+\in V_2 \}$. Show
+\begin{enumerate*}[(1)]
+\item $\text{span}(V_1 \cup V_2) = \text{span}(V_1) + \text{span}(V_2)$, and
+\item $\text{span}(V_1 \cap V_2) \subseteqq \text{span}(V_1) \cap
+  \text{span}(V_2)$.
+\end{enumerate*}
+Further, give an example of subsets $V_1$ and $V_2$ of $\R^n$, for some $n$, for
+which $\text{span}(V_1 \cap V_2) \subsetneqq \text{span}(V_1) \cap
+\text{span}(V_2)$.
+
+\end{document}
