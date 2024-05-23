@@ -1,0 +1,488 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amssymb, amsmath, amsthm, mathrsfs}
+\usepackage[left=1.0in,right=1.0in,top=1.0in,bottom=1.0in]{geometry}
+\usepackage[inline,shortlabels]{enumitem}
+\usepackage{times}
+\usepackage{xcolor}
+
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\BB}[1]{\textcolor{blue}{#1}}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries Math 240 Tutorial \\ Solutions}
+\end{center}
+\begin{center}
+  {\bfseries May 23}
+\end{center}
+
+\noindent{\bfseries Question 1.} For each part, explain whether or not the stated
+matrix--vector multiplication can be carried out. If it can, do the multiplication.
+\begin{enumerate}[(a)]
+\item
+  \[
+    \begin{pmatrix}
+      1&1\\1&-1
+    \end{pmatrix}
+    \begin{pmatrix}
+      1\\1\\0
+    \end{pmatrix}.
+  \]
+
+  \BB{ The matrix and the vector are not conformable; to be specific, the number
+of columns of the matrix does not equal the number of entries in the column. So,
+the multiplication cannot be carried out. \\ }
+  
+\item
+  \[
+    \begin{pmatrix}
+      x & 1 & 1 \\
+      1 & x & 1 \\
+      1 & 1 & x
+    \end{pmatrix}
+    \begin{pmatrix}
+      1\\0\\0
+    \end{pmatrix}.
+  \] \\
+
+  \BB{ Here the matrix and the vector are conformable. Their product is given by
+    \[
+      \begin{pmatrix}
+        x\\1\\1
+      \end{pmatrix}.
+    \]
+  }
+  
+\end{enumerate}
+
+\noindent{\bfseries Question 2.} Write the following linear system first as a
+vector equation and then as a matrix equation
+\begin{align*}
+  u+2v-w-2x+3y &= b_1, \\
+  x-y+2z &= b_2, \\
+  2u+4v-2w-4x+7y-4z &= b_3, \\
+  -x+y-2z &= b_4, \\
+  3u+6v-3w-6x+7y+8z &= b_5,
+\end{align*}
+where $b_1,\,b_2,\,b_3,\,b_4,\,b_5 \in \R$. \\
+
+\BB{ The vector equation is given by
+  \[
+    u\begin{pmatrix}1\\0\\2\\0\\3\end{pmatrix}+
+    v\begin{pmatrix}2\\0\\4\\0\\6\end{pmatrix}+
+    w\begin{pmatrix}-1\\0\\-2\\0\\-3\end{pmatrix}+
+    x\begin{pmatrix}-2\\1\\-4\\-1\\-6\end{pmatrix}+
+    y\begin{pmatrix}3\\-1\\7\\1\\7\end{pmatrix}+
+    z\begin{pmatrix}0\\2\\-4\\-2\\8\end{pmatrix}=
+    \begin{pmatrix}b_1\\b_2\\b_3\\b_4\\b_5\end{pmatrix}.
+  \]
+}
+
+\BB{ The matrix equation is given by
+  \[
+    \begin{pmatrix}
+      1 & 2 & -1 & -2 & 3 & 0 \\
+      0 & 0 & 0 & 1 & -1 & 2 & \\
+      2 & 4 & -2 & -4 & 7 & -4 \\
+      0 & 0 & 0 & -1 & 1 & -2 \\
+      3 & 6 & -3 & -6 & 7 & 8 
+    \end{pmatrix}
+    \begin{pmatrix}u\\v\\w\\x\\y\\z\end{pmatrix}
+    =
+    \begin{pmatrix}b_1\\b_2\\b_3\\b_4\\b_5\end{pmatrix}.
+  \]
+}
+
+\noindent{\bfseries Question 3.} For each of the following lists of row vectors in
+$\R^3$, determine whether the first vector can be expressed as a linear
+combination of the other two vectors.
+\begin{enumerate}[(a)]
+\item $(-2,0,3)$, $(1,3,0)$, $(2,4,-1)$. \\
+
+  \BB{We have
+    \[
+      \left(
+        \begin{array}{rr|r}
+          1 & 2 & -2 \\
+          3 & 4 & 0 \\
+          0 & -1 & 3
+        \end{array}
+      \right) 
+      \sim
+      \left(
+        \begin{array}{rr|r}
+          1 & 0 & 4 \\
+          0 & 1 & -3 \\
+          0 & 0 & 0
+        \end{array}
+      \right).
+    \]
+    Therefore, $(-2,0,3) \in \text{span}\{(1,3,0),\,(2,4,-1)\}$. \\
+  }
+
+\item $(1,2,-3)$, $(-3,2,1)$, $(2,-1,-1)$. \\
+
+  \BB{We have
+    \[
+      \left(
+        \begin{array}{rr|r}
+          -3 & 2 & 1 \\
+          2 & -1 & 2 \\
+          1 & -1 & -3
+        \end{array}
+      \right) 
+      \sim
+      \left(
+        \begin{array}{rr|r}
+          1 & 0 & 5 \\
+          0 & 1 & 8 \\
+          0 & 0 & 0
+        \end{array}
+      \right).
+    \]
+    Therefore, $(1,2,-3) \in \text{span}\{(-3,2,1),\,(2,-1,-1)\}$. \\
+  }
+  
+\item $(3,4,1)$, $(1,-2,1)$, $(-2,-1,1)$. \\
+
+  \BB{We have
+    \[
+      \left(
+        \begin{array}{rr|r}
+          1 & -2 & 3 \\
+          -2 & -1 & 4 \\
+          1 & 1 & 1
+        \end{array}
+      \right)
+      \sim
+      \left(
+        \begin{array}{rr|r}
+          1 & 0 & 0 \\
+          0 & 1 & 0 \\
+          0 & 0 & 1
+        \end{array}
+      \right).
+    \]
+    Therefore, $(1,2,-3) \notin \text{span}\{(-3,2,1),\,(2,-1,-1)\}$. \\
+  }
+
+\item $(2,-1,0)$, $(1,2,-3)$, $(1,-3,2)$. \\
+
+  \BB{We have
+    \[
+      \left(
+        \begin{array}{rr|r}
+          1 & 1 & 2 \\
+          2 & -3 & -1 \\
+          -3 & 2 & 0
+        \end{array}
+      \right) 
+      \sim
+      \left(
+        \begin{array}{rr|r}
+          1 & 0 & 0 \\
+          0 & 1 & 0 \\
+          0 & 0 & 1
+        \end{array}
+      \right).
+    \]
+    Therefore, $(2,-1,0) \notin \text{span}\{(1,2,-3),\,(1,-3,2)\}$. \\
+  }
+  
+\item $(5,1,-5)$, $(1,-2,-3)$, $(-2,3,-4)$. \\
+
+  \BB{We have
+    \[
+      \left(
+        \begin{array}{rr|r}
+          1 & -2 & 5 \\
+          -2 & 3 & 1 \\
+          -3 & -4 & -5
+        \end{array}
+      \right) 
+      \sim
+      \left(
+        \begin{array}{rr|r}
+          1 & 0 & 0 \\
+          0 & 1 & 0 \\
+          0 & 0 & 1
+        \end{array}
+      \right).
+    \]
+    Therefore, $(5,1,-5) \notin \text{span}\{(1,-2,-3),\,(-2,3,-4)\}$. \\
+  }
+  
+\item $(-2,2,2)$, $(1,2,-1)$, $(-3,-3,3)$. \\
+
+  \BB{We have
+    \[
+      \left(
+        \begin{array}{rr|r}
+          1 & -3 & -2 \\
+          2 & -3 & 2 \\
+          -1 & 3 & 2
+        \end{array}
+      \right) 
+      \sim
+      \left(
+        \begin{array}{rr|r}
+          1 & 0 & 4 \\
+          0 & 1 & 2 \\
+          0 & 0 & 0
+        \end{array}
+      \right).
+    \]
+    Therefore, $(-2,2,2) \in \text{span}\{(1,2,-1),\,(-3,-3,3)\}$. \\
+  }
+\end{enumerate}
+
+\noindent{\bfseries Question 4.} Consider the following three vectors in $\R^3$
+\[
+  \vec u_1 = \begin{pmatrix}1\\1\\0\end{pmatrix},\quad
+  \vec u_2 = \begin{pmatrix}0\\1\\1\end{pmatrix},\quad
+  \vec u_3 = \begin{pmatrix}1\\0\\1\end{pmatrix}.
+\]
+Show that $\R^3=\text{span}\{\vec u_1,\,\vec u_2,\,\vec u_3\}$. \\
+
+\BB{We will prove this result in two ways. First, observing that
+  \[
+    \left(
+      \begin{array}{rrr}
+        1 & 0 & 1 \\
+        1 & 1 & 0 \\
+        0 & 1 & 1
+      \end{array}
+    \right)
+    \sim
+    \left(
+      \begin{array}{rrr}
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 1
+      \end{array}
+    \right)
+  \]
+  the result follows. If, however, we required more information in how a vector
+  of $R^3$ is decomposable as a linear combination of $\vec u_1,\,\vec u_2,\,\vec
+  u_3$, we could note the following
+  \[
+    \left(
+      \begin{array}{rrrr}
+        1 & 0 & 1 & a_1 \\
+        1 & 1 & 0 & a_2 \\
+        0 & 1 & 1 & a_3
+      \end{array}
+    \right) 
+    \sim
+    \left(
+      \begin{array}{rrrr}
+        1 & 0 & 0 & \frac{1}{2}a_1+\frac{1}{2}a_2-\frac{1}{2}a_3 \\
+        0 & 1 & 0 & -\frac{1}{2}a_1+\frac{1}{2}a_2+\frac{1}{2}a_3 \\
+        0 & 0 & 1 & \frac{1}{2}a_1-\frac{1}{2}a_2+\frac{1}{2}a_3
+      \end{array}
+    \right).
+  \]
+  This means that if
+  $
+  \left(
+    \begin{smallmatrix}
+      a_1\\a_2\\a_3
+    \end{smallmatrix}
+  \right)
+  \in \R^3,
+  $
+  then
+  \[
+    \left( \frac{1}{2}a_1+\frac{1}{2}a_2-\frac{1}{2}a_3 \right)\vec u_1-
+    \left( \frac{1}{2}a_1-\frac{1}{2}a_2-\frac{1}{2}a_3 \right)\vec u_2+
+    \left( \frac{1}{2}a_1-\frac{1}{2}a_2+\frac{1}{2}a_3 \right)\vec u_3=
+    \begin{pmatrix}a_1\\a_2\\a_3\end{pmatrix}.
+  \]
+}
+
+\noindent{\bfseries Question 5.} Show that
+$\text{span}\{\vec u,\,\vec v,\,\vec w\}=\text{span}\{\vec u,\,\vec v+\vec
+w,\,\vec v-\vec w\}$. \\
+
+\BB{Since each of $u,\,v+w,\,v-w$ are in $\text{span}\{u,\,v,\,w\}$, it follows
+  that $\text{span}\{u,\,v+w,\,v-w\} \subseteqq \text{span}\{u,\,v,\,w\}$.
+  Conversely, $\frac{1}{2}\Big( (v+w)+(v-w) \Big)=v$ and $\frac{1}{2}\Big(
+  (v+w)-(v-w) \Big)=w$ so that $\text{span}\{u,\,v,\,w\} \subseteqq
+  \text{span}\{u,\,v+w,\,v-w\}$. These two containments show the desired
+  equality. \\}
+
+\noindent{\bfseries Question 6.} Consider the following four vectors in $\R^4$
+given by
+\[
+  \vec v_1 = \begin{pmatrix}+1 \\ -1 \\ -1 \\ -1\end{pmatrix},  \quad
+  \vec v_2 = \begin{pmatrix}-1 \\ +1 \\ -1 \\ -1\end{pmatrix}, \quad
+  \vec v_3 = \begin{pmatrix}-1 \\ -1 \\ +1 \\ -1\end{pmatrix}, \quad
+  \vec v_4 = \begin{pmatrix}-1 \\ -1 \\ -1 \\ +1\end{pmatrix}.
+\]
+\begin{enumerate}[(a)]
+\item\label{Q1: span} Show whether $\vec v_1 \in \text{span}\{\vec v_2,\,\vec
+  v_3,\,\vec v_4\}$ 
+  or not by solving the corresponding system of linear equations. \\
+
+  \BB{Observe
+    \[
+      \left(
+        \begin{array}{rrr|r}
+          -1 & -1 & -1 & 1 \\
+          1 & -1 & -1 & -1 \\
+          -1 & 1 & -1 & -1 \\
+          -1 & -1 & 1 & -1
+        \end{array}
+      \right) 
+      \sim
+      \left(
+        \begin{array}{rrr|r}
+          1 & 0 & 0 & 0 \\
+          0 & 1 & 0 & 0 \\
+          0 & 0 & 1 & 0 \\
+          0 & 0 & 0 & 1
+        \end{array}
+      \right)
+    \] so that $\vec v_1 \notin \text{span}\{\vec v_2,\,\vec v_3,\,\vec v_4\}$. \\
+  }
+  
+\item\label{Q1: lin indep} Let $a_1,\,a_2,\,a_3,\,a_4 \in \R$. Under what
+  conditions on $a_1,\,a_2,\,a_3,\,a_4$ is $a_1\vec v_1+a_2\vec v_2+a_3\vec
+  v_3+a_4\vec v_4=\vec{0}$ true? \\
+
+  \BB{We have
+    \[
+      \left(
+        \begin{array}{rrrr}
+          1 & -1 & -1 & -1 \\
+          -1 & 1 & -1 & -1 \\
+          -1 & -1 & 1 & -1 \\
+          -1 & -1 & -1 & 1
+        \end{array}
+      \right) 
+      \sim
+      \left(
+        \begin{array}{rrrr}
+          1 & 0 & 0 & 0 \\
+          0 & 1 & 0 & 0 \\
+          0 & 0 & 1 & 0 \\
+          0 & 0 & 0 & 1
+        \end{array}
+      \right)
+    \]
+    so that only the solution $a_1=a_2=a_3=a_4=0$ exists. \\
+  }
+  
+\item How can we use part \ref{Q1: lin indep} to provide a second proof of part
+  \ref{Q1: span}? Can you generalize to answer the following question: Is $\vec
+  v_i \in \text{span}\{\vec v_j,\,\vec v_k,\,\vec v_l\}$ for $i,\,j,\,k,\,l$
+  distinct? \\
+
+  \BB{We show only the second question (the first being a special case of the
+    second). We will use proof by contradiction. Assume to the contrary that
+    there exists $a_j,\,a_k,\,a_l \in \R$ not all zero such that $\vec v_i
+    = a_j\vec v_j + a_k\vec v_k + a_l\vec v_l$. But then $\vec v_i - a_j\vec v_j
+    - a_k\vec v_k - a_l\vec v_l = \vec 0$. From our answer to part \ref{Q1: lin
+      indep}, it follows that $a_j=a_k=a_l=0$ and $1=0$. But $1=0$ is a
+    contradiction. Therefore, our original assumption that $\vec v_i \in
+    \text{span}\{\vec v_j,\,\vec v_k,\,\vec v_l\}$ is incorrect. That is, we
+    must have $\vec v_i \notin \text{span}\{\vec v_j,\,\vec v_k,\,\vec v_l\}$ \\}
+\end{enumerate}
+
+\noindent{\bfseries Question 7.} Let $\vec v_1,\,\vec v_2,\dots,\,\vec v_n \in
+\R^n$ be such that if $a_1\vec v_1 + a_2\vec v_2 + \cdots + a_n\vec v_n=\vec 0$
+then $a_1=a_2=\cdots=a_n=0$. Show this implies that every vector in
+$\text{span}\{\vec v_1,\,\vec v_2,\dots,\,\vec v_n\}$ can be written {\it
+  uniquely} as a linear combination of $\vec v_1,\,\vec v_2,\dots,\,\vec v_n$. \\
+
+\BB{Let $\vec u \in \text{span}\{\vec v_1,\,\vec v_2,\dots,\,\vec v_n\}$. Then
+there are scalars $a_1,\,a_2,\dots,\,a_n$ such that $\vec u = a_1\vec v_1 +
+a_2\vec v_2 + \cdots + a_n\vec v_n$. Assume there is another collection
+$b_1,\,b_2,\dots,\,b_n$ of scalars such that $\vec u = b_1\vec v_1 + b_2\vec v_2
++ \cdots + b_n\vec v_n$. Then
+\[
+  \vec 0 = \vec u - \vec u =
+  (a_1-b_1)\vec v_1 + (a_2-b_2)\vec v_2 + \cdots + (a_n-b_n)\vec v_n.
+\]
+By assumption,
+\[
+  a_1-b_1 = a_2-b_2 = \cdots = a_n-b_n = 0
+\]
+so that
+\[
+  a_1 = b_1, \quad a_2 = b_2,\, \dots\quad, a_n = b_n
+\] as desired. \\}
+
+\noindent{\bfseries Question 8.} Let $V_1$ and $V_2$ be two subsets of $\R^n$, and
+define $V_1+V_2=\{\vec v_1 + \vec v_2 : \vec v_1 \in V_1 \text{ and } \vec v_2
+\in V_2 \}$. Show
+\begin{enumerate*}[(a)]
+\item $\text{span}(V_1 \cup V_2) = \text{span}(V_1) + \text{span}(V_2)$, and
+\item $\text{span}(V_1 \cap V_2) \subseteqq \text{span}(V_1) \cap
+  \text{span}(V_2)$.
+\end{enumerate*}
+Further, give an example of subsets $V_1$ and $V_2$ of $\R^n$, for some $n$, for
+which $\text{span}(V_1 \cap V_2) \subsetneqq \text{span}(V_1) \cap
+\text{span}(V_2)$. \\
+
+\BB{
+  Throughout, let $V_1 \cap V_2 = \{w_1,\,w_2,\dots,\,w_p\}$,
+  $V_1=\{\vec v_1,\,\vec v_2,\dots,\,\vec v_{n-p},\,\vec w_1,\,\vec
+  w_2,\dots,\,\vec w_p\}$, $V_2=\{\vec u_1,\,\vec u_2,\dots,\,\vec
+  u_{m-p},\,\vec w_1,\,\vec w_2,\dots,\,\vec w_p\}$.
+  \begin{enumerate}[(a)]
+  \item Let $\vec x \in \text{span}(V_1 \cup V_2)$. Then there exists scalars
+    $a_1,\,a_2,\dots,\,a_{n-p} \in \R$ and $b_1,\,b_2,\dots,\,b_{m-p} \in \R$
+    and $c_1,\,c_2,\dots,\,c_p \in \R$ such that 
+    \[
+      \vec x = \sum_{i=1}^{n-p}a_i\vec v_i + \sum_{j=1}^{m-p}b_j\vec u_j +
+      \sum_{k=1}^pc_k\vec w_k.
+    \]
+    But
+    \[
+      \sum_{i=1}^{n-p}a_i\vec v_i + \sum_{k=1}^pc_k\vec w_k \in \text{span}(V_1)
+    \]
+    and
+    \[
+      \sum_{j=1}^{m-p}b_j\vec u_j \in \text{span}(V_2).
+    \]
+    Therefore, $\vec x \in \text{span}(V_1)+\text{span}(V_2)$, and
+    $\text{span}(V_1 \cup V_2) \subseteqq \text{span}(V_1)+\text{span}(V_2)$.
+    Conversely, let $\vec y \in \text{span}(V_1)+\text{span}(V_2)$. Then there
+    exists scalars $\alpha_1,\,\alpha_2,\dots,\,\alpha_n \in \R$ and
+    $\beta_1,\,\beta_2,\dots,\,\beta_m \in \R$ such that
+    \[
+      y = \sum_{i=1}^{n-p}\alpha_i\vec v_i +
+      \sum_{j=1}^p(\alpha_j+\beta_j)\vec w_j +
+      \sum_{k=1}^{m-p}\beta_k\vec u_k.
+    \]
+    Since $V_1 \cup V_2=\{\vec v_1,\,\dots,\,\vec v_n,\,\vec u_1,\dots,\,\vec
+    u_m,\,\vec w_1,\dots,\,\vec w_p\}$, we have that $\vec y \in \text{span}(V_1
+    \cup V_2)$, and $\text{span}(V_1 \cup V_2) \supseteqq
+    \text{span}(V_1)+\text{span}(V_2)$.
+  \item Let $\vec x \in \text{span}(V_1 \cap V_2)$. Then there exists scalars
+    $a_1,\,a_2,\dots,\,a_p$ such that
+    \[
+      \vec x = a_1\vec w_1 + a_2\vec w_2 + \cdots + a_p\vec w_p.
+    \]
+    Since $V_1 \cap V_2 \subseteqq V_1$ and $V_1 \cap V_2 \subseteqq V_2$, we
+    see at once that $\vec x$ is in both $\text{span}(V_1)$ and
+    $\text{span}(V_2)$, that is, $\vec x \in
+    \text{span}(V_1)\cap\text{span}(V_2)$, as desired. Any number of counter
+    examples can be found to show that $\text{span}(V_1 \cap V_2) =
+    \text{span}(V_1) \cap \text{span}(V_2)$ is not true in general. It isn't
+    difficult to see that $V_1=\left\{
+      \left( \begin{smallmatrix}1\\0\end{smallmatrix}
+      \right),\,\left( \begin{smallmatrix}0\\1\end{smallmatrix} \right)
+    \right\}$  and $V_2=\left\{
+      \left( \begin{smallmatrix}1\\1\end{smallmatrix} \right) \right\}$ give
+    a counter example. Since then $\text{span}(V_1 \cap V_2)=\{\vec 0\}$ and
+    $\text{span}(V_1)\cap\text{span}(V_2)=\text{span}(V_2) \neq \{\vec 0\}$.
+  \end{enumerate}
+}
+
+\end{document}
