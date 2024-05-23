@@ -290,7 +290,112 @@ We noe the following
 
 \subsection*{Direct Proof}
 
+We assume $(\forall a_1,\dots,\,a_m \in \R)\PP(\vec v_1,\dots,\,\vec
+v_m,\,a_1,\dots,\,a_m)$ holds, and we show $(\forall\vec u \in
+V)(\exists!b_1,\dots,\,b_m \in \R)\QQ(\vec u,\,\vec v_1,\dots,\,\vec
+v_m,\,b_1,\dots,\,b_m)$ directly. Here is what is expected for a written proof. 
+
+\begin{quotation}
+  We will prove the result directly. Let $\vec v_1,\,\vec v_2,\dots,\,\vec v_m
+  \in \R^n$, and let $V=\text{span}\{\vec v_1,\,\vec v_2,\dots,\,\vec v_m\}$.
+  Assume that if $a_1\vec v_1 + a_2\vec v_2 + \cdots + a_m\vec v_m = 0$, for any
+  collection $a_1,\,a_2,\dots,\,a_m$ of scalars, then $a_1=a_2=\cdots=a_m=0$. We
+  will show that this implies that every $\vec u \in V$ has a unique
+  representation as a linear combination of the vectors $\vec v_1,\,\vec
+  v_2,\dots,\,\vec v_m$.
+
+  Indeed, suppose there are two collections $a_1,\,a_2,\dots,\,a_m$ and
+  $b_1,\,b_2,\dots,\,b_m$ of scalars such that
+  \[
+    u = a_1\vec v_1 + a_2\vec v_2 + \cdots + a_m\vec v_m =
+    b_1\vec v_1 + b_2\vec v_2 + \cdots + b_m\vec v_m.
+  \]
+  Then
+  \[
+    0 = \vec u-\vec u =
+    (a_1-b_1)\vec v_1 + (a_2-b_2)\vec v_2 + \cdots + (a_m-b_m)\vec v_m.
+  \]
+  Our assumption then implies that
+  \[
+    a_1-b_1=a_2-b_2=\cdots=a_m-b_m=0.
+  \]
+  Equivalently,
+  \[
+    a_1=b_1, \quad a_2=b_2,\;\dots,\quad a_m=b_m.
+  \]
+  But this is what it means for the representation of $\vec u$ as a linear
+  combination of $\vec v_1,\,\vec v_2,\dots,\,\vec v_m$ to be unique. We have
+  therefore shown what we have set out to prove.
+  \hfill{\sc Qed}
+\end{quotation}
+
+There are several components of the proof to identify: \\
+
+{\bf Introduction 1.} We start by saying what method of proof we are using. In
+this case, we are using a direct proof. This is where we also introduce the
+objects we are working with, namely, the vectors $\vec v_1,\,\vec
+v_2,\dots,\,\vec v_m$ in $\R^n$.
+
+{\bf Assumptions 2.} We must make explicit the assumptions (if any) we are
+using. For this problem, we are assuming the truth of $(\forall a_1,\dots,\,a_m
+\in \R)\PP(\vec v_1,\dots,\,\vec v_m,\,a_1,\dots,\,a_m)$.
+
+{\bf Derivation 3.} This is the real derivation included in the proof of the
+statement. Here we used our assumption to show directly that $(\forall\vec u \in
+V)(\exists!b_1,\dots,\,b_m \in \R)\QQ(\vec u,\,\vec v_1,\dots,\,\vec
+v_m,\,b_1,\dots,\,b_m)$ holds.
+
+{\bf Conclusion 4.} Once we have concluded the derivation, we must state what we
+have actually shown. You don't have to be needlessly explicit here; we just have
+to make clear what we've done in some way.
+
 \subsection*{Proof by Contradiction}
+
+We assume the negation of what we want to show. In this case, this amounts to
+assuming $(\forall a_1,\dots,\,a_m \in \R)\PP(\vec v_1,\dots,\,\vec
+v_m,\,a_1,\dots,\,a_m)$ AND $\neg(\forall\vec u \in V)(\exists!b_1,\dots,\,b_m
+\in \R)\QQ(\vec u,\,\vec v_1,\dots,\,\vec v_m,\,b_1,\dots,\,b_m)$ both hold. We
+then use this assumption to derive a contradiction (think $1=0$). Having derived
+a contradiction, we can infer that our original assumption was incorrect, and
+the proposition holds true. We now show what is required in writing this proof.
+
+\begin{quotation}
+  Let $\vec v_1,\,\vec v_2,\dots,\,\vec v_m \in \R^n$, and let
+  $V=\text{span}\{\vec v_1,\,\vec v_2,\dots,\,\vec v_m\}$. We will use proof by
+  contradiction. Assume that if $a_1\vec v_1 + a_2\vec v_2 + \cdots + a_m\vec
+  v_m = 0$, for any collection $a_1,\,a_2,\dots,\,a_m$ of scalars, then
+  $a_1=a_2=\cdots=a_m=0$, and assume that there is at least one vector $\vec u
+  \in V$ such that $\vec u$ has two distinct representations as a linear
+  combination of the vectors $\vec v_1,\,\vec v_2,\dots,\,\vec v_m$. We now
+  derive a contradiction.
+
+  Let the two representations of $\vec u$ be given by
+  \[
+    u = a_1\vec v_1 + a_2\vec v_2 + \cdots + a_m\vec v_m =
+    b_1\vec v_1 + b_2\vec v_2 + \cdots + b_m\vec v_m,
+  \]
+  for scalars $a_1,\,a_2,\dots,\,a_m$ and $b_1,\,b_2,\dots,\,b_m$ in $\R$, where
+  it is required that there be at least one index $i \in \{1,\,2,\dots,\,m\}$
+  for which $a_i \neq b_i$. It follows that
+  \[
+    0 = \vec u-\vec u =
+    (a_1-b_1)\vec v_1 + (a_2-b_2)\vec v_2 + \cdots + (a_m-b_m)\vec v_m.
+  \]
+  From our first assumption, we then have that
+  \[
+    a_1-b_1=a_2-b_2=\cdots=a_m-b_m=0.
+  \]
+  Equivalently,
+  \[
+    a_1=b_1, \quad a_2=b_2,\;\dots,\quad a_m=b_m.
+  \]
+  This means there is no index $i \in \{1,\,2,\dots,\,m\}$ for which $a_i \neq
+  b_i$, contrary to what we have observed.
+
+  This contradiction implies that our original assumption was incorrect, and the
+  proposition is true.
+  \hfill{\sc Qed}
+\end{quotation}
 
 \subsection*{Proof by Contraposition}
 
