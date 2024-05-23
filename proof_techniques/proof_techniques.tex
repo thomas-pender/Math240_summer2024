@@ -1,0 +1,297 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amssymb, amsmath, amsthm, mathrsfs}
+\usepackage[left=1.0in,right=1.0in,top=1.0in,bottom=1.0in]{geometry}
+\usepackage[inline,shortlabels]{enumitem}
+\usepackage{times}
+\usepackage{xcolor}
+
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\PP}{\mathscr{P}}
+\newcommand{\QQ}{\mathscr{Q}}
+\newcommand{\N}{\mathbf{N}}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries Math 240 Tutorial \\ Proof Techniques}
+\end{center}
+
+\section{Logical Operators and Truth Tables}
+
+\subsection*{Sentential Calculus}
+
+In the sentential calculus, there are 16 distinct binary logical operations. The
+principle operators we will need are
+\begin{itemize}
+\item conjunction $\&$,
+\item disjunction $\vee$, 
+\item implication/conditional $\Rightarrow$, and
+\item biconditional $\Leftrightarrow$.
+\end{itemize}
+
+\noindent We also have the unary operator negation $\neg$.
+
+The truth tables for these operators are as follows.
+\[
+  \begin{array}{c|c}
+    P & \neg P \\ \hline
+    f & t \\
+    t & f \\ \hline
+  \end{array}
+\]
+
+\[
+  \begin{array}{cc|cccc}
+    P & Q & P \vee Q & P \& Q & P \Rightarrow Q & P \Leftrightarrow Q \\ \hline
+    f & f & f & f & t & t \\
+    f & t & t & f & t & f \\
+    t & f & t & f & f & f \\
+    t & t & t & t & t & t \\ \hline
+  \end{array}
+\]
+
+If we have $P \Leftrightarrow Q$, then we say that $P$ and $Q$ are logically
+equivalent. We will need to use logically equivalent forms of formal statements
+in this course. Two sentential atoms are equivalent if their truth tables
+coincide. Consider the following examples.
+\[
+  \begin{array}{cc|cc}
+    P & Q & \neg(P \vee Q) & \neg P \& \neg Q \\ \hline
+    f & f & t & t  \\
+    f & t & f & f  \\
+    t & f & f & f  \\
+    t & t & f & f  \\ \hline
+  \end{array}
+\]
+
+\noindent This shows that $\neg(P \vee Q)$ and $\neg P \& \neg Q$ are logically
+equivalent, that is, $\neg(P \vee Q) \Leftrightarrow (\neg P \& \neg Q)$.
+
+Useful logical equivalencies are the following.
+\begin{itemize}
+\item $\neg(P \vee Q) \Leftrightarrow (\neg P \& \neg Q)$,
+\item $\neg(P \& Q) \Leftrightarrow \neg P \vee \neg Q$,
+\item $(P \Leftrightarrow Q) \Leftrightarrow \Big( (P \Rightarrow Q) \& (Q
+  \Rightarrow P) \Big)$,
+\item $\neg(P \Rightarrow Q) \Leftrightarrow (P \& \neg Q)$,
+\item $(P \Rightarrow Q) \Leftrightarrow (\neg Q \Rightarrow \neg P)$,
+\item $\Big( (P\&Q)\Rightarrow Q \Big) \Leftrightarrow \Big( P \Rightarrow (R
+  \Rightarrow Q) \Big)$,
+\item $\Big( P \vee (Q \& R) \Big) \Leftrightarrow \Big( (P \vee Q)\&(P \vee R)
+  \Big)$, and
+\item $\Big( P\&(Q \vee R) \Big) \Leftrightarrow \Big( (P\&Q)\vee(P\&R) \Big)$.
+\end{itemize}
+
+\subsection*{Predicate Calculus}
+
+In the sentential calculus, we are not interested in the form of the particular
+sentences $P$, $Q$, $R$, etc. In the predicate calculus, we are. The predicate
+calculus uses two quantifiers.
+\begin{itemize}
+\item For all $\forall$, and
+\item there exists $\exists$.
+\end{itemize}
+
+\noindent For the predicate calculus, we have some implied domain of definition,
+say $D$. For example, $D$ might be a vector space, or all vector spaces, etc. A
+property $\PP$ is then a function transformting collections of objects from $D$
+to the logical sentences. Given the property $\PP$ and $x \in D$, the statement
+$\PP x$ means ``$x$ has the property $P$.'' The sentence $\forall x\;\PP x$
+means ``every element $x \in D$ has the property $\PP$.'' This is true precisely
+in the case that $\PP x$ is true for every $x \in D$. The sentence $\exists
+x\;\PP x$ means ``there is at least one element $x \in D$ that has the property
+$\PP$.'' This is true whenever we can find or construct at least one object $x
+\in D$ that has the property $\PP$.
+
+The variable $x$ inside $\forall x\;\PP x$ is said to be in the scope of or
+bound by the quantifier $\forall$. In the formula $\forall x\;\PP x\&\QQ y$, the
+variable $x$ is bound by $\forall$, but the variable $y$ is not bound by any
+quantifier. In such a case, the variable $y$ is said to be free. In the
+expression $(\forall x\;\PP x)\vee\QQ x$, only the first occurance of $x$ is
+bounded; the second occurance is free. Technically, these are different
+variables, and a better equivalent way to write it is as $(\forall x\;\PP x)\vee
+\QQ y$. Note that a proper logical formula can never have a variable that is
+bounded by multiple quantifiers.
+
+We also need to distinguish between free variables and names. A free variable is
+allowed to range over all of $D$. A name, however, is a fixed element of $D$.
+The previous statement $(\forall x\;\PP x)\vee\QQ y$ has a different meaning if
+we take $y$ to a name, i.e., a fixed element of $D$. Similar comments hold when
+we replace $\forall$ with $\exists$ in the above discussion.
+
+An expression involving free variables is in general not a proper sentence
+unless we assume they are implicitly bound with $\forall$. For example, take $D$
+to be $\R$, let $x$ and $y$ be variables, and let $c$ be a name. Consider
+\[
+  (x=y) \Rightarrow (x+c = y+c).
+\]
+In this valid expression, $x$ and $y$ are free. By implicitly assuming they are
+bound by $\forall$, this is equivalent to
+\[
+  \forall x\forall y\;\Big( (x=y) \Rightarrow (x+c = y+c) \Big).
+\]
+We need to be very careful in identifying the free variables, bound variables,
+and the names.
+
+In general, one cannot use the truth table method to validate logical
+expressions using quantifiers. However, there are some useful equivalencies that
+aren't too difficult to intuit. 
+\begin{itemize}
+\item $\neg\forall x\;\PP x \Leftrightarrow \exists x\;\neg\PP x$ (it is not
+  true that every element $x \in D$ has $\PP$ is the same as there is at least
+  one element $x \in D$ which does not have $\PP$),
+\item $\neg\exists x\;\PP x \Leftrightarrow \forall x\;\neg\PP x$ (there does
+  not exist an element $x \in D$ with $\PP$ is the same as every element $x \in
+  D$ does not have $\PP$),
+\item $\forall x\forall y\;\PP xy \Leftrightarrow \forall y\forall x\;\PP xy$
+  (note that in general it cannot be assumed that $\PP xy$ and $\PP yx$ are the
+  same),
+\item $\exists x\exists y\;\PP xy \Leftrightarrow \exists y\exists x\;\PP xy$,
+\item $\exists x;\PP xx \Rightarrow \exists x\exists y\;\PP xy$,
+\item $\forall x\;\PP x \Rightarrow \exists x\;\PP x$,
+\item $\exists x\forall y\;\PP xy \Rightarrow \forall y\exists x\;\PP xy$,
+\item $\Big( (\forall x\;\PP x) \& (\forall y\;\QQ y) \Big) \Leftrightarrow
+  \forall x\;\PP x \& \QQ x$,
+\item $\Big( (\exists x\;\PP x)\vee(\exists y\;\QQ y) \Big) \Leftrightarrow
+  \exists x\;\PP x \vee \QQ x$,
+\item $(\exists x\;\PP x\&\QQ x) \Rightarrow \Big( (\exists x\;\PP x)\&(\exists
+  y\;\QQ y) \Big)$, and
+\item $(\forall x\;\PP x \vee \QQ x) \Rightarrow \Big( (\forall x\;\PP
+  x)\vee(\forall y\;\QQ y) \Big)$.
+\end{itemize}
+
+As a final note, observe that $\forall x\forall y\;\Big( \PP x \Rightarrow (\PP
+y \Rightarrow x=y) \Big)$ means if any two elements of the domain $D$ both have
+the property $\PP$, then they are equal. This is another way of saying ``there
+is a unique element $x \in D$ which has the property $\PP$.'' This is often
+simply denoted as $\exists! x\;\PP x$.
+
+\section{Methods of Proof}
+
+We will need to be able to provide deductive proofs of logical sentences of the
+form $P \Rightarrow Q$, $P \Leftrightarrow Q$, $\forall x\;\PP x$, and $\exists
+x\;\PP x$. 
+
+\subsection*{Proof of Implications $P \Rightarrow Q$}
+
+There are three ways to prove an implication $P \Rightarrow Q$: direct proof,
+proof by contradiction, and proof by contraposition. We handle these each in
+turn.
+\begin{itemize}
+\item To prove $P \Rightarrow Q$ directly, means to assume $P$ and use this to
+  infer $Q$. This is usually the most natural method of proof.
+\item To prove $P \Rightarrow Q$ by contradiction means to assume its negation
+  and then derive a contradiction. That is, we assume $\neg(P \Rightarrow Q)$,
+  which is equivalent to $P \& \neg Q$, from which we derive a fallacy such as
+  $1=0$. From this, our original assumption that $P \Rightarrow Q$ is false is
+  incorrect, i.e., $P \Rightarrow Q$ is true.
+\item To prove $P \Rightarrow Q$ by contraposition simply means to provide a
+  direct proof of $\neg Q \Rightarrow \neg P$.
+\end{itemize}
+
+\subsection*{Proof of Universal Statements $\forall x\;\PP x$}
+
+To prove the universal statement $\forall x\;\PP x$, we have to show that every
+element $x \in D$ has the property $\PP$. To do this, we let $c$ be an arbitrary
+name. We then show $\PP c$ is true. Because $c$ was an arbitrary fixed element
+of $D$, and because it was shown to have $\PP$, it must be that every element of
+$D$ has $\PP$, that is, $\forall x\;\PP x$ is true.
+
+We CANNOT assume anything more than $c$ is an arbitrary fixed element of $D$ in
+showing that $c$ has $\PP$. If over the course of showing $\PP c$ we also need
+to assume $c$ has the property $\QQ$, then we will NOT have shown $\forall
+x\;\PP x$; rather, we will have shown $\forall x\;(\QQ x \Rightarrow \PP x)$.
+
+The method of proof we have described is usually called universal
+generalization. It can take special forms such as the various proofs by
+induction in the case that $D$ is the natural numbers $\N=\{0,1,2,\dots\}$. We
+will cover induction and strong induction in turn. Throughout, remember that we
+are assuming $D=\N$.
+\begin{itemize}
+\item To prove $\forall x\;\PP x$ by induction, we must prove the following
+  statements: 
+  \begin{itemize}
+  \item Base case: $\PP 0$ (show 0 has $\PP$).
+  \item Inductive step: $\forall x\;(\PP x \Rightarrow \PP(x+1))$ (if $x$ has
+    $\PP$, then so does $x+1$).
+  \end{itemize}
+  Having shown these, we can infer $\forall x\;\PP x$.
+\item To prove $\forall x\;\PP x$ by strong induction, we must prove the
+  following statements: 
+  \begin{itemize}
+  \item Base case: $\PP 0$ (show 0 has $\PP$).
+  \item Inductive step: $\forall x\forall y\;\Big( y<x \Rightarrow (\PP y
+    \Rightarrow \PP x) \Big)$ (if every $y$ smaller than $x$ has $\PP$, then so
+    does $x$).
+  \end{itemize}
+  Having shown these, we can infer $\forall x\;\PP x$.
+\end{itemize}
+
+\subsection*{Proof of Existence Statements $\exists x\;\PP x$}
+
+To show $\exists x\;\PP x$, we let $c$ a name, i.e., an element of the domain of
+discourse $D$. We then show that $c$ has $\PP$ to infer $\exists x\;\PP x$. If
+over the course of showing $\PP c$ we also assume that $c$ has the property
+$\QQ$, we will still be able to infer $\exists x\;\PP x$ by the following
+string of implications
+\[
+  (\exists x\;\PP x\&\QQ x) \Rightarrow \Big( (\exists x\;\PP x)\&(\exists
+  y\;\QQ y) \Big) \Rightarrow \exists x\;\PP x.
+\]
+
+\section{An Example}
+ We will work through an example to illustrate some the proof techniques
+ outlined above.
+
+\subsection*{Question}
+
+Let $\vec v_1,\,,\vec v_2,\dots,\,\vec v_m \in \R^n$ be such that if $a_1\vec
+v_1 + a_2\vec v_2 + \cdots + a_m\vec v_m=0$, for any collection
+$a_1,\,a_2,\dots,\,a_m$ of scalars, then $a_1=a_2=\cdots=a_m=0$. Show that every
+vector in $\text{span}\{\vec v_1,\,\vec v_2,\dots,\,\vec v_m\}$ has a unique
+representation as a linear combination of $\vec v_1,\,,\vec v_2,\dots,\,\vec v_m$.
+
+\subsection*{Logical Form}
+
+The domain of discourse is $\R^n$, the space of column vectors of length $n$
+with entries from $\R$. We will also be quantifying over elements from the
+subspace $\R$. So, for the sake of clarity we will include whatever domain we
+are quantifying over in the quantification statements, that is, we will write
+$\forall \vec v_i \in \R^n$ instead of simply $\forall \vec v_i$. We will also
+shorten statements like $\forall\vec v_1 \in \R^n\;\forall\vec v_2 \in \R^n
+\cdots \forall\vec v_m \in \R^n$ to simply $\forall\vec v_1,\,\vec
+v_2,\dots,\,\vec v_m \in \R^n$. Denoting $V=\text{span}\{\vec v_1,\,\vec
+v_2,\dots,\,\vec v_m\}$, the logical form of the proposition we want to prove is
+then given by
+\begin{align*}
+  &\Big(
+  (\forall a_1,\dots,\,a_m \in \R)\PP(\vec v_1,\dots,\,\vec v_m,\,a_1,\dots,\,a_m)
+  \Big) \\
+  \Rightarrow&
+  \Big(
+  (\forall\vec u \in V)(\exists!b_1,\dots,\,b_m \in \R)\QQ(\vec
+  u,\,\vec v_1,\dots,\,\vec v_m,\,b_1,\dots,\,b_m)
+  \Big)
+\end{align*}
+
+\noindent where we taken advantage of free variables to simplify the notation.
+We noe the following
+\begin{itemize}
+\item $\vec v_1,\,\vec v_2,\dots,\,\vec v_m$ are free variables ranging over
+  $\R^n$;
+\item $\PP(\vec v_1,\dots,\,\vec v_m,\,a_1,\dots,\,a_m)$ means ``if $a_1\vec v_1
+  + a_2\vec v_2 + \cdots + a_m\vec v_m =0$, then $a_1=a_2=\cdots=a_m=0$''; and
+\item $\QQ(\vec u,\,\vec v_1,\dots,\,\vec v_m,\,b_1,\dots,\,b_m)$ means ``$\vec
+  u$ is equal to $b_1\vec v_1 + b_2\vec v_2 + \cdots + b_m\vec v_m$.''
+\end{itemize}
+
+\subsection*{Direct Proof}
+
+\subsection*{Proof by Contradiction}
+
+\subsection*{Proof by Contraposition}
+
+\end{document}

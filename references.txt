@@ -1,0 +1,9 @@
+To learn mathematics, you must DO mathematics...
+
+- For a collection of problems with solutions, here is a link to some linear algebra notes by John Erdman.
+
+  https://web.pdx.edu/~erdman/LINALG/Linalg_pdf.pdf
+
+- For a more technical approach to linear algebra, I recommend the text "Linear Algebra" by Friedberg, Insel, and Spence.
+  If you are comfortable with the material and you want more challenging stuff, see the text "Finite Dimensional Vector Spaces" by Halmos.
+  You can find pdfs for both of these texts online, or the school library has copies.
