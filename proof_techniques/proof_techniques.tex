@@ -364,12 +364,12 @@ the proposition holds true. We now show what is required in writing this proof.
   $V=\text{span}\{\vec v_1,\,\vec v_2,\dots,\,\vec v_m\}$. We will use proof by
   contradiction. Assume that if $a_1\vec v_1 + a_2\vec v_2 + \cdots + a_m\vec
   v_m = 0$, for any collection $a_1,\,a_2,\dots,\,a_m$ of scalars, then
-  $a_1=a_2=\cdots=a_m=0$, and assume that there is at least one vector $\vec u
-  \in V$ such that $\vec u$ has two distinct representations as a linear
-  combination of the vectors $\vec v_1,\,\vec v_2,\dots,\,\vec v_m$. We now
-  derive a contradiction.
+  $a_1=a_2=\cdots=a_m=0$, and assume that there is a vector $\vec u \in V$ such
+  that $\vec u$ has two distinct representations as a linear combination 
+  of the vectors $\vec v_1,\,\vec v_2,\dots,\,\vec v_m$. We now derive a
+  contradiction.
 
-  Let the two representations of $\vec u$ be given by
+  Let two distinct representations of $\vec u$ be given by
   \[
     u = a_1\vec v_1 + a_2\vec v_2 + \cdots + a_m\vec v_m =
     b_1\vec v_1 + b_2\vec v_2 + \cdots + b_m\vec v_m,
@@ -392,11 +392,96 @@ the proposition holds true. We now show what is required in writing this proof.
   This means there is no index $i \in \{1,\,2,\dots,\,m\}$ for which $a_i \neq
   b_i$, contrary to what we have observed.
 
-  This contradiction implies that our original assumption was incorrect, and the
-  proposition is true.
+  This contradiction implies that our original assumption was incorrect,
+  namely, every vector in $V$ has a unique representation as a linear
+  combination of the vectors $\vec v_1,\,\vec v_2,\dots,\,\vec v_m$. This is
+  what we wanted to show. 
   \hfill{\sc Qed}
 \end{quotation}
 
+{\bf Introduction 1.} We start by saying what method of proof we are using. In
+this case, we are using a direct proof. This is where we also introduce the
+objects we are working with, namely, the vectors $\vec v_1,\,\vec
+v_2,\dots,\,\vec v_m$ in $\R^n$.
+
+{\bf Assumptions 2.} Since we are using proof by contradiction, we are assuming
+the negation of what we want to prove. Namely, we are assuming that $(\forall
+a_1,\dots,\,a_m \in \R)\PP(\vec v_1,\dots,\,\vec v_m,\,a_1,\dots,\,a_m)$ is true
+but $(\forall\vec u \in V)(\exists!b_1,\dots,\,b_m \in \R)\QQ(\vec u,\,\vec
+v_1,\dots,\,\vec v_m,\,b_1,\dots,\,b_m)$ is false.
+
+{\bf Derivation 3.} Having assumed the negation of what we wanted to prove, we
+now want to derive a contradiction. We do this by showing there both is and
+isn't an index for which the coefficients in the representations of some vector
+$\vec u$ disagree.
+
+{\bf Conclusion 4.} Once we have concluded the derivation, we must state what we
+have actually shown. You don't have to be needlessly explicit here; we just have
+to make clear what we've done in some way. \\
+
+For this example, the direct proof and the proof by contradiction ``look'' quite
+similar. One subtle difference is for the direct proof, we did not assume the
+two given presentations were unique; while in the proof by contradiction, we
+must assume the two representations are distinct. In general and for more
+involved derivations, these forms of proof look very different.
+
 \subsection*{Proof by Contraposition}
 
+For this technique, we give a direct proof of the contrapositive of what we want
+to show, that is, we assume $(\forall\vec u \in V)(\exists!b_1,\dots,\,b_m \in
+\R)\QQ(\vec u,\,\vec v_1,\dots,\,\vec v_m,\,b_1,\dots,\,b_m)$ is false and use
+this to show directly that $(\forall a_1,\dots,\,a_m \in \R)\PP(\vec
+v_1,\dots,\,\vec v_m,\,a_1,\dots,\,a_m)$ must also be false.
+
+\begin{quotation}
+  Let $\vec v_1,\,\vec v_2,\dots,\,\vec v_m \in \R^n$, and let
+  $V=\text{span}\{\vec v_1,\,\vec v_2,\dots,\,\vec v_m\}$. We will prove our
+  result by showing the contrapositive. To this end, we assume that there is a
+  vector $\vec u \in V$ which has two distinct representations as a linear
+  combination of the vectors $\vec v_1,\,\vec v_2,\dots,\,\vec v_m$. We will
+  show that this implies there exists some linear combination of the vectors
+  $\vec v_1,\,\vec v_2,\dots,\,\vec v_m$ which vanishes and for which not all
+  the coefficients are zero.
+
+  Let two distinct representations of $\vec u$ be given by
+  \[
+    u = a_1\vec v_1 + a_2\vec v_2 + \cdots + a_m\vec v_m =
+    b_1\vec v_1 + b_2\vec v_2 + \cdots + b_m\vec v_m,
+  \]
+  for scalars $a_1,\,a_2,\dots,\,a_m$ and $b_1,\,b_2,\dots,\,b_m$ in $\R$, where
+  it is required that there be at least one index $i \in \{1,\,2,\dots,\,m\}$
+  for which $a_i \neq b_i$. It follows that
+  \[
+    0 = \vec u-\vec u =
+    (a_1-b_1)\vec v_1 + (a_2-b_2)\vec v_2 + \cdots + (a_m-b_m)\vec v_m.
+  \]
+  Since $a_i \neq b_i$, we have $a_i - b_i \neq 0$.
+
+  We have shown that if there is a vector in $V$ with two distinct
+  representations, then there is a vanishing linear combination of the vectors
+  $\vec v_1,\,\vec v_2,\dots,\,\vec v_m$ where not all the coefficients are
+  zero. This what we wanted to show.
+  \hfill{\sc Qed}
+\end{quotation}
+
+{\bf Introduction 1.} We start by saying what method of proof we are using. In
+this case, we are using a direct proof. This is where we also introduce the
+objects we are working with, namely, the vectors $\vec v_1,\,\vec
+v_2,\dots,\,\vec v_m$ in $\R^n$.
+
+{\bf Assumptions 2.} Since we are using contraposition, we assuming the negation
+of $(\forall\vec u \in V)(\exists!b_1,\dots,\,b_m \in \R)\QQ(\vec u,\,\vec
+v_1,\dots,\,\vec v_m,\,b_1,\dots,\,b_m)$. and then use this to show the negation
+of $(\forall a_1,\dots,\,a_m \in \R)\PP(\vec v_1,\dots,\,\vec
+v_m,\,a_1,\dots,\,a_m)$ must therefore hold.
+
+{\bf Derivation 3.} Having assumed the negation of $(\forall\vec u \in
+V)(\exists!b_1,\dots,\,b_m \in \R)\QQ(\vec u,\,\vec v_1,\dots,\,\vec
+v_m,\,b_1,\dots,\,b_m)$, we use this to show the negation of $(\forall
+a_1,\dots,\,a_m \in \R)\PP(\vec v_1,\dots,\,\vec v_m,\,a_1,\dots,\,a_m)$ must
+also hold.
+
+{\bf Conclusion 4.} Once we have concluded the derivation, we must state what we
+have actually shown. You don't have to be needlessly explicit here; we just have
+to make clear what we've done in some way.
 \end{document}
