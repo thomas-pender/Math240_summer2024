@@ -21,7 +21,7 @@
 
 \noindent{\bfseries Question 1.} Consider the set
 $S=\{(1,3,-4,2),(2,2,-4,0),(1,-3,2,-4),(-1,0,1,0)\}$ of vectors in $\R^4$. Show
-they form a linearly dependent set, and exress on vector as a linear combination
+they form a linearly dependent set, and express one vector as a linear combination
 of the others. \\
 
 \noindent{\bfseries Question 2.} Consider the set
@@ -42,7 +42,7 @@ and let $\vec v$ be a vector in $\R^n$ that is not in $S$. Prove that $S \cup
 \noindent{\bfseries Question 5.} Do the following.
 \begin{enumerate}[(a)]
 \item Let $\vec u$ and $\vec v$ be distinct vectors in $\R^n$. Prove that
-  $\{\vec u, \vec v\}$ is linear independent if and only if $\{\vec u + \vec v,
+  $\{\vec u, \vec v\}$ is linearly independent if and only if $\{\vec u + \vec v,
   \vec u - \vec v\}$ is linearly independent.
 \item Let $\vec u, \vec v, \vec w$ be distinct vectors in $\R^n$. Prove that
   $\{\vec u, \vec v, \vec w\}$ is linearly independent if and only if $\{\vec
@@ -58,8 +58,9 @@ and let $\vec v$ be a vector in $\R^n$ that is not in $S$. Prove that $S \cup
 linear transformation $\vec v \mapsto a\vec v$? \\
 \end{enumerate}
 
-\noindent{\bfseries Question 7.} Fix $a \in \R$ and $\vec u \in \R^n$. Is the map
-given by $\vec v \mapsto a\vec v + \vec u$ linear? Why or why not? \\
+\noindent{\bfseries Question 7.} Fix $a \in \R$ and $\vec u \in \R^n$ with $\vec
+u \neq \vec 0$. Is the map given by $\vec v \mapsto a\vec v + \vec u$, linear?
+Why or why not? \\
 
 \noindent{\bfseries Question 8.} Consider a linear transformation $T: \R^n
 \rightarrow \R^n$, and define $\text{Ker}(T)=\{\vec v \in \R^n : T(\vec v)=\vec
@@ -69,7 +70,7 @@ given by $\vec v \mapsto a\vec v + \vec u$ linear? Why or why not? \\
 \begin{enumerate}[(a)]
 \item $\text{Ker}(T)$ is closed under scalar multiplcation and vector addition.
 \item For $\vec v \in \R^n$, show that $\vec v + \text{Ker}(T)$ consists of all
-  and only those elements of $\R^n$ that map to $\vec v$ under $T$.
+  and only those elements of $\R^n$ that map to $T(\vec v)$ under $T$.
 \item For $\vec v_1,\vec v_2 \in \R^n$, show that either $\vec
   v_1+\text{Ker}(T)=\vec v_2 +\text{Ker}(T)$ or $\vec v_1+\text{Ker}(T) \cap
   \vec v_2 +\text{Ker}(T)=\emptyset$.
