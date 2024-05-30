@@ -1,0 +1,325 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amssymb, amsmath, amsthm, mathrsfs}
+\usepackage[left=1.0in,right=1.0in,top=1.0in,bottom=1.0in]{geometry}
+\usepackage[inline,shortlabels]{enumitem}
+\usepackage{times}
+\usepackage{xcolor}
+
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\BB}[1]{\textcolor{blue}{#1}}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries Math 240 Tutorial \\ Solutions}
+\end{center}
+\begin{center}
+  {\bfseries May 30}
+\end{center}
+
+\noindent{\bfseries Question 1.} Consider the set
+$S=\{(1,3,-4,2),(2,2,-4,0),(1,-3,2,-4),(-1,0,1,0)\}$ of vectors in $\R^4$. Show
+they form a linearly dependent set, and express one vector as a linear combination
+of the others. \\
+
+\BB{We form a matrix whose columns are the given vectors
+  \[
+    \left(
+      \begin{array}{rrrr}
+        1 & 2 & 1 & -1 \\
+        3 & 2 & -3 & 0 \\
+        -4 & -4 & 2 & 1 \\
+        2 & 0 & -4 & 0
+      \end{array}
+    \right).
+  \]
+  The reduced row echelon form is given by
+  \[
+    \left(
+      \begin{array}{rrrr}
+        1 & 0 & -2 & 0 \\
+        0 & 1 & \frac{3}{2} & 0 \\
+        0 & 0 & 0 & 1 \\
+        0 & 0 & 0 & 0
+      \end{array}
+    \right).
+  \]
+  Since the number of pivot rows is less than the number of rows, the columns
+  form a dependent set.}
+
+\BB{Since the third column is not a pivot column, we can express it as a linear
+  combination of the other three. Reading the answer off from the reduced row
+  echelon form given above, we have
+  \[
+    \left( \begin{array}{r}1\\-3\\2\\-4\end{array} \right)
+    =-2\left( \begin{array}{r}1\\3\\-4\\2\end{array} \right)
+    +\frac{3}{2}\left( \begin{array}{r}2\\2\\-4\\0\end{array} \right).
+  \] \\
+}
+
+\noindent{\bfseries Question 2.} Consider the set
+$S=\{(1,0,0,-1),(0,1,0,-1),(0,0,1,-1),(0,0,0,1)\}$ of vectors in $\R^4$. Show
+they form a linearly independent set. For a general vector $(a_1,a_2,a_3,a_4)
+\in \R^4$, derive the coefficients for this vector when it is expanded as a
+linear combination of the vectors in $S$. \\
+
+\BB{We form a matrix whose columns are the given vectors
+  \[
+    \left(
+      \begin{array}{rrrr}
+        1 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        -1 & -1 & -1 & 1
+      \end{array}
+    \right).
+  \]
+  The reduced row echelon form is given by
+  \[
+    \left(
+      \begin{array}{rrrr}
+        1 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1
+      \end{array}
+    \right).
+  \]
+  This is the identity matrix of order four, which shows that the given vectors
+  are linearly independent.}
+
+\BB{To find expressions for the coefficients a directed, we row reduce the
+  following augmented matrix
+  \[
+    \left(
+      \begin{array}{rrrr|r}
+        1 & 0 & 0 & 0 & a_1 \\
+        0 & 1 & 0 & 0 & a_2 \\
+        0 & 0 & 1 & 0 & a_3 \\
+        -1 & -1 & -1 & 1 & a_4
+      \end{array}
+    \right).
+  \]
+  The reduced row echelon form is given by
+  \[
+    \left(\begin{array}{rrrr|r}
+            1 & 0 & 0 & 0 & a_1 \\
+            0 & 1 & 0 & 0 & a_2 \\
+            0 & 0 & 1 & 0 & a_3 \\
+            0 & 0 & 0 & 1 & a_1 + a_2 + a_3 + a_4
+          \end{array}\right).
+  \]
+  Therefore, an arbitrary vector in $\R^4$ can be expressed as
+  \[
+    \left( \begin{array}{r}a_1\\a_2\\a_3\\a_4\end{array} \right)
+    =a_1\left( \begin{array}{r}1\\0\\0\\-1\end{array} \right)
+    +a_2\left( \begin{array}{r}0\\1\\0\\-1\end{array} \right)
+    +a_3\left( \begin{array}{r}0\\0\\1\\-1\end{array} \right)
+    +(a_1+a_2+a_3+a_4)\left( \begin{array}{r}0\\0\\0\\1\end{array} \right).
+  \] \\
+}
+
+\noindent{\bfseries Question 3.} Let $S_1$ and $S_2$ be finite subsets of $\R^n$,
+for some $n$, such that $S_1 \subseteqq S_2$. Prove that if $S_1$ is a linearly
+dependent set, then so is $S_2$. Show that this is equivalent to if $S_2$ is a
+linearly independent set, then so is $S_1$. \\
+
+\BB{Let $S_1$ and $S_2$ be finite subsets of $\R^n$ such that $S_1 \subseteqq
+S_2$. Suppose that $S_1$ is linearly dependent, but $S_2$ is linearly
+independent. For definiteness, we write
+\[
+  S_1 = \{\vec v_1,\,\vec v_2,\dots,\,\vec v_m\}
+\]
+and
+\[
+  S_2 = \{\vec v_1,\,\vec v_2,\dots,\,\vec v_m,\,\vec v_{m+1},\dots,\,\vec v_k\}.
+\] By assumption, there is a collection $a_1,\,a_2,\dots,\,a_m$ of scalars such
+that $a_1\vec v_1 + a_2\vec v_2 + \cdots + a_m\vec v_m=\vec 0$ but $a_i \neq 0$
+for some $i \in \{1,\,2,\dots,\,m\}$. Set $a_{m+1}=a_{m+2}=\cdots=a_k=0$ so that
+\[
+  a_1\vec v_1 + a_2\vec v_2 + \cdots + a_m\vec v_m + a_{m+1}\vec v_{m+1} + \cdots
+  + a_k\vec v_k = \vec 0.
+\]
+By our assumption that $S_2$ is linear independent, we have
+\[
+  a_1=a_2=\cdots=a_m=a_{m+1}=\cdots=a_k=0
+\]
+by the definition of linearly independent. But this implies that each $a_i=0$ for
+$i \in \{1,\,2,\dots,\,m\}$, contrary to what we have observed. This
+contradiction proves the result. \\}
+
+\noindent{\bfseries Question 4.} Let $S$ be a linearly independent set of $\R^n$,
+and let $\vec v$ be a vector in $\R^n$ that is not in $S$. Prove that $S \cup
+\{\vec v\}$ is linearly dependent if and only if $\vec v \in \text{span}(S)$. \\
+
+\BB{We may assume that $\vec v \neq \vec 0$; for otherwise, the result is
+trivial. Write $S=\{\vec v_1,\,\vec v_2,\dots,\,\vec v_m\}$. Suppose that $S
+\cup \{\vec v\}$ is linearly dependent but $\vec v \notin \vec v \in
+\text{span}(S)$. Then there are scalars $a_1,\,a_2,\dots,\,a_m,\,b$ not all zero
+such that
+  \[
+    a_1\vec v_1 + a_2\vec v_2 + \cdots + a_m\vec v_m + b\vec v = \vec 0.
+  \]
+  If $b=0$, then $S$ is linearly dependent, contrary to assumption, hence $b
+  \neq 0$. But then
+  \[
+    \vec v = -\frac{a_1}{b}\vec v_1 - \frac{a_2}{b}\vec v_2 - \cdots -
+    \frac{a_m}{b}\vec v_m
+  \]
+  so that $\vec v \in \text{span}(S)$, again, contrary to our assumption. Since
+  we have shown that each possibility for $b$ ends in a contradiction, we have
+  that $\vec v \in \text{span}(S)$ given $S \cup \{\vec v\}$ is dependent.}
+
+\BB{Conversely, assume that $S \cup \{\vec v\}$ is linearly independent, but
+  $\vec v \in \text{span}(S)$. Then there are scalars $a_1,\,a_2,\dots,\,a_m$
+  not all zero (recall $\vec v \neq \vec 0$) for which
+  \[
+    \vec v = a_1\vec v_1 + a_1\vec v_2 + \cdots + a_m\vec v_m.
+  \]
+  But then
+  \[
+    a_1\vec v_1 + a_1\vec v_2 + \cdots + a_m\vec v_m - \vec v = \vec 0.
+  \]
+  But then each $a_1=a_2=\cdots=a_m=0$, contrary to assumption. Therefore, $\vec
+  v \notin \text{span}(S)$ given $S \cup \{\vec v\}$ is linearly independent. \\}
+
+\noindent{\bfseries Question 5.} Do the following.
+\begin{enumerate}[(a)]
+\item Let $\vec u$ and $\vec v$ be distinct vectors in $\R^n$. Prove that
+  $\{\vec u, \vec v\}$ is linearly independent if and only if $\{\vec u + \vec v,
+  \vec u - \vec v\}$ is linearly independent. \\
+
+  \BB{ Suppose first that $\{\vec u,\,\vec v\}$ is linearly independent, but
+$\vec u + \vec v = a(\vec u - \vec v)$ for some $a \in \R$. If $a=1$, then $\vec
+v=\vec 0$, contradicting the fact that $\{\vec u,\,\vec v\}$ is independent. So
+$a \neq 1$ and $\vec u = -\frac{1+a}{1-a}\vec v$, again, contradicting the fact
+that $\{\vec u,\,\vec v\}$ is independent.}
+
+\BB{Conversely, suppose that $\vec u = b\vec v$ for some $b \in \R$. Then $\vec
+u + \vec v = (1+b)\vec u$ and $\vec u - \vec v = (1-b)\vec u$. But this means
+that both $\vec u + \vec v$ and $\vec u - \vec v$ are in $\text{span}\{\vec
+u\}$, whereupon $\{\vec u + \vec v, \vec u - \vec v\}$ is linearly dependent.
+\\}
+  
+\item Let $\vec u, \vec v, \vec w$ be distinct vectors in $\R^n$. Prove that
+  $\{\vec u, \vec v, \vec w\}$ is linearly independent if and only if $\{\vec
+  u+\vec v,\vec u+\vec w,\vec v+\vec w\}$ is linear independent. \\
+
+  \BB{First, we assume that $\{\vec u,\,\vec v,\,\vec w\}$ is linearly
+    independent, and we assume there are scalars $a,\,b,\,c$ such that
+    \[
+      \vec 0 = a(\vec u+\vec v)+b(\vec u+\vec w)+c(\vec v+\vec w)
+      = (a+b)\vec u+(a+c)\vec v+(b+c)\vec w.
+    \]
+    Since we are assuming that $\{\vec u,\,\vec v,\,\vec w\}$ is linearly
+    independent, it must be that $a+b=a+c=b+c=0$. This linear system has only
+    the trivial solution $a=b=c=0$, whereupon $\{\vec u+\vec v,\vec u+\vec
+    w,\vec v+\vec w\}$ is linearly independent as well.
+  }
+
+  \BB{Next, we assume that $\{\vec u+\vec v,\vec u+\vec w,\vec v+\vec w\}$ is
+    independent. Suppose there are scalars $a,\,b,\,c$ such that $a\vec u+b\vec
+    v+c\vec w=\vec 0$. Then
+    \[
+      (a-b+c)(\vec u+\vec v)+(a+b-c)(\vec u+\vec w)+(-a+b+c)(\vec v+\vec w)=\vec 0.
+    \]
+    By our assumed linear independence of $\{\vec u+\vec v,\vec u+\vec w,\vec
+    v+\vec w\}$, we have $a-b+c=a+b-c=-a+b+c=0$. Solving, we find this possesses
+    only the trivial solution $a=b=c=0$. It follows $\{\vec u,\,\vec v,\,\vec
+    w\}$ is independent as well. \\}
+\end{enumerate}
+
+\noindent{\bfseries Question 6.} Show the following for $\R^n$.
+\begin{enumerate}[(a)]
+\item Show that scalar multiplication is a linear transformation. \\
+
+  \BB{Fix $a \in \R$, and let $T:\R^n \rightarrow \R^n$ be the map $T(\vec
+    v)=a\vec v$. Then $T(b\vec v)=ab\vec v=ba\vec v=bT(\vec v)$ and $T(\vec
+    v+\vec u)=a(\vec v+\vec u)=a\vec v+a\vec u=T(\vec v)+T(\vec u)$. We have
+    shown that $T$ is linear. \\}
+
+\item When is this linear map invertible? \\
+
+  \BB{This map is invertible precisely in the case the scalar by which we are
+    multiplying is nonzero. \\}
+  
+\item Is its inverse a linear transformation? \\
+
+  \BB{Let $T$ be as in part (a), and assume that $a \neq 0$. Then $T$ is
+    invertible and $T^{-1}$ is given by multiplcation by $a^{-1}$. Since this
+    is multiplcation by a scalar, it is linear. \\}
+  
+\item Fix an element $a \in \R^n$. What is the matrix corresponding to the
+linear transformation $\vec v \mapsto a\vec v$ with respect to the standard
+spanning vectors? \\
+
+\BB{Recall the standard spanning vectors are $\{\vec e_1,\,\vec e_2,\dots,\,\vec
+  e_n\}$ where $\vec e_i$ is the vector with a 1 in position $i$ and zeros
+  everywhere else. Then the matrix corresponding to multiplication by $a$ is
+  givn by
+  \[
+    [T(\vec e_1) | T(\vec e_2) | \cdots | T(\vec e_n)]=
+    [a\vec e_1 | a\vec e_2 | \cdots | a\vec e_n] = aI.
+  \]
+}
+\end{enumerate}
+
+\noindent{\bfseries Question 7.} Fix $a \in \R$ and $\vec u \in \R^n$ with $\vec
+u\neq\vec 0$. Is the map given by $\vec v \mapsto a\vec v + \vec u$ linear? Why
+or why not? \\
+
+\BB{No; it is not a linear map. Let $\vec v_1,\,\vec v_2 \in \R^n$. Then $\vec
+  v_1+\vec v_2 \mapsto a\vec v_1+a\vec v_2+\vec u$. But $\vec v_1 \mapsto a\vec
+  v_1+\vec u$ and $\vec v_2 \mapsto a\vec v_2+\vec u$. However, $(a\vec v_1+\vec
+  u)+(a\vec v_2+\vec u)=a\vec v_1+a\vec v_2+2\vec u \neq a\vec v_1+a\vec
+  v_2+\vec u$. \\}
+
+\noindent{\bfseries Question 8.} Consider a linear transformation $T: \R^n
+\rightarrow \R^n$, and define $\text{Ker}(T)=\{\vec v \in \R^n : T(\vec v)=\vec
+0\}$. This is the kernel of the linear transformation $T$. For $\vec v \in
+\R^n$, define $\vec v + \text{Ker}(T)=\{\vec v + \vec u : \vec u \in
+\text{Ker}(T)\}$. Show the following.
+\begin{enumerate}[(a)]
+\item $\text{Ker}(T)$ is closed under scalar multiplcation and vector addition.\\
+
+  \BB{Let $\vec v_1,\,\vec v_2 \in \text{Ker}(T)$. Then $T(\vec v_1+\vec
+    v_2)=T(\vec v_1)+T(\vec v_2)=\vec 0+\vec 0=\vec 0$, so $\vec v_1+\vec v_2
+    \in \text{Ker}(T)$. Similarly, $T(a\vec v)=aT(\vec v)=a\vec 0=\vec 0$
+    whenever $\vec v \in \text{Ker}(T)$; so, $a\vec v \in \text{Ker}(T)$. This
+    shows that $\text{Ker}(T)$ is closed under vector addition and scalar
+    multiplication. \\}
+  
+\item For $\vec v \in \R^n$, show that $\vec v + \text{Ker}(T)$ consists of all
+  and only those elements of $\R^n$ that map to $T(\vec v)$ under $T$. \\
+
+  \BB{Let $V=\{u \in \R^n : T(\vec u)=T(\vec v)\}$. We show $\vec
+    v+\text{Ker}(T)=V$. Indeed, let $\vec u \in V$. Then $T(\vec v)=T(\vec u)$
+    so that $T(u-v)=\vec 0$. It follows that there is an $\vec x \in
+    \text{Ker}(T)$ such that $\vec u-\vec v=\vec x$, that is, $\vec u=\vec
+    v+\vec x$. This means $\vec u \in \vec v+\text{Ker}(T)$.}
+
+  \BB{Conversely, let $\vec u \in \vec v+\text{Ker}(T)$. Then there is some
+    $\vec x \in \text{Ker}(T)$ for which $\vec u=\vec v+\vec x.$ It follows that
+  $T(\vec u)=T(\vec v+\vec x)+T(\vec v)+T(\vec x)=T(\vec v)+\vec 0=T(\vec v)$.
+  So, $\vec u \in V$, as required. \\}
+
+\item For $\vec v_1,\vec v_2 \in \R^n$, show that either $\vec
+  v_1+\text{Ker}(T)=\vec v_2 +\text{Ker}(T)$ or $\vec v_1+\text{Ker}(T) \cap
+  \vec v_2 +\text{Ker}(T)=\emptyset$. \\
+
+  \BB{Let $\vec v_1,\,\vec v_2 \in \R^n$, and suppose that $\vec
+    v_1+\text{Ker}(T) \cap \vec v_2+\text{Ker}(T) \neq \emptyset$. Then there is
+    some $\vec u \in v_1+\text{Ker}(T) \cap \vec v_2+\text{Ker}(T)$. By
+    definition, there must be $\vec u_1,\,\vec u_2 \in \text{Ker}(T)$ such that
+    $\vec u=\vec v_1+\vec u_1=\vec v_2=\vec u_2$. But then $\vec v_1-\vec
+    v_2=\vec u_2-\vec u_1=\vec u_3$ for some $\vec u_3 \in \text{Ker}(T)$. It
+    follows that $\vec v_1=\vec v_2+\vec u_3$, so $\vec v_1 \in \vec
+    v_2+\text{Ker}(T)$. Similarly, $\vec v_2=\vec v_1-\vec u_3$, so $\vec v_2 \in
+    \vec v_1+\text{Ker}(T)$. It follows, therefore, that $\vec
+    v_1+\text{Ker}(T)=\vec v_2+\text{Ker}(T)$.}
+\end{enumerate}
+
+\end{document}
