@@ -1,0 +1,786 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amssymb, amsmath, amsthm, mathrsfs}
+\usepackage[left=1.0in,right=1.0in,top=1.0in,bottom=1.0in]{geometry}
+\usepackage[inline,shortlabels]{enumitem}
+\usepackage{times}
+\usepackage{xcolor}
+
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\BB}[1]{\textcolor{blue}{#1}}
+\newcommand{\abs}[1]{\vert #1 \vert}
+\newcommand{\bb}{\backslash}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries Math 240 Tutorial \\ Solutions}
+\end{center}
+\begin{center}
+  {\bfseries June 6}
+\end{center}
+
+\subsection*{Systems of Linear Equations and Row Reduction}
+
+\noindent{\bfseries Question 1.} Place the following augmented matrices into
+an echelon form. Does the corresponding system of linear equations admit any
+solutions?
+\begin{enumerate}[(a)]
+\item
+  \[
+    \left(
+      \begin{array}{cccc|c}
+        4 & 8 & 12 & 4 & 7 \\
+        2 & 5 & 6 & 6 & 11 \\
+        0 & 5 & 1 & 26 & 13 \\
+        0 & 5 & 0 & 21 & 17
+      \end{array}
+    \right).
+  \]
+
+  \BB{
+    An echelon form:
+    \[
+      \left(
+        \begin{array}{cccc|c}
+          2 & 5 & 6 & 6 & 11 \\
+          0 & 2 & 0 & 8 & 15 \\
+          0 & 0 & 1 & 5 & -4 \\
+          0 & 0 & 0 & 2 & -41
+        \end{array}
+      \right).
+    \]
+    Every column except the last is a pivot column, so the system has a unique
+    solution.  \\
+  }
+  
+\item
+  \[
+    \left(
+      \begin{array}{cccc|c}
+        4 & 8 & 12 & 4 & 0 \\
+        2 & 5 & 6 & 6 & 0 \\
+        0 & 5 & 1 & 25 & 0 \\
+        0 & 5 & 0 & 20 & 0       
+      \end{array}
+    \right).
+  \]
+
+  \BB{
+    An echelon form:
+    \[
+      \left(
+        \begin{array}{cccc|c}
+          2 & 5 & 6 & 6 & 0 \\
+          0 & 1 & 0 & 4 & 0 \\
+          0 & 0 & 1 & 5 & 0 \\
+          0 & 0 & 0 & 0 & 0
+        \end{array}
+      \right).
+    \]
+    The corresponding system has infinitely many solutions. \\
+  }
+
+\item
+  \[
+    \left(
+      \begin{array}{cccc|c}
+        4 & 8 & 12 & 4 & 7 \\
+        2 & 5 & 6 & 6 & 11 \\
+        0 & 5 & 1 & 25 & 13 \\
+        0 & 5 & 0 & 20 & 17       
+      \end{array}
+    \right).
+  \]
+
+  \BB{
+    An echelon form:
+    \[
+      \left(
+        \begin{array}{cccc|c}
+          2 & 5 & 6 & 6 & 11 \\
+          0 & 2 & 0 & 8 & 15 \\
+          0 & 0 & 1 & 5 & -4 \\
+          0 & 0 & 0 & 0 & 41
+        \end{array}
+      \right).
+    \]
+    Since the last column is a pivot column, the corresponding system of linear
+    equations is inconsistent. \\
+  }
+\end{enumerate}
+
+\noindent{\bfseries Question 2.} Find the values of $k$ for which the system of
+equations
+\begin{align*}
+  x + ky &= 1, \\
+  kx + y &= 1,
+\end{align*}
+has
+\begin{enumerate}[(a)]
+\item no solution, \\
+
+  \BB{
+    The augmented matrix for the system of linear equations is given by
+    \[
+      \left(
+        \begin{array}{rr|r}
+          1 & k & 1 \\
+          k & 1 & 1
+        \end{array}
+      \right).
+    \]
+    If $k=0$, then there is a unique solution given by $(x,y)=(1,1)$; so, we
+    assume that $k \neq 0$. The Gaussian form of the matrix is then
+    \[
+      \left(
+        \begin{array}{rr|r}
+          1 & k & 1 \\
+          0 & \frac{1}{k}-k & \frac{1}{k}-1
+        \end{array}
+      \right)
+    \]
+    If $\frac{1}{k}-k \neq 0$, that is, if $\abs{k} \neq 1$, then there is a
+    unique solution given by $(x,y) = ((1+k)^{-1},(1+k)^{-1})$.
+  }
+
+  \BB{
+    It remains to examine the case that $\abs{k}=1$. If $k=1$, then we have the
+    equation $x+y=1$. This has infinitely many solutions. If $k=-1$, then we
+    have the have the system
+    \begin{align*}
+      x-y &= 1, \\
+      -x+y &= 1.
+    \end{align*}
+    Adding these two equations gives $0=2$, a contradiction. Therefore, there
+    is no solution only in the case that $k=-1$. \\
+  }
+  
+\item a unique solution, and \\
+
+  \BB{
+    From our work in part (a), there is a unique solution whenever $\abs{k} \neq
+    1$. \\
+  }
+
+\item infinitely many solutions. \\
+
+  \BB{
+    From our work in part (a), there are infinitely many solutions in the case
+    that $k=1$. \\
+  }
+  
+\item When there is exactly one solution, what are the values of $x$ and $y$. \\
+
+  \BB{
+    By part (a), this happens whenever $\abs{k} \neq 1$. If $k=0$, then
+    $(x,y)=(1,1)$. If $k \neq 0$ and $\abs{k} \neq 1$, then 
+    \[
+      (x,y) = \left( \frac{1}{1+k}, \frac{1}{1+k} \right).
+    \] \\
+  }
+\end{enumerate}
+
+\noindent{\bfseries Question 3.} Consider the following two systems of
+equations.
+\begin{align*}
+  x+y+z &= 16, \\
+  x+2y+2z &= 11, \\
+  2x+3y-4z &= 3,
+\end{align*}
+and
+\begin{align*}
+  x+y+z &= 7, \\
+  x+2y+2z &= 10, \\
+  2x+3y-4z &= 3.
+\end{align*}
+Solve both systems simultaneously by applying row reduction to an appropriate $3
+\times 5$ matrix. \\
+
+\BB{We consider the following matrix augmented by two columns
+  \[
+    \left(
+      \begin{array}{rrr|rr}
+        1 & 1 & 1 & 16 & 7 \\
+        1 & 2 & 2 & 11 & 10 \\
+        2 & 3 & -4 & 3 & 3
+      \end{array}
+    \right).
+  \]
+  Its reduced row echelon form is given by
+  \[
+    \left(
+      \begin{array}{rrr|rr}
+        1 & 0 & 0 & 21 & 4 \\
+        0 & 1 & 0 & -\frac{59}{7} & 1 \\
+        0 & 0 & 1 & \frac{24}{7} & 2
+      \end{array}
+    \right).
+  \]
+  Therefore, both systems have a unique solution. The first is given by $x=21$,
+  $y=-59/7$, and $z=24/7$; and the second is given by $x=4$, $y=1$, and $z=2$. \\
+}
+
+\noindent{\bfseries Question 4.} Consider the following homogeneous system of
+linear equations where $a,b \in \R$ are constants.
+\begin{align*}
+  x+2y &= 0, \\
+  ax+8y+3z &= 0, \\
+  by+5z &= 0.
+\end{align*}
+\begin{enumerate}[(a)]
+\item Find a value for $a$ which makes it necessary to interchange rows during
+  row reduction. \\
+
+  \BB{$a=4$. Of course, we would need $b \neq 0$ as well. \\}
+  
+\item Suppose that $a$ does not have the value you found in part (a). Find a
+  value for $b$ so that the system has a nontrivial solution. \\
+
+  \BB{$b=40,-10$. \\}
+  
+\item Suppose that $a$ does not have the value you found in part (a) and that
+  $b=100$. Suppose further that $a$ is chosen so that the solution to the system
+  is not unique. The general solution to the system is
+  $(\alpha^{-1}z,-\beta^{-1}z,z)$ where $\alpha$ and $\beta$ are what? \\
+
+  \BB{Since we assume that $a \neq 4$, we can row reduce the coefficient matrix
+    to
+    \[
+      \left(
+        \begin{array}{rrr}
+          1 & 2 & 0 \\
+          0 & 1 & \frac{3}{8-2a} \\
+          0 & 0 & 5-\frac{300}{8-2a}
+        \end{array}
+      \right).
+    \]
+    In order for the system to have nontrivial solutions, we require
+    $5-\frac{300}{8-2a}=0$, that is, $a=-26$. Therefore, the general solution is
+    given by
+    \[
+      x=\frac{1}{10}z, \qquad y=-\frac{1}{20}z
+    \]
+    where $z$ is free. So, $\alpha=10$ and $\beta=-20$. \\
+  }
+\end{enumerate}
+
+\subsection*{Spans of Collections of Vectors}
+
+\noindent{\bfseries Question 5.} Consider the following three vectors in $\R^3$
+\[
+  \vec u_1 = \begin{pmatrix}1\\1\\0\end{pmatrix},\quad
+  \vec u_2 = \begin{pmatrix}0\\1\\1\end{pmatrix},\quad
+  \vec u_3 = \begin{pmatrix}1\\0\\1\end{pmatrix}.
+\]
+Show that $\R^3=\text{span}\{\vec u_1,\,\vec u_2,\,\vec u_3\}$. \\
+
+\BB{We will prove this result in two ways. First, observing that
+  \[
+    \left(
+      \begin{array}{rrr}
+        1 & 0 & 1 \\
+        1 & 1 & 0 \\
+        0 & 1 & 1
+      \end{array}
+    \right)
+    \sim
+    \left(
+      \begin{array}{rrr}
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 1
+      \end{array}
+    \right)
+  \]
+  the result follows. If, however, we required more information in how a vector
+  of $R^3$ is decomposable as a linear combination of $\vec u_1,\,\vec u_2,\,\vec
+  u_3$, we could note the following
+  \[
+    \left(
+      \begin{array}{rrrr}
+        1 & 0 & 1 & a_1 \\
+        1 & 1 & 0 & a_2 \\
+        0 & 1 & 1 & a_3
+      \end{array}
+    \right) 
+    \sim
+    \left(
+      \begin{array}{rrrr}
+        1 & 0 & 0 & \frac{1}{2}a_1+\frac{1}{2}a_2-\frac{1}{2}a_3 \\
+        0 & 1 & 0 & -\frac{1}{2}a_1+\frac{1}{2}a_2+\frac{1}{2}a_3 \\
+        0 & 0 & 1 & \frac{1}{2}a_1-\frac{1}{2}a_2+\frac{1}{2}a_3
+      \end{array}
+    \right).
+  \]
+  This means that if
+  $
+  \left(
+    \begin{smallmatrix}
+      a_1\\a_2\\a_3
+    \end{smallmatrix}
+  \right)
+  \in \R^3,
+  $
+  then
+  \[
+    \left( \frac{1}{2}a_1+\frac{1}{2}a_2-\frac{1}{2}a_3 \right)\vec u_1-
+    \left( \frac{1}{2}a_1-\frac{1}{2}a_2-\frac{1}{2}a_3 \right)\vec u_2+
+    \left( \frac{1}{2}a_1-\frac{1}{2}a_2+\frac{1}{2}a_3 \right)\vec u_3=
+    \begin{pmatrix}a_1\\a_2\\a_3\end{pmatrix}.
+  \] \\
+}
+
+\noindent{\bfseries Question 6.} Consider the following four vectors in $\R^4$
+given by
+\[
+  \vec v_1 = \begin{pmatrix}+1 \\ -1 \\ -1 \\ -1\end{pmatrix},  \quad
+  \vec v_2 = \begin{pmatrix}-1 \\ +1 \\ -1 \\ -1\end{pmatrix}, \quad
+  \vec v_3 = \begin{pmatrix}-1 \\ -1 \\ +1 \\ -1\end{pmatrix}, \quad
+  \vec v_4 = \begin{pmatrix}-1 \\ -1 \\ -1 \\ +1\end{pmatrix}.
+\]
+\begin{enumerate}[(a)]
+\item\label{Q1: span} Show whether $\vec v_1 \in \text{span}\{\vec v_2,\,\vec
+  v_3,\,\vec v_4\}$ 
+  or not by solving the corresponding system of linear equations. \\
+
+  \BB{Observe
+    \[
+      \left(
+        \begin{array}{rrr|r}
+          -1 & -1 & -1 & 1 \\
+          1 & -1 & -1 & -1 \\
+          -1 & 1 & -1 & -1 \\
+          -1 & -1 & 1 & -1
+        \end{array}
+      \right) 
+      \sim
+      \left(
+        \begin{array}{rrr|r}
+          1 & 0 & 0 & 0 \\
+          0 & 1 & 0 & 0 \\
+          0 & 0 & 1 & 0 \\
+          0 & 0 & 0 & 1
+        \end{array}
+      \right)
+    \] so that $\vec v_1 \notin \text{span}\{\vec v_2,\,\vec v_3,\,\vec v_4\}$. \\
+  }
+  
+\item\label{Q1: lin indep} Let $a_1,\,a_2,\,a_3,\,a_4 \in \R$. Under what
+  conditions on $a_1,\,a_2,\,a_3,\,a_4$ is $a_1\vec v_1+a_2\vec v_2+a_3\vec
+  v_3+a_4\vec v_4=\vec{0}$ true? \\
+
+  \BB{We have
+    \[
+      \left(
+        \begin{array}{rrrr}
+          1 & -1 & -1 & -1 \\
+          -1 & 1 & -1 & -1 \\
+          -1 & -1 & 1 & -1 \\
+          -1 & -1 & -1 & 1
+        \end{array}
+      \right) 
+      \sim
+      \left(
+        \begin{array}{rrrr}
+          1 & 0 & 0 & 0 \\
+          0 & 1 & 0 & 0 \\
+          0 & 0 & 1 & 0 \\
+          0 & 0 & 0 & 1
+        \end{array}
+      \right)
+    \]
+    so that only the solution $a_1=a_2=a_3=a_4=0$ exists. \\
+  }
+  
+\item How can we use part \ref{Q1: lin indep} to provide a second proof of part
+  \ref{Q1: span}? Can you generalize to answer the following question: Is $\vec
+  v_i \in \text{span}\{\vec v_j,\,\vec v_k,\,\vec v_l\}$ for $i,\,j,\,k,\,l$
+  distinct? \\
+
+  \BB{We show only the second question (the first being a special case of the
+    second). We will use proof by contradiction. Assume to the contrary that
+    there exists $a_j,\,a_k,\,a_l \in \R$ not all zero such that $\vec v_i
+    = a_j\vec v_j + a_k\vec v_k + a_l\vec v_l$. But then $\vec v_i - a_j\vec v_j
+    - a_k\vec v_k - a_l\vec v_l = \vec 0$. From our answer to part \ref{Q1: lin
+      indep}, it follows that $a_j=a_k=a_l=0$ and $1=0$. But $1=0$ is a
+    contradiction. Therefore, our original assumption that $\vec v_i \in
+    \text{span}\{\vec v_j,\,\vec v_k,\,\vec v_l\}$ is incorrect. That is, we
+    must have $\vec v_i \notin \text{span}\{\vec v_j,\,\vec v_k,\,\vec v_l\}$ \\}
+\end{enumerate}
+
+\noindent{\bfseries Question 7.} Let $V_1$ and $V_2$ be two subsets of $\R^n$, and
+define $V_1+V_2=\{\vec v_1 + \vec v_2 : \vec v_1 \in V_1 \text{ and } \vec v_2
+\in V_2 \}$. Show
+\begin{enumerate*}[(a)]
+\item $\text{span}(V_1 \cup V_2) = \text{span}(V_1) + \text{span}(V_2)$, and
+\item $\text{span}(V_1 \cap V_2) \subseteqq \text{span}(V_1) \cap
+  \text{span}(V_2)$.
+\end{enumerate*}
+Further, give an example of subsets $V_1$ and $V_2$ of $\R^n$, for some $n$, for
+which $\text{span}(V_1 \cap V_2) \subsetneqq \text{span}(V_1) \cap
+\text{span}(V_2)$. \\
+
+\BB{
+  Throughout, let $V_1 \cap V_2 = \{w_1,\,w_2,\dots,\,w_p\}$,
+  $V_1=\{\vec v_1,\,\vec v_2,\dots,\,\vec v_{n-p},\,\vec w_1,\,\vec
+  w_2,\dots,\,\vec w_p\}$, $V_2=\{\vec u_1,\,\vec u_2,\dots,\,\vec
+  u_{m-p},\,\vec w_1,\,\vec w_2,\dots,\,\vec w_p\}$.
+  \begin{enumerate}[(a)]
+  \item Let $\vec x \in \text{span}(V_1 \cup V_2)$. Then there exists scalars
+    $a_1,\,a_2,\dots,\,a_{n-p} \in \R$ and $b_1,\,b_2,\dots,\,b_{m-p} \in \R$
+    and $c_1,\,c_2,\dots,\,c_p \in \R$ such that 
+    \[
+      \vec x = \sum_{i=1}^{n-p}a_i\vec v_i + \sum_{j=1}^{m-p}b_j\vec u_j +
+      \sum_{k=1}^pc_k\vec w_k.
+    \]
+    But
+    \[
+      \sum_{i=1}^{n-p}a_i\vec v_i + \sum_{k=1}^pc_k\vec w_k \in \text{span}(V_1)
+    \]
+    and
+    \[
+      \sum_{j=1}^{m-p}b_j\vec u_j \in \text{span}(V_2).
+    \]
+    Therefore, $\vec x \in \text{span}(V_1)+\text{span}(V_2)$, and
+    $\text{span}(V_1 \cup V_2) \subseteqq \text{span}(V_1)+\text{span}(V_2)$.
+    Conversely, let $\vec y \in \text{span}(V_1)+\text{span}(V_2)$. Then there
+    exists scalars $\alpha_1,\,\alpha_2,\dots,\,\alpha_n \in \R$ and
+    $\beta_1,\,\beta_2,\dots,\,\beta_m \in \R$ such that
+    \[
+      y = \sum_{i=1}^{n-p}\alpha_i\vec v_i +
+      \sum_{j=1}^p(\alpha_j+\beta_j)\vec w_j +
+      \sum_{k=1}^{m-p}\beta_k\vec u_k.
+    \]
+    Since $V_1 \cup V_2=\{\vec v_1,\,\dots,\,\vec v_n,\,\vec u_1,\dots,\,\vec
+    u_m,\,\vec w_1,\dots,\,\vec w_p\}$, we have that $\vec y \in \text{span}(V_1
+    \cup V_2)$, and $\text{span}(V_1 \cup V_2) \supseteqq
+    \text{span}(V_1)+\text{span}(V_2)$.
+  \item Let $\vec x \in \text{span}(V_1 \cap V_2)$. Then there exists scalars
+    $a_1,\,a_2,\dots,\,a_p$ such that
+    \[
+      \vec x = a_1\vec w_1 + a_2\vec w_2 + \cdots + a_p\vec w_p.
+    \]
+    Since $V_1 \cap V_2 \subseteqq V_1$ and $V_1 \cap V_2 \subseteqq V_2$, we
+    see at once that $\vec x$ is in both $\text{span}(V_1)$ and
+    $\text{span}(V_2)$, that is, $\vec x \in
+    \text{span}(V_1)\cap\text{span}(V_2)$, as desired. Any number of counter
+    examples can be found to show that $\text{span}(V_1 \cap V_2) =
+    \text{span}(V_1) \cap \text{span}(V_2)$ is not true in general. It isn't
+    difficult to see that $V_1=\left\{
+      \left( \begin{smallmatrix}1\\0\end{smallmatrix}
+      \right),\,\left( \begin{smallmatrix}0\\1\end{smallmatrix} \right)
+    \right\}$  and $V_2=\left\{
+      \left( \begin{smallmatrix}1\\1\end{smallmatrix} \right) \right\}$ give
+    a counter example. Since then $\text{span}(V_1 \cap V_2)=\{\vec 0\}$ and
+    $\text{span}(V_1)\cap\text{span}(V_2)=\text{span}(V_2) \neq \{\vec 0\}$. \\
+  \end{enumerate}}
+
+\subsection*{Linear Independence}
+
+\noindent{\bfseries Question 8.} Show that in $\R^3$, the vectors $\vec
+x=(1,1,0)$, $\vec y=(0,1,2)$, and $\vec z=(3,1,-4)$ are linearly dependent by
+finding scalars $\alpha$ and $\beta$ such that $\alpha\vec x+\beta\vec y+\vec
+z=\vec 0$. \\
+
+\BB{We solve the system $\alpha\vec x+\beta\vec y=-\vec z$ to find $\alpha=-3$
+  and $\beta=2$. \\}
+
+\noindent{\bfseries Question 9.} Let $\vec w=(1,1,0,0)$, $\vec x=(1,0,1,0)$, $\vec
+y=(0,0,1,1)$, and $\vec z=(0,1,0,1)$, and let $S=\{\vec w,\,\vec x,\,\vec
+y,\,\vec z\}$.
+\begin{enumerate}[(a)]
+\item Show that $S$ is not a spanning set for $\R^4$ by finding a vector $\vec
+  u$ in $\R^4$ such that $\vec u \notin\text{span}(S)$. One such vector is $\vec
+  u=(1,2,3,a)$ where $a$ is any real number execpt what? \\
+
+  \BB{We form the matrix $A$ whose columns are $\vec w$, $\vec x$, $\vec y$, and
+    $\vec z$. The reduced row echelon form for $A$ is then
+    \[
+      \left(
+        \begin{array}{rrrr}
+          1 & 0 & 0 & 1 \\
+          0 & 1 & 0 & -1 \\
+          0 & 0 & 1 & 1 \\
+          0 & 0 & 0 & 0
+        \end{array}
+      \right)
+    \]
+    whereupon we see that $\text{span}\{\vec w,\,\vec x,\,\vec y,\,\vec
+    z\}=\text{span}\{\vec w,\,\vec x,\,\vec y\}$. We can then check that the
+    system
+    \[
+      \alpha\vec w+\beta\vec x+\gamma\vec y=
+      \begin{pmatrix}
+        1\\2\\3\\a
+      \end{pmatrix}
+    \]
+    is inconsistent precisely in the case that $a=4$. Therefore, the vector
+    $(1,2,3,4)^t$ is not in the span of $\vec w$, $\vec x$, $\vec y$, and
+    $\vec z$ so that they do not span $\R^4$. \\}
+  
+\item Show that $S$ is a linearly dependent set of vectors by finding scalars
+  $\alpha$, $\gamma$, and $\delta$ such that $\alpha\vec w+\vec x+\gamma\vec
+  y+\delta\vec z=\vec 0$. \\
+
+  \BB{Solving the system $\alpha\vec w+\gamma\vec y+\delta\vec z=-\vec x$, we
+    find that there is a unique solution given by $\alpha=\gamma=-1$ and
+    $\delta=1$. \\}
+  
+\item Show that $S$ is a linear dependent set by writing $\vec z$ as a linear
+  combination of the remaining vectors in $S$. \\
+
+  \BB{From the reduced row echelon form for the matrix $A$ in part (a), we see
+    that $\vec z=\vec w-\vec x+\vec y$. \\}
+\end{enumerate}
+
+\noindent{\bfseries Question 10.} Let $S_1$ and $S_2$ be finite subsets of $\R^n$,
+for some $n$, such that $S_1 \subseteqq S_2$. Prove that if $S_1$ is a linearly
+dependent set, then so is $S_2$. Show that this is equivalent to if $S_2$ is a
+linearly independent set, then so is $S_1$. \\
+
+\BB{Let $S_1$ and $S_2$ be finite subsets of $\R^n$ such that $S_1 \subseteqq
+  S_2$. Suppose that $S_1$ is linearly dependent, but $S_2$ is linearly
+  independent. For definiteness, we write
+  \[
+    S_1 = \{\vec v_1,\,\vec v_2,\dots,\,\vec v_m\}
+  \]
+  and
+  \[
+    S_2 = \{\vec v_1,\,\vec v_2,\dots,\,\vec v_m,\,\vec v_{m+1},\dots,\,\vec v_k\}.
+  \] By assumption, there is a collection $a_1,\,a_2,\dots,\,a_m$ of scalars such
+  that $a_1\vec v_1 + a_2\vec v_2 + \cdots + a_m\vec v_m=\vec 0$ but $a_i \neq 0$
+  for some $i \in \{1,\,2,\dots,\,m\}$. Set $a_{m+1}=a_{m+2}=\cdots=a_k=0$ so that
+  \[
+    a_1\vec v_1 + a_2\vec v_2 + \cdots + a_m\vec v_m + a_{m+1}\vec v_{m+1} + \cdots
+    + a_k\vec v_k = \vec 0.
+  \]
+  By our assumption that $S_2$ is linear independent, we have
+  \[
+    a_1=a_2=\cdots=a_m=a_{m+1}=\cdots=a_k=0
+  \]
+  by the definition of linearly independent. But this implies that each $a_i=0$ for
+  $i \in \{1,\,2,\dots,\,m\}$, contrary to what we have observed. This
+  contradiction proves the result. \\}
+
+\noindent{\bfseries Question 11.} Do the following.
+\begin{enumerate}[(a)]
+\item Let $\vec u$ and $\vec v$ be distinct vectors in $\R^n$. Prove that
+  $\{\vec u, \vec v\}$ is linearly independent if and only if $\{\vec u + \vec v,
+  \vec u - \vec v\}$ is linearly independent. \\
+
+  \BB{ Suppose first that $\{\vec u,\,\vec v\}$ is linearly independent, but
+$\vec u + \vec v = a(\vec u - \vec v)$ for some $a \in \R$. If $a=1$, then $\vec
+v=\vec 0$, contradicting the fact that $\{\vec u,\,\vec v\}$ is independent. So
+$a \neq 1$ and $\vec u = -\frac{1+a}{1-a}\vec v$, again, contradicting the fact
+that $\{\vec u,\,\vec v\}$ is independent.}
+
+\BB{Conversely, suppose that $\vec u = b\vec v$ for some $b \in \R$. Then $\vec
+u + \vec v = (1+b)\vec u$ and $\vec u - \vec v = (1-b)\vec u$. But this means
+that both $\vec u + \vec v$ and $\vec u - \vec v$ are in $\text{span}\{\vec
+u\}$, whereupon $\{\vec u + \vec v, \vec u - \vec v\}$ is linearly dependent.
+\\}
+  
+\item Let $\vec u, \vec v, \vec w$ be distinct vectors in $\R^n$. Prove that
+  $\{\vec u, \vec v, \vec w\}$ is linearly independent if and only if $\{\vec
+  u+\vec v,\vec u+\vec w,\vec v+\vec w\}$ is linear independent. \\
+
+  \BB{First, we assume that $\{\vec u,\,\vec v,\,\vec w\}$ is linearly
+    independent, and we assume there are scalars $a,\,b,\,c$ such that
+    \[
+      \vec 0 = a(\vec u+\vec v)+b(\vec u+\vec w)+c(\vec v+\vec w)
+      = (a+b)\vec u+(a+c)\vec v+(b+c)\vec w.
+    \]
+    Since we are assuming that $\{\vec u,\,\vec v,\,\vec w\}$ is linearly
+    independent, it must be that $a+b=a+c=b+c=0$. This linear system has only
+    the trivial solution $a=b=c=0$, whereupon $\{\vec u+\vec v,\vec u+\vec
+    w,\vec v+\vec w\}$ is linearly independent as well.
+  }
+
+  \BB{Next, we assume that $\{\vec u+\vec v,\vec u+\vec w,\vec v+\vec w\}$ is
+    independent. Suppose there are scalars $a,\,b,\,c$ such that $a\vec u+b\vec
+    v+c\vec w=\vec 0$. Then
+    \[
+      (a-b+c)(\vec u+\vec v)+(a+b-c)(\vec u+\vec w)+(-a+b+c)(\vec v+\vec w)=\vec 0.
+    \]
+    By our assumed linear independence of $\{\vec u+\vec v,\vec u+\vec w,\vec
+    v+\vec w\}$, we have $a-b+c=a+b-c=-a+b+c=0$. Solving, we find this possesses
+    only the trivial solution $a=b=c=0$. It follows $\{\vec u,\,\vec v,\,\vec
+    w\}$ is independent as well. \\}
+\end{enumerate}
+
+\subsection*{Linear Transformations}
+
+\noindent{\bfseries Question 12.} Show the following for $\R^n$.
+\begin{enumerate}[(a)]
+\item Show that scalar multiplication is a linear transformation. \\
+
+  \BB{Fix $a \in \R$, and let $T:\R^n \rightarrow \R^n$ be the map $T(\vec
+    v)=a\vec v$. Then $T(b\vec v)=ab\vec v=ba\vec v=bT(\vec v)$ and $T(\vec
+    v+\vec u)=a(\vec v+\vec u)=a\vec v+a\vec u=T(\vec v)+T(\vec u)$. We have
+    shown that $T$ is linear. \\}
+
+\item When is this linear map invertible? \\
+
+  \BB{This map is invertible precisely in the case the scalar by which we are
+    multiplying is nonzero. \\}
+  
+\item Is its inverse a linear transformation? \\
+
+  \BB{Let $T$ be as in part (a), and assume that $a \neq 0$. Then $T$ is
+    invertible and $T^{-1}$ is given by multiplcation by $a^{-1}$. Since this
+    is multiplcation by a scalar, it is linear. \\}
+  
+\item Fix an element $a \in \R^n$. What is the matrix corresponding to the
+linear transformation $\vec v \mapsto a\vec v$ with respect to the standard
+spanning vectors? \\
+
+\BB{Recall the standard spanning vectors are $\{\vec e_1,\,\vec e_2,\dots,\,\vec
+  e_n\}$ where $\vec e_i$ is the vector with a 1 in position $i$ and zeros
+  everywhere else. Then the matrix corresponding to multiplication by $a$ is
+  givn by
+  \[
+    [T(\vec e_1) | T(\vec e_2) | \cdots | T(\vec e_n)]=
+    [a\vec e_1 | a\vec e_2 | \cdots | a\vec e_n] = aI.
+  \]
+}
+\end{enumerate}
+
+\noindent{\bfseries Question 13.} Fix $a \in \R$ and $\vec u \in \R^n$ with $\vec
+u \neq \vec 0$. Is the map given by $\vec v \mapsto a\vec v + \vec u$, linear?
+Why or why not? \\
+
+\BB{No; it is not a linear map. Let $\vec v_1,\,\vec v_2 \in \R^n$. Then $\vec
+  v_1+\vec v_2 \mapsto a\vec v_1+a\vec v_2+\vec u$. But $\vec v_1 \mapsto a\vec
+  v_1+\vec u$ and $\vec v_2 \mapsto a\vec v_2+\vec u$. However, $(a\vec v_1+\vec
+  u)+(a\vec v_2+\vec u)=a\vec v_1+a\vec v_2+2\vec u \neq a\vec v_1+a\vec
+  v_2+\vec u$. \\}
+
+\noindent{\bfseries Question 14.} Consider a linear transformation $T: \R^n
+\rightarrow \R^n$, and define $\text{Ker}(T)=\{\vec v \in \R^n : T(\vec v)=\vec
+0\}$. This is the kernel of the linear transformation $T$. For $\vec v \in
+\R^n$, define $\vec v + \text{Ker}(T)=\{\vec v + \vec u : \vec u \in
+\text{Ker}(T)\}$. Show the following.
+\begin{enumerate}[(a)]
+\item $\text{Ker}(T)$ is closed under scalar multiplcation and vector addition.\\
+
+  \BB{Let $\vec v_1,\,\vec v_2 \in \text{Ker}(T)$. Then $T(\vec v_1+\vec
+    v_2)=T(\vec v_1)+T(\vec v_2)=\vec 0+\vec 0=\vec 0$, so $\vec v_1+\vec v_2
+    \in \text{Ker}(T)$. Similarly, $T(a\vec v)=aT(\vec v)=a\vec 0=\vec 0$
+    whenever $\vec v \in \text{Ker}(T)$; so, $a\vec v \in \text{Ker}(T)$. This
+    shows that $\text{Ker}(T)$ is closed under vector addition and scalar
+    multiplication. \\}
+  
+\item For $\vec v \in \R^n$, show that $\vec v + \text{Ker}(T)$ consists of all
+  and only those elements of $\R^n$ that map to $T(\vec v)$ under $T$. \\
+
+  \BB{Let $V=\{u \in \R^n : T(\vec u)=T(\vec v)\}$. We show $\vec
+    v+\text{Ker}(T)=V$. Indeed, let $\vec u \in V$. Then $T(\vec v)=T(\vec u)$
+    so that $T(u-v)=\vec 0$. It follows that there is an $\vec x \in
+    \text{Ker}(T)$ such that $\vec u-\vec v=\vec x$, that is, $\vec u=\vec
+    v+\vec x$. This means $\vec u \in \vec v+\text{Ker}(T)$.}
+
+  \BB{Conversely, let $\vec u \in \vec v+\text{Ker}(T)$. Then there is some
+    $\vec x \in \text{Ker}(T)$ for which $\vec u=\vec v+\vec x.$ It follows that
+  $T(\vec u)=T(\vec v+\vec x)+T(\vec v)+T(\vec x)=T(\vec v)+\vec 0=T(\vec v)$.
+  So, $\vec u \in V$, as required. \\}
+
+\item For $\vec v_1,\vec v_2 \in \R^n$, show that either $\vec
+  v_1+\text{Ker}(T)=\vec v_2 +\text{Ker}(T)$ or $\vec v_1+\text{Ker}(T) \cap
+  \vec v_2 +\text{Ker}(T)=\emptyset$. \\
+
+  \BB{Let $\vec v_1,\,\vec v_2 \in \R^n$, and suppose that $\vec
+    v_1+\text{Ker}(T) \cap \vec v_2+\text{Ker}(T) \neq \emptyset$. Then there is
+    some $\vec u \in v_1+\text{Ker}(T) \cap \vec v_2+\text{Ker}(T)$. By
+    definition, there must be $\vec u_1,\,\vec u_2 \in \text{Ker}(T)$ such that
+    $\vec u=\vec v_1+\vec u_1=\vec v_2=\vec u_2$. But then $\vec v_1-\vec
+    v_2=\vec u_2-\vec u_1=\vec u_3$ for some $\vec u_3 \in \text{Ker}(T)$. It
+    follows that $\vec v_1=\vec v_2+\vec u_3$, so $\vec v_1 \in \vec
+    v_2+\text{Ker}(T)$. Similarly, $\vec v_2=\vec v_1-\vec u_3$, so $\vec v_2 \in
+    \vec v_1+\text{Ker}(T)$. It follows, therefore, that $\vec
+    v_1+\text{Ker}(T)=\vec v_2+\text{Ker}(T)$.}
+\end{enumerate}
+
+\subsection*{Matrix Operations}
+
+\noindent{\bfseries Question 15.} Give an example of a nonzero matrix $A$ such
+that $A^2=O$. \\
+
+\BB{Take $A=\left( \begin{smallmatrix}0&1\\0&0\end{smallmatrix} \right)$. \\}
+
+\noindent{\bfseries Question 16.} The trace of a square matrix $A$ of dimensions
+$N \times N$ is defined as $\text{tr}(A)=\sum_{k=1}^NA_{k,k}$, i.e., the sum of
+the diagonal entries of the matrix. For any other $N \times N$ matrix $B$, show
+that $\text{tr}(AB)=\text{tr}(BA)$. \\
+
+\BB{Observe
+  \begin{align*}
+    \text{tr}(AB) &= \sum_{k=1}^N(AB)_{k,k} \\
+                  &= \sum_{k=1}^N\sum_{j=1}^NA_{k,j}B_{j,k} \\
+                  &= \sum_{k=1}^N\sum_{j=1}^NA_{j,k}B_{k,j} \\
+                  &= \text{tr}(BA)
+  \end{align*}
+  where the second to last equality follows because
+  \[
+    \{(k,j,j,k) : 1 \leqq j,k \leqq N\} =
+    \{(j,k,k,j) : 1 \leqq j,k \leqq N\}.
+  \] \\
+}
+
+\noindent{\bfseries Question 17.} An $N \times N$ matrix $A$ is circulant if it is
+of the form
+\[
+  A=\begin{pmatrix}
+      a_1 & a_2 & a_3 & \cdots & a_N \\
+      a_N & a_1 & a_2 & \cdots & a_{N-1} \\
+      a_{N-1} & a_N & a_1 & \cdots & a_{N-2} \\
+      \vdots & \vdots & \vdots & \ddots & \vdots \\
+      a_2 & a_3 & a_4 & \cdots & a_1
+    \end{pmatrix}.
+\]
+Show that if $B$ is any other $N \times N$ circulant matrix, then $AB=BA$. \\
+
+\BB{Define the $N \times N$ matrix $G$ by
+  \[
+    G=\begin{pmatrix}
+        0 & 1 & 0 & \cdots & 0 \\
+        0 & 0 & 1 & \cdots & 0 \\
+        \vdots & \vdots & \vdots & \cdots & \vdots \\
+        1 & 0 & 0 & \cdots & 0
+      \end{pmatrix}.
+  \]
+  If we multiply an $N \times N$ matrix $C$ on the right by $G$, the resulting
+  matrix is the one obtained by cyclically shifting the columns of $C$ to the
+  right. In particular, $G^N=I$ and $G^j \neq I$ for any $j \in
+  \{1,\dots,N-1\}$. We also note that we can write $A$ and $B$ by
+  \[
+    A = \sum_{i=1}^Na_iG^{i-1}, \qquad B = \sum_{i=1}^Nb_iG^{i-1},
+  \]
+  that is, $A$ and $B$ are polynomials in $G$. Since they are each polynomials
+  in $G$, it is easy to see that they must commute. \\}
+
+\noindent{\bfseries Question 18.} A diagonal matrix is one for which every entry
+not on the main diagonal is zero. Let $A$ and $B$ be $N \times N$ matrices such
+that there exists and invertible $N \times N$ matrix $P$ for which
+$D_A=P^{-1}AP$ and $D_B=P^{-1}BP$ are diagonal matrices. Show that $A$ and $B$
+commute. \\
+
+\BB{Since $D_A=P^{-1}AP$ and $D_B=P^{-1}BP$, we have that $A=PD_AP^{-1}$ and
+  $B=PD_BP^{-1}$. Then
+  \begin{align*}
+    AB &= (PD_AP^{-1})(PD_BP^{-1}) \\
+       &= PD_A(P^{-1}P)D_BP^{-1} \\
+       &= PD_AID_BP^{-1} \\
+       &= PD_AD_BP^{-1} \\
+       &= PD_BD_AP^{-1} \\
+       &= PD_BID_AP^{-1} \\
+       &= PD_B(P^{-1}P)D_AP^{-1} \\
+       &= (PD_BP^{-1})(PD_AP^{-1}) \\
+       &= BA
+  \end{align*}
+  where we have used the fact that diagonal matrices commute.
+}
+
+\end{document}
