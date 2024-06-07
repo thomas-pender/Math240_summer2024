@@ -234,12 +234,54 @@ linear equations where $a,b \in \R$ are constants.
 \item Find a value for $a$ which makes it necessary to interchange rows during
   row reduction. \\
 
-  \BB{$a=4$. Of course, we would need $b \neq 0$ as well. \\}
-  
+  \BB{The augmented matrix for the system is
+    \[
+      \left(
+        \begin{array}{rrr|r}
+          1 & 2 & 0 & 0 \\
+          a & 8 & 3 & 0 \\
+          0 & b & 5 & 0
+        \end{array}
+      \right).
+    \]
+    If $a=4$, then $-4$ times the first row added to the second gives
+    \[
+      \left(
+        \begin{array}{rrr|r}
+          1 & 2 & 0 & 0 \\
+          0 & 0 & 3 & 0 \\
+          0 & b & 5 & 0
+        \end{array}
+      \right)
+    \]
+    Therefore, if $b \neq 0$, then we would be required to interchange the
+    second and third rows. It isn't difficult to see that this is the only case
+    in which we would need to interchange rows. \\
+  }
+
 \item Suppose that $a$ does not have the value you found in part (a). Find a
   value for $b$ so that the system has a nontrivial solution. \\
 
-  \BB{$b=40,-10$. \\}
+  \BB{Since $a \neq 4$, we have
+    \[
+      \left(
+        \begin{array}{rrr|r}
+          1 & 2 & 0 & 0 \\
+          a & 8 & 3 & 0 \\
+          0 & b & 5 & 0
+        \end{array}
+      \right)\sim
+      \left(
+        \begin{array}{rrr|r}
+          1 & 2 & 0 & 0 \\
+          0 & 1 & \frac{3}{8-2a} & 0 \\
+          0 & 0 & 5-\frac{3b}{8-2a} & 0
+        \end{array}
+      \right).
+    \]
+    This system has a trivial solution only in the case $5-3b/(8-2a)=0$, that
+    is, only in the case $b=(40-10a)/3$. \\
+  }
   
 \item Suppose that $a$ does not have the value you found in part (a) and that
   $b=100$. Suppose further that $a$ is chosen so that the solution to the system
