@@ -1,0 +1,84 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amssymb, amsmath, amsthm, mathrsfs}
+\usepackage[left=1.0in,right=1.0in,top=1.0in,bottom=1.0in]{geometry}
+\usepackage[inline,shortlabels]{enumitem}
+\usepackage{times}
+\usepackage{xcolor}
+
+\newcommand{\R}{\mathbf{R}}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries Math 240 Tutorial \\ Questions}
+\end{center}
+\begin{center}
+  {\bfseries June 13}
+\end{center}
+
+\noindent{\bfseries Question 1.} Fix $a \in \R$ and $\vec u \in \R^n$ with $\vec
+u \neq \vec 0$. Is the map given by $\vec v \mapsto a\vec v + \vec u$, linear?
+Why or why not? \\
+
+\noindent{\bfseries Question 2.} Consider a linear transformation $T: \R^n
+\rightarrow \R^n$, and define $\text{Ker}(T)=\{\vec v \in \R^n : T(\vec v)=\vec
+0\}$. This is the kernel of the linear transformation $T$. For $\vec v \in
+\R^n$, define $\vec v + \text{Ker}(T)=\{\vec v + \vec u : \vec u \in
+\text{Ker}(T)\}$. Show the following.
+\begin{enumerate}[(a)]
+\item $\text{Ker}(T)$ is closed under scalar multiplcation and vector addition.
+\item For $\vec v \in \R^n$, show that $\vec v + \text{Ker}(T)$ consists of all
+  and only those elements of $\R^n$ that map to $T(\vec v)$ under $T$.
+\item For $\vec v_1,\vec v_2 \in \R^n$, show that either $\vec
+  v_1+\text{Ker}(T)=\vec v_2 +\text{Ker}(T)$ or $\vec v_1+\text{Ker}(T) \cap
+  \vec v_2 +\text{Ker}(T)=\emptyset$.
+\end{enumerate}
+
+\noindent{\bfseries Question 3.} The trace of a square matrix $A$ of dimensions
+$N \times N$ is defined as $\text{tr}(A)=\sum_{k=1}^NA_{k,k}$, i.e., the sum of
+the diagonal entries of the matrix. For any other $N \times N$ matrix $B$, show
+that $\text{tr}(AB)=\text{tr}(BA)$. \\
+
+\noindent{\bfseries Question 4.} An $N \times N$ matrix $A$ is circulant if it is
+of the form
+\[
+  A=\begin{pmatrix}
+      a_1 & a_2 & a_3 & \cdots & a_N \\
+      a_N & a_1 & a_2 & \cdots & a_{N-1} \\
+      a_{N-1} & a_N & a_1 & \cdots & a_{N-2} \\
+      \vdots & \vdots & \vdots & \ddots & \vdots \\
+      a_2 & a_3 & a_4 & \cdots & a_1
+    \end{pmatrix}.
+\]
+Show that if $B$ is any other $N \times N$ circulant matrix, then $AB=BA$. \\
+
+\noindent{\bfseries Question 5.} Let $N=\{1,2,\dots,n\}$. A permutation of $N$
+is an invertible map $N \rightarrow N$. Write the $n \times n$ identity matrix
+as
+\[
+  I=[e_1 \mid e_2 \mid \cdots \mid e_n],
+\]
+and let $\sigma$ be a permutation of $N$. The matrix corresponding to $\sigma$
+is given by
+\[
+  P_\sigma = [e_{\sigma(1)} \mid e_{\sigma(2)} \mid \cdots \mid e_{\sigma(n)}].
+\]
+Answer the following.
+\begin{enumerate}[(a)]
+\item If $A$ is any other $n \times n$ matrix, what does doing the multiplcation
+  $AP_\sigma$ have?
+\item If $B$ is any other $n \times n$ matrix, what does doing the multiplcation
+  $P_\sigma B$ have?
+\item Is $P_\sigma$ invertible? If it is, what is its inverse? \\
+\end{enumerate}
+
+\noindent{\bfseries Question 6.} A diagonal matrix is one for which every entry
+not on the main diagonal is zero. Let $A$ and $B$ be $N \times N$ matrices such
+that there exists and invertible $N \times N$ matrix $P$ for which
+$D_A=P^{-1}AP$ and $D_B=P^{-1}BP$ are diagonal matrices. Show that $A$ and $B$
+commute.
+
+\end{document}
