@@ -19,11 +19,24 @@
   {\bfseries June 13}
 \end{center}
 
-\noindent{\bfseries Question 1.} Fix $a \in \R$ and $\vec u \in \R^n$ with $\vec
+\noindent{\bfseries Question 1.} Show the following for $\R^n$.
+\begin{enumerate}[(a)]
+\item Show that scalar multiplication is a linear transformation.
+\item When is this linear map invertible?
+\item Is its inverse a linear transformation?
+\item Fix an element $a \in \R^n$. What is the matrix corresponding to the
+linear transformation $\vec v \mapsto a\vec v$ with respect to the standard
+spanning vectors?
+\end{enumerate}
+
+\noindent{\bfseries Question 2.} Give the matrix for the transformation that
+rotates vectors in $\R^2$ by $\pi/3$ radians. \\
+
+\noindent{\bfseries Question 3.} Fix $a \in \R$ and $\vec u \in \R^n$ with $\vec
 u \neq \vec 0$. Is the map given by $\vec v \mapsto a\vec v + \vec u$, linear?
 Why or why not? \\
 
-\noindent{\bfseries Question 2.} Consider a linear transformation $T: \R^n
+\noindent{\bfseries Question 4.} Consider a linear transformation $T: \R^n
 \rightarrow \R^n$, and define $\text{Ker}(T)=\{\vec v \in \R^n : T(\vec v)=\vec
 0\}$. This is the kernel of the linear transformation $T$. For $\vec v \in
 \R^n$, define $\vec v + \text{Ker}(T)=\{\vec v + \vec u : \vec u \in
@@ -37,12 +50,15 @@ Why or why not? \\
   \vec v_2 +\text{Ker}(T)=\emptyset$. \\
 \end{enumerate}
 
-\noindent{\bfseries Question 3.} The trace of a square matrix $A$ of dimensions
+\noindent{\bfseries Question 5.} Find a matrix $A$ such that $A^4=O$, but no
+smaller positive power $A$ is $O$. \\
+
+\noindent{\bfseries Question 6.} The trace of a square matrix $A$ of dimensions
 $N \times N$ is defined as $\text{tr}(A)=\sum_{k=1}^NA_{k,k}$, i.e., the sum of
 the diagonal entries of the matrix. For any other $N \times N$ matrix $B$, show
 that $\text{tr}(AB)=\text{tr}(BA)$. \\
 
-\noindent{\bfseries Question 4.} An $N \times N$ matrix $A$ is circulant if it is
+\noindent{\bfseries Question 7.} An $N \times N$ matrix $A$ is circulant if it is
 of the form
 \[
   A=\begin{pmatrix}
@@ -55,7 +71,7 @@ of the form
 \]
 Show that if $B$ is any other $N \times N$ circulant matrix, then $AB=BA$. \\
 
-\noindent{\bfseries Question 5.} Let $N=\{1,2,\dots,n\}$. A permutation of $N$
+\noindent{\bfseries Question 8.} Let $N=\{1,2,\dots,n\}$. A permutation of $N$
 is an invertible map $N \rightarrow N$. Write the $n \times n$ identity matrix
 as
 \[
@@ -77,7 +93,7 @@ multiplcation $P_\sigma B$ have?
 \item How many columns(rows) are fixed by $P_\sigma$. \\
 \end{enumerate}
 
-\noindent{\bfseries Question 6.} A diagonal matrix is one for which every entry
+\noindent{\bfseries Question 9.} A diagonal matrix is one for which every entry
 not on the main diagonal is zero. Let $A$ and $B$ be $N \times N$ matrices such
 that there exists and invertible $N \times N$ matrix $P$ for which
 $D_A=P^{-1}AP$ and $D_B=P^{-1}BP$ are diagonal matrices. Show that $A$ and $B$

@@ -20,7 +20,58 @@
   {\bfseries June 13}
 \end{center}
 
-\noindent{\bfseries Question 1.} Fix $a \in \R$ and $\vec u \in \R^n$ with $\vec
+\noindent{\bfseries Question 1.} Show the following for $\R^n$.
+\begin{enumerate}[(a)]
+\item Show that scalar multiplication is a linear transformation. \\
+
+  \BB{Fix $a \in \R$, and let $T:\R^n \rightarrow \R^n$ be the map $T(\vec
+    v)=a\vec v$. Then $T(b\vec v)=ab\vec v=ba\vec v=bT(\vec v)$ and $T(\vec
+    v+\vec u)=a(\vec v+\vec u)=a\vec v+a\vec u=T(\vec v)+T(\vec u)$. We have
+    shown that $T$ is linear. \\}
+
+\item When is this linear map invertible? \\
+
+  \BB{This map is invertible precisely in the case the scalar by which we are
+    multiplying is nonzero. \\}
+  
+\item Is its inverse a linear transformation? \\
+
+  \BB{Let $T$ be as in part (a), and assume that $a \neq 0$. Then $T$ is
+    invertible and $T^{-1}$ is given by multiplcation by $a^{-1}$. Since this
+    is multiplcation by a scalar, it is linear. \\}
+  
+\item Fix an element $a \in \R^n$. What is the matrix corresponding to the
+linear transformation $\vec v \mapsto a\vec v$ with respect to the standard
+spanning vectors? \\
+
+\BB{Recall the standard spanning vectors are $\{\vec e_1,\,\vec e_2,\dots,\,\vec
+  e_n\}$ where $\vec e_i$ is the vector with a 1 in position $i$ and zeros
+  everywhere else. Then the matrix corresponding to multiplication by $a$ is
+  givn by
+  \[
+    [T(\vec e_1) | T(\vec e_2) | \cdots | T(\vec e_n)]=
+    [a\vec e_1 | a\vec e_2 | \cdots | a\vec e_n] = aI.
+  \]
+}
+\end{enumerate}
+
+\noindent{\bfseries Question 2.} Give the matrix for the transformation that
+rotates vectors in $\R^2$ by $2\pi/3$ radians. \\
+
+\BB{We consider the standard basis vectors $e_1=(1,0)$ and $e_2=(0,1)$. The
+  vector $e_1$ maps to $(-1/2,\sqrt{3}/2)$, and the vector $e_2$ maps to
+  $(-1/2,-\sqrt{3}/2)$. So the matrix for the transformation is given by
+  \[
+    \left(
+      \begin{array}{cc}
+        -\frac{1}{2} & \frac{\sqrt{3}}{2} \\
+        -\frac{1}{2} & -\frac{\sqrt{3}}{2} \\
+      \end{array}
+    \right).
+  \] \\
+}
+
+\noindent{\bfseries Question 3.} Fix $a \in \R$ and $\vec u \in \R^n$ with $\vec
 u \neq \vec 0$. Is the map given by $\vec v \mapsto a\vec v + \vec u$, linear?
 Why or why not? \\
 
@@ -30,7 +81,7 @@ Why or why not? \\
   u)+(a\vec v_2+\vec u)=a\vec v_1+a\vec v_2+2\vec u \neq a\vec v_1+a\vec
   v_2+\vec u$. \\}
 
-\noindent{\bfseries Question 2.} Consider a linear transformation $T: \R^n
+\noindent{\bfseries Question 4.} Consider a linear transformation $T: \R^n
 \rightarrow \R^n$, and define $\text{Ker}(T)=\{\vec v \in \R^n : T(\vec v)=\vec
 0\}$. This is the kernel of the linear transformation $T$. For $\vec v \in
 \R^n$, define $\vec v + \text{Ker}(T)=\{\vec v + \vec u : \vec u \in
@@ -75,7 +126,21 @@ Why or why not? \\
     v_1+\text{Ker}(T)=\vec v_2+\text{Ker}(T)$.\\}
 \end{enumerate}
 
-\noindent{\bfseries Question 3.} The trace of a square matrix $A$ of dimensions
+\noindent{\bfseries Question 5.} Find a matrix $A$ such that $A^4=O$, but no
+smaller positive power $A$ is $O$. \\
+
+\BB{The matrix
+  \[
+    A=\begin{pmatrix}
+        0 & 1 & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1 \\
+        0 & 0 & 0 & 0
+      \end{pmatrix}
+  \]
+  satisfies the stated requirements.\\}
+
+\noindent{\bfseries Question 6.} The trace of a square matrix $A$ of dimensions
 $N \times N$ is defined as $\text{tr}(A)=\sum_{k=1}^NA_{k,k}$, i.e., the sum of
 the diagonal entries of the matrix. For any other $N \times N$ matrix $B$, show
 that $\text{tr}(AB)=\text{tr}(BA)$. \\
@@ -94,7 +159,7 @@ that $\text{tr}(AB)=\text{tr}(BA)$. \\
   \] \\
 }
 
-\noindent{\bfseries Question 4.} An $N \times N$ matrix $A$ is circulant if it is
+\noindent{\bfseries Question 7.} An $N \times N$ matrix $A$ is circulant if it is
 of the form
 \[
   A=\begin{pmatrix}
@@ -126,7 +191,7 @@ Show that if $B$ is any other $N \times N$ circulant matrix, then $AB=BA$. \\
     that is, $A$ and $B$ are polynomials in $G$. Since they are each polynomials
     in $G$, it is easy to see that they must commute. \\}
 
-\noindent{\bfseries Question 5.} Let $N=\{1,2,\dots,n\}$. A permutation of $N$
+\noindent{\bfseries Question 8.} Let $N=\{1,2,\dots,n\}$. A permutation of $N$
 is an invertible map $N \rightarrow N$. Write the $n \times n$ identity matrix
 as
 \[
@@ -195,11 +260,11 @@ Answer the following.
   the same as counting the number of 1s along the diagonal. Since the entries of
 $P_\sigma$ different than 1 are 0, it follows that the number of columns fixed
 by $P_\sigma$ is given by $\text{tr}(P_\sigma)$. For this reason,
-$\tr(P_\sigma)$ is often called the permutation character of $P_\sigma$.\\}
+$\text{tr}(P_\sigma)$ is often called the permutation character of $P_\sigma$.\\}
 
 \end{enumerate}
 
-\noindent{\bfseries Question 6.} A diagonal matrix is one for which every entry
+\noindent{\bfseries Question 9.} A diagonal matrix is one for which every entry
 not on the main diagonal is zero. Let $A$ and $B$ be $N \times N$ matrices such
 that there exists and invertible $N \times N$ matrix $P$ for which
 $D_A=P^{-1}AP$ and $D_B=P^{-1}BP$ are diagonal matrices. Show that $A$ and $B$
