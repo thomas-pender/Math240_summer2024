@@ -1,0 +1,143 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amssymb, amsmath, amsthm, mathrsfs}
+\usepackage[left=1.0in,right=1.0in,top=1.0in,bottom=1.0in]{geometry}
+\usepackage[inline,shortlabels]{enumitem}
+\usepackage{times}
+\usepackage{xcolor}
+
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\PP}{\mathbf{P}}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries Math 240 Tutorial \\ Questions}
+\end{center}
+\begin{center}
+  {\bfseries June 20}
+\end{center}
+
+\noindent{\bfseries Question 1.} Show the following for $\R^n$.
+\begin{enumerate}[(a)]
+\item Show that scalar multiplication is a linear transformation.
+\item When is this linear map invertible?
+\item Is its inverse a linear transformation?
+\item Fix an element $a \in \R^n$. What is the matrix corresponding to the
+  linear transformation $\vec v \mapsto a\vec v$? \\
+\end{enumerate}
+
+\noindent{\bfseries Question 2.} Construct the standard matrix for the
+transformation that rotates the vectors of $\R^2$ by $-\pi/3$ radians. \\
+
+\noindent{\bfseries Question 3.} Consider the vector space $\PP_3$. Define $p(x) =
+x^3 + x^2 + x + 1$. Show that the following.
+\begin{enumerate}[(a)]
+\item Multiplication by $p(x)$ is a linear transformation $\PP_3 \rightarrow
+  \PP_3$.
+\item What is the matrix for multiplication by $p(x)$ with respect to the basis
+  $\{1,x,x^2,x^3\}$.
+\item Show that $\{1,x,\frac{1}{2}(3x^2-1),\frac{1}{2}(5x^3-3x)\}$ is a basis
+  for $\PP_3$ by showing they are linearly independent and span $\PP_3$. Write
+  out the matrix for multiplication by $p(x)$ with respect to this basis. \\
+\end{enumerate}
+
+\noindent{\bfseries Question 4.} Calculate the following determinants.
+\begin{enumerate}[(a)]
+\item
+  \[
+    \text{det}
+    \left(
+      \begin{array}{rrrr}
+        6 & 9 & 39 & 49 \\
+        5 & 7 & 32 & 37 \\
+        3 & 4 & 4 & 4 \\
+        1 & 1 & 1 & 1
+      \end{array}
+    \right).
+  \]
+\item
+  \[
+    \text{det}
+    \left(
+      \begin{array}{rrrr}
+        1 & 0 & 1 & 1 \\
+        1 & -1 & 2 & 0 \\
+        2 & -1 & 3 & 1 \\
+        4 & 17 & 0 & -5
+      \end{array}
+    \right).
+  \]
+\item
+  \[
+    \text{det}
+    \left(
+      \begin{array}{rrrr}
+        13 & 3 & -8 & 6 \\
+        0 & 0 & -4 & 0 \\
+        1 & 0 & 7 & -2 \\
+        3 & 0 & 2 & 0
+      \end{array}
+    \right).
+  \]
+\end{enumerate}
+
+\noindent{\bfseries Question 5.} Solve the following equation for $x$.
+\[
+  \text{det}
+  \left(
+    \begin{array}{rrrrrr}
+      3 & -4 & 7 & 0 & 6 & -2 \\
+      2 & 0 & 1 & 8 & 0 & 0 \\
+      3 & 4 & -8 & 3 & 1 & 2 \\
+      27 & 6 & 5 & 0 & 0 & 3 \\
+      3 & x & 0 & 2 & 1 & -1 \\
+      1 & 0 & -1 & 3 & 4 & 0
+    \end{array}
+  \right).
+\] \\
+
+\noindent{\bfseries Question 6.} Let $M$ be the matrix
+\[
+  \left(
+    \begin{array}{rrrr}
+      5 & 4 & -2 & 3 \\
+      5 & 7 & -1 & 8 \\
+      5 & 7 & 6 & 10 \\
+      5 & 7 & 1 & 9
+    \end{array}
+  \right).
+\]
+The following hold.
+\begin{enumerate}[(a)]
+\item $\text{det }M$ can be expressed as the constant 5 times the determinant of
+  \[
+    \left(
+      \begin{array}{rrr}
+        3 & 1 & 5 \\
+        3 & & \\
+        3 & & 
+      \end{array}
+    \right).
+  \]
+\item The determinant of the $3 \times 3$ is part (a) can be expressed as the
+  constant 3 times the determinant of
+  \[
+    \left(
+      \begin{array}{rr}
+        7 & 2 \\
+        2 &
+      \end{array}
+    \right).
+  \]
+\end{enumerate}
+The determinant of the $2 \times 2$ matrix in part (b) is what? Thus the
+detmerinant of $M$ is what? \\
+
+\noindent{\bfseries Question 7.} Consider again the vector space $\PP_3$, and let
+$Q \subseteqq \PP_3$ be the subset of polynomials of degree at most 3 that
+vanish when $x=3$. Is $Q$ a subspace? If it is, give a spanning set of $Q$. \\
+
+\end{document}
