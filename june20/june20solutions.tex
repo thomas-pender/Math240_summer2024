@@ -1,0 +1,305 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amssymb, amsmath, amsthm, mathrsfs}
+\usepackage[left=1.0in,right=1.0in,top=1.0in,bottom=1.0in]{geometry}
+\usepackage[inline,shortlabels]{enumitem}
+\usepackage{times}
+\usepackage{xcolor}
+
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\PP}{\mathbf{P}}
+\newcommand{\BB}[1]{\textcolor{blue}{#1}}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries Math 240 Tutorial \\ Solutions}
+\end{center}
+\begin{center}
+  {\bfseries June 20}
+\end{center}
+
+\noindent{\bfseries Question 1.} Show the following for $\R^n$.
+\begin{enumerate}[(a)]
+\item Show that scalar multiplication is a linear transformation. \\
+
+  \BB{Fix $a \in \R$, and let $T:\R^n \rightarrow \R^n$ be the map $T(\vec
+    v)=a\vec v$. Then $T(b\vec v)=ab\vec v=ba\vec v=bT(\vec v)$ and $T(\vec
+    v+\vec u)=a(\vec v+\vec u)=a\vec v+a\vec u=T(\vec v)+T(\vec u)$. We have
+    shown that $T$ is linear. \\}
+
+\item When is this linear map invertible? \\
+
+  \BB{This map is invertible precisely in the case the scalar by which we are
+    multiplying is nonzero. \\}
+  
+\item Is its inverse a linear transformation? \\
+
+  \BB{Let $T$ be as in part (a), and assume that $a \neq 0$. Then $T$ is
+    invertible and $T^{-1}$ is given by multiplcation by $a^{-1}$. Since this
+    is multiplcation by a scalar, it is linear. \\}
+  
+\item Fix an element $a \in \R^n$. What is the matrix corresponding to the
+linear transformation $\vec v \mapsto a\vec v$ with respect to the standard
+spanning vectors? \\
+
+\BB{Recall the standard spanning vectors are $\{\vec e_1,\,\vec e_2,\dots,\,\vec
+  e_n\}$ where $\vec e_i$ is the vector with a 1 in position $i$ and zeros
+  everywhere else. Then the matrix corresponding to multiplication by $a$ is
+  givn by
+  \[
+    [T(\vec e_1) | T(\vec e_2) | \cdots | T(\vec e_n)]=
+    [a\vec e_1 | a\vec e_2 | \cdots | a\vec e_n] = aI.
+  \]
+}
+\end{enumerate}
+
+\noindent{\bfseries Question 2.} Construct the standard matrix for the
+transformation that rotates the vectors of $\R^2$ by $-\pi/6$ radians. \\
+
+\BB{Note that
+  \begin{align*}
+    e_1&=(1,0) \mapsto (\cos(-\pi/6),\sin(-\pi/6))=(\sqrt{3}/2,-1/2), \\
+    e_2&=(0,1) \mapsto (\cos(\pi/3),\sin(\pi/3))=(1/2,\sqrt{3}/2).
+    \end{align*}
+    It follows that the standard matrix is given by
+    \[
+      \left(
+        \begin{array}{rr}
+          \frac{\sqrt{3}}{2} & \frac{1}{2} \\
+          -\frac{1}{2} & \frac{\sqrt{3}}{2}
+        \end{array}
+      \right).
+    \] \\
+}
+
+\noindent{\bfseries Question 3.} Define $T : \R^3 \rightarrow \R^4$ by
+\[
+  T(\vec x) = (x_1-x_3,\, x_1+x_2,\,x_3-x_2,\,x_1-2x_2).
+\]
+\begin{enumerate}[(a)]
+\item Is $T$ linear? \\
+
+  \BB{It is easily verified that $T(\vec x_1 + \vec x_2)=T(\vec x_1) + T(\vec
+    x_2)$ and $T(\alpha\vec x)=\alpha T(\vec x)$ for every $\alpha \in \R$ and
+    $x_1,\,\vec x_2 \in \R^3$. \\}
+  
+\item What is $T(1,-2,3)$? \\
+
+  \BB{By definition, $T(1,-2,3)=(-2,-1,5,5)$. \\}
+  
+\item Find a vector $\vec x \in \R^3$ such that $T(\vec x)=(8,9,-5,0)$. \\
+
+  \BB{We solve the system
+    \begin{align*}
+      x_1 - x_3 &= 8, \\
+      x_1 + x_2 &= 9, \\
+      x_3 - x_2 &= -5, \\
+      x_1 - 2x_2 &= 0
+    \end{align*}
+    to find the unique preimage is $(6,3,-2)$. \\}
+  
+\item What is the standard basis for $T$? \\
+
+  \BB{Observe
+    \begin{align*}
+      e_1 &\mapsto (1,1,0,1), \\
+      e_2 &\mapsto (0,1,-1,-2), \\
+      e_3 &\mapsto (-1,0,1,0)
+    \end{align*}
+    so the standard matrix is
+    \[
+      \left(
+        \begin{array}{rrr}
+          1 & 0 & -1 \\
+          1 & 1 & 0 \\
+          0 & -1 & 1 \\
+          1 & -2 & 0
+        \end{array}
+      \right).
+    \] \\
+  }
+\end{enumerate}
+
+\noindent{\bfseries Question 4.} Calculate the following determinants.
+\begin{enumerate}[(a)]
+\item
+  \[
+    \text{det}
+    \left(
+      \begin{array}{rrrr}
+        6 & 9 & 39 & 49 \\
+        5 & 7 & 32 & 37 \\
+        3 & 4 & 4 & 4 \\
+        1 & 1 & 1 & 1
+      \end{array}
+    \right).
+  \] \\
+
+  \BB{Note
+    \[
+      \left(
+        \begin{array}{rrrr}
+          6 & 9 & 39 & 49 \\
+          5 & 7 & 32 & 37 \\
+          3 & 4 & 4 & 4 \\
+          1 & 1 & 1 & 1
+        \end{array}
+      \right)
+      \sim
+      \left(
+        \begin{array}{rrrr}
+          1 & 1 & 1 & 1 \\
+          0 & 1 & 1 & 1 \\
+          0 & 0 & 30 & 40 \\
+          0 & 0 & 0 & -\frac{10}{3}
+        \end{array}
+      \right)
+    \]
+    where we have made 2 row swaps. So the determinant is
+    $30(-\frac{10}{3})=-100$. \\}
+  
+\item
+  \[
+    \text{det}
+    \left(
+      \begin{array}{rrrr}
+        1 & 0 & 1 & 1 \\
+        1 & -1 & 2 & 0 \\
+        2 & -1 & 3 & 1 \\
+        4 & 17 & 0 & -5
+      \end{array}
+    \right).
+  \] \\
+
+  \BB{Note
+    \[
+      \left(
+        \begin{array}{rrrr}
+          1 & 0 & 1 & 1 \\
+          1 & -1 & 2 & 0 \\
+          2 & -1 & 3 & 1 \\
+          4 & 17 & 0 & -5
+        \end{array}
+      \right)
+      \sim
+      \left(
+        \begin{array}{rrrr}
+          1 & 0 & 1 & 1 \\
+          0 & -1 & 1 & -1 \\
+          0 & -1 & 1 & -1 \\
+          4 & 17 & 0 & -5
+        \end{array}
+      \right).
+    \]
+    So the determinant is 0 (there are two equal rows in a row equivalent
+    matrix). \\}
+  
+\item
+  \[
+    \text{det}
+    \left(
+      \begin{array}{rrrr}
+        13 & 3 & -8 & 6 \\
+        0 & 0 & -4 & 0 \\
+        1 & 0 & 7 & -2 \\
+        3 & 0 & 2 & 0
+      \end{array}
+    \right).
+  \] \\
+
+  \BB{Note
+    \[
+      \left(
+        \begin{array}{rrrr}
+          13 & 3 & -8 & 6 \\
+          0 & 0 & -4 & 0 \\
+          1 & 0 & 7 & -2 \\
+          3 & 0 & 2 & 0
+        \end{array}
+      \right)
+      \sim
+      \left(
+        \begin{array}{rrrr}
+          1 & 0 & -2 & 7 \\
+          0 & 3 & 32 & -99 \\
+          0 & 0 & 6 & -19 \\
+          0 & 0 & 0 & -4
+        \end{array}
+      \right)     
+    \]
+    where we have had to do 3 row swaps and 1 column swap. Therefore, the
+    determinant is given by $(3)(6)(-4)=-72$. \\}
+\end{enumerate}
+
+\noindent{\bfseries Question 5.} Solve the following equation for $x$.
+\[
+  \text{det}
+  \left(
+    \begin{array}{rrrrrr}
+      3 & -4 & 7 & 0 & 6 & -2 \\
+      2 & 0 & 1 & 8 & 0 & 0 \\
+      3 & 4 & -8 & 3 & 1 & 2 \\
+      27 & 6 & 5 & 0 & 0 & 3 \\
+      3 & x & 0 & 2 & 1 & -1 \\
+      1 & 0 & -1 & 3 & 4 & 0
+    \end{array}
+  \right)=0.
+\] \\
+
+\BB{Evaluating the determinant, we have $3685x+7370=0$ so that $x=-2$. \\}
+
+\noindent{\bfseries Question 6.} Let $M$ be the matrix
+\[
+  \left(
+    \begin{array}{rrrr}
+      5 & 4 & -2 & 3 \\
+      5 & 7 & -1 & 8 \\
+      5 & 7 & 6 & 10 \\
+      5 & 7 & 1 & 9
+    \end{array}
+  \right).
+\]
+The following hold.
+\begin{enumerate}[(a)]
+\item $\text{det }M$ can be expressed as the constant 5 times the determinant of
+  \[
+    \left(
+      \begin{array}{rrr}
+        3 & 1 & 5 \\
+        3 & & \\
+        3 & & 
+      \end{array}
+    \right).
+  \]
+\item The determinant of the $3 \times 3$ is part (a) can be expressed as the
+  constant 3 times the determinant of
+  \[
+    \left(
+      \begin{array}{rr}
+        7 & 2 \\
+        2 &
+      \end{array}
+    \right).
+  \]
+\end{enumerate}
+The determinant of the $2 \times 2$ matrix in part (b) is what? Thus the
+detmerinant of $M$ is what? \\
+
+\BB{The $2 \times 2$ matrix is
+  $\left( \begin{smallmatrix}7&2\\2&1\end{smallmatrix} \right)$. The determinant
+of the $2 \times 2$ matrix is $7-4=3$, so the determinant of $M$ is
+$(5)(3)(3)=45$. \\}
+
+\noindent{\bfseries Question 7.} Consider again the vector space $\PP_3$, and let
+$Q \subseteqq \PP_3$ be the subset of polynomials of degree at most 3 that
+vanish when $x=3$. Is $Q$ a subspace? If it is, give a spanning set of $Q$. \\
+
+\BB{Let $p(x) \in \PP_3$ have 3 as a root. Then $p(x)=(x-3)q(x)$ for some
+  polynomial $q$ of degree at most 2. So, the subspace under consideration has
+  dimension at most 3. In fact, $\{x-3,(x-3)^2,(x-3)^3\}$ are linearly
+  independent, so their span is $Q$.}
+
+\end{document}
