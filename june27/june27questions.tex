@@ -1,0 +1,75 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amssymb, amsmath, amsthm, mathrsfs}
+\usepackage[left=1.0in,right=1.0in,top=1.0in,bottom=1.0in]{geometry}
+\usepackage[inline,shortlabels]{enumitem}
+\usepackage{times}
+\usepackage{xcolor}
+
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\PP}{\mathbf{P}}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries Math 240 Tutorial \\ Questions}
+\end{center}
+\begin{center}
+  {\bfseries June 27}
+\end{center}
+
+\noindent{\bfseries Question 1.} Let $T : \R^n \rightarrow \R^n$ be an invertible
+linear transformation, and let $\vec v_1,\dots,\,\vec v_m \in \R^n$. Prove
+that $\{\vec v_1,\dots,\,\vec v_m\}$ is an independent set if and only if
+$\{T(\vec v_1),\dots,\,T(\vec v_m)\}$ is an independent set. \\
+
+\noindent{\bfseries Question 2.} Define $T : \R^n \rightarrow \R^n$ by
+\[
+  T(x_1,x_2,x_3,x_4) =
+  T(x_1-x_2-x_3-x_4, -x_1+x_2-x_3-x_4,-x_1-x_2+x_3-x_4,-x_1-x_2-x_3+x_4).
+\]
+Is $T$ linear? Is $T$ invertible? If it is, what is its inverse? \\
+
+\noindent{\bfseries Question 3.} Show that if $E$ and $F$ are two $n \times n$
+matrices such that $EF=I$, then $E$ and $F$ commute.  \\
+
+\noindent{\bfseries Question 4.} Let $T : \R^n \rightarrow \R^n$ and $U : \R^n
+\rightarrow \R^n$ be two linear transformations such that $T(U(\vec x))=\vec x$
+for every $\vec x \in \R^n$. Show that $T$ is invertible and $U=T^{-1}$. \\
+
+\noindent{\bfseries Question 5.} Show that if $A$ is invertible, then
+$\text{det}(A^{-1}) = 1/\text{det}(A)$. \\
+
+\noindent{\bfseries Question 6.} Let $A$, $B$, and $P$ be $n \times n$ matrices
+where $P$ is invertible and $B = P^{-1}AP$. Show that
+$\text{det}(A)=\text{det}(B)$.  \\
+
+\noindent{\bfseries Question 7.} Let $V$ be a vector space, and let $H$ and $K$ be
+subspaces of $V$. Show the following
+\begin{enumerate}[(a)]
+\item $H+K$ and $H \cap K$ are subapces.
+\item $H$ and $K$ are subspaces of $H+K$.
+\item $H \cap K$ is a subspace of both $H$ and $K$. \\
+\end{enumerate}
+
+\noindent{\bfseries Question 8.} Let $V$ be a vector space, and let $W$ be a
+vector space of $V$. Recall that, for $\vec v \in V$, $\vec v + W = \{\vec
+v+\vec w : \vec w \in W\}$. Show the following.
+\begin{enumerate}[(a)]
+\item For distinct $\vec v_1,\,\vec v_2 \in V$, $\vec v_1+W$ and $\vec v_2+W$
+  are either disjoint or equal.
+\item $\vec v_1+W = \vec v_2+W$ if and only if $\vec v_1 - \vec v_2 \in W$.
+\item Every $\vec v \in V$ belongs to $\vec u+W$ for some $\vec u \in V$.
+\end{enumerate}
+We can define an arithmetic on $H = \{\vec v+W : \vec v \in V\}$. For $\vec
+v_1+W,\,\vec v_2+W \in H$ and $\alpha \in \R$, define $(\vec v_1+W)+(\vec v_2+W)
+= (\vec v_1+\vec v_2)+W$ and $\alpha(\vec v_1 + W) = (\alpha\vec v_1)+W$. Then:
+\begin{enumerate}[(a)]
+  \setcounter{enumi}{3}
+\item $H$ is a vector under the arithmetic defined above. We call $H$ the
+  quotient space of $V$ by $W$, and we denote it as $H = V/W$.
+\end{enumerate}
+
+\end{document}
