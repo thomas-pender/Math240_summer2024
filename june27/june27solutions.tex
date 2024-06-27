@@ -1,0 +1,194 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amssymb, amsmath, amsthm, mathrsfs}
+\usepackage[left=1.0in,right=1.0in,top=1.0in,bottom=1.0in]{geometry}
+\usepackage[inline,shortlabels]{enumitem}
+\usepackage{times}
+\usepackage{xcolor}
+
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\BB}[1]{\textcolor{blue}{#1}}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries Math 240 Tutorial \\ Solutions}
+\end{center}
+\begin{center}
+  {\bfseries June 27}
+\end{center}
+
+\noindent{\bfseries Question 1.} Let $T : \R^n \rightarrow \R^n$ be an invertible
+linear transformation, and let $\vec v_1,\dots,\,\vec v_m \in \R^n$. Prove
+that $\{\vec v_1,\dots,\,\vec v_m\}$ is an independent set if and only if
+$\{T(\vec v_1),\dots,\,T(\vec v_m)\}$ is an independent set. \\
+
+\BB{Suppose $\{\vec v_1,\dots,\,\vec v_m\}$ is an independent set but $\{T(\vec
+  v_1),\dots,\,T(\vec v_m)\}$ is not. Then there are scalars
+  $\alpha_1,\dots,\,\alpha_m \in \R$, not all 0, such that
+  \[
+    \vec 0 = \alpha_1T(\vec v_1) + \cdots + T(\vec v_m) = T(\alpha\vec
+    v_1+\cdots+\alpha_m\vec v_m).
+  \]
+  Since $T$ is invertible, it is 1-to-1. This means
+  \[
+    \vec 0 = \alpha\vec v_1+\cdots+\alpha_m\vec v_m.
+  \]
+  This contradicts the assumed independence of $\{\vec v_1,\dots,\,\vec v_m\}$.
+  So, $\{T(\vec v_1),\dots,\,T(\vec v_m)\}$ is also an independent set.}
+
+\BB{Conversely, suppose $\{\vec v_1,\dots,\,\vec v_m\}$ is not an independent
+  set. Then there are scalars $\beta_1,\dots,\,\beta_m in \R$, not all 0, such
+  that
+  \[
+    \vec 0 = \alpha\vec v_1+\cdots+\alpha_m\vec v_m.
+  \]
+  Applying $T$ to both sides,
+  \[
+    \vec 0 = \alpha_1T(\vec v_1) + \cdots + T(\vec v_m),
+  \]
+  showing that $\{T(\vec v_1),\dots,\,T(\vec v_m)\}$ is also a dependent set. \\}
+
+\noindent{\bfseries Question 2.} Define $T : \R^n \rightarrow \R^n$ by
+\[
+  T(x_1,x_2,x_3,x_4) =
+  (x_1-x_2-x_3-x_4, -x_1+x_2-x_3-x_4,-x_1-x_2+x_3-x_4,-x_1-x_2-x_3+x_4).
+\]
+Is $T$ linear? Is $T$ invertible? If it is, what is its inverse? \\
+
+\BB{The components of the image of $\vec x$ are linear combinations of the
+  components of $\vec x$, so $T$ is linear. The standard matrix for $T$ is given
+  by
+  \[
+    T_A = 
+    \left(
+      \begin{array}{rrrr}
+        1 & -1 & -1 & -1 \\
+        -1 & 1 & -1 & -1 \\
+        -1 & -1 & 1 & -1 \\
+        -1 & -1 & -1 & 1 \\
+      \end{array}
+    \right)
+  \]
+  which is readily verified to be invertible. Moreover, it is its own inverse.
+  So $T^{-1}=T$. \\
+}
+
+\noindent{\bfseries Question 3.} Show that if $E$ and $F$ are two $n \times n$
+matrices such that $EF=I$, then $E$ and $F$ commute.  \\
+
+\BB{Since $EF = I$, $E$ is invertible and $F=E^{-1}$ by the uniqueness of
+  $E^{-1}$. Of course, $EE^{-1} = E^{-1}E = I$. \\}
+
+\noindent{\bfseries Question 4.} Let $T : \R^n \rightarrow \R^n$ and $U : \R^n
+\rightarrow \R^n$ be two linear transformations such that $T(U(\vec x))=\vec x$
+for every $\vec x \in \R^n$. Show that $T$ is invertible and $U=T^{-1}$. \\
+
+\BB{By assumption, $U$ is a right inverse of $T$. Since $T$ is a linear
+  operator of a finite dimensional vector space, it is invertible and
+  $T^{-1}=U$. \\}
+
+\noindent{\bfseries Question 5.} Show that if $A$ is invertible, then
+$\text{det}(A^{-1}) = 1/\text{det}(A)$. \\
+
+\BB{We rewrite the putative equality as $\text{det}(A)\text{det}(A^{-1})=1$. By
+  the properties of the determinant,
+  \[
+    1 = \text{det}(I) = \text{det}(AA^{-1}) = \text{det}(A)\text{det}(A^{-1}),
+  \]
+  which proves the result. \\}
+
+\noindent{\bfseries Question 6.} Let $A$, $B$, and $P$ be $n \times n$ matrices
+where $P$ is invertible and $B = P^{-1}AP$. Show that
+$\text{det}(A)=\text{det}(B)$.  \\
+
+\BB{Observe
+  \[
+    \text{det}(B) = \text{det}(P^{-1}AP) =
+    \text{det}(P^{-1})\text{det}(A)\text{det}(P) =
+    \frac{\text{det}(A)\text{det}(P)}{\text{det}(P)} = \text{det}(A)
+  \]
+  where we have used the previous exercise. \\}
+
+\noindent{\bfseries Question 7.} Let $V$ be a vector space, and let $H$ and $K$ be
+subspaces of $V$. Show the following
+\begin{enumerate}[(a)]
+\item $H+K$ and $H \cap K$ are subapces. \\
+
+  \BB{Let $\vec v_1,\,\vec v_2 \in H+K$. Then there are vectors $\vec h_1,\,\vec
+    h_2 \in H$ and $\vec k_1,\,\vec k_2 \in K$ such that $\vec v_1=\vec h_1+\vec
+    k_1$ and $\vec v_2=\vec h_2+\vec k_2$. Then $\vec v_1 + \vec v_2 = (\vec
+    h_1+\vec h_2)+(\vec k_1+\vec k_2)$. Since $\vec h_1+\vec h_2 \in H$ and
+    $\vec k_1+\vec k_2 \in K$, we have $\vec v_1 + \vec v_2 \in H+K$. If $\alpha
+    \in \R$, then $\alpha\vec v = \alpha\vec h + \alpha\vec k$. Since
+    $\alpha\vec h \in H$ and $\alpha\vec k \in K$, $\alpha\vec v \in H+K$.
+    Finally, $H+K \neq \emptyset$ since $\vec 0 \in H+K$. We have therefore
+    shown that $H+K$ is a subspace of $V.$}
+
+  \BB{Let $\vec v_1,\,\vec v_2 \in H \cap K$. Then $\vec v_1,\,\vec v_2 \in H$
+    and $\vec v_1,\,\vec v_2 \in K$. Therefore, $\vec v_1+\vec v_2 \in H$ and
+    $\vec v_1+\vec v_2 \in K$ so that $\vec v_1+\vec v_2 \in H \cap K$.
+    Similarly, for $\alpha \in \R$, $\alpha\vec v \in H$ and $\alpha\vec v \in
+    K$ so that $\alpha\vec v \in H \cap K$. Since $\vec 0 \in H$ and $\vec 0 \in
+    K$, we have $\vec 0 \in H \cap K$ so that $H \cap K \neq \emptyset$. We have
+    shown that $H \cap K$ is a subsapce of $V$. \\}
+  
+\item $H$ and $K$ are subspaces of $H+K$. \\
+
+  \BB{Note that $\vec 0 \in H$ and $\vec 0 \in K$. So, for $\vec h \in H$ and
+    $\vec k \in K$, we have $\vec h + \vec 0 \in H+K$ and $\vec 0 +\vec k \in
+    H+K$. This shows $H \subseteqq H+K$ and $K \subseteqq H+K$. \\}
+  
+\item $H \cap K$ is a subspace of both $H$ and $K$. \\
+
+  \BB{We have already verified $H \cap K$ to be a subspace of the ambient space
+    $V$, and clearly $H \cap K \subseteqq H$ and $H \cap K \subseteqq K$,
+    whereupon $H \cap K$ is a linear subspace of both $H$ and $K$. \\}
+\end{enumerate}
+
+\noindent{\bfseries Question 8.} Let $V$ be a vector space, and let $W$ be a
+vector space of $V$. Recall that, for $\vec v \in V$, $\vec v + W = \{\vec
+v+\vec w : \vec w \in W\}$. Show the following.
+\begin{enumerate}[(a)]
+\item For distinct $\vec v_1,\,\vec v_2 \in V$, $\vec v_1+W$ and $\vec v_2+W$
+   are either disjoint or equal. \\
+
+  \BB{Assume $\vec v_1 + W \cap \vec v_2 + W \neq \emptyset$, and let $\vec x
+    \in \vec v_1 + W \cap \vec v_2 + W$. Then there are $\vec w_1,\,\vec w_2 \in
+    W$ such that $\vec x = \vec v_1+\vec w_1=\vec v_2+\vec w_2$, whereupon $\vec
+    v_1 = \vec v_2+\vec w_3$ where $\vec w_3=\vec w_2-\vec w_1 \in W$. Let $\vec
+    v_1+\vec w$ be an arbitary element of $\vec v_1+W$. Then $\vec v_1+\vec w =
+    \vec v_2+(\vec w_3+\vec w)$ which shows that $\vec v_1+W \subseteqq \vec
+    v_2+W$. Similarly, $\vec v_2+W \subseteqq \vec v_1+W$ so that $\vec
+    v_1+W=\vec v_2+W$, as desired. \\}
+  
+\item $\vec v_1+W = \vec v_2+W$ if and only if $\vec v_1 - \vec v_2 \in W$. \\
+
+  \BB{Assume $\vec v_1+W = \vec v_2+W$. In particular, $\vec v_1 \in \vec
+    v_2+W$ so that there is a $\vec w \in W$ for which $\vec v_1=\vec v_2+\vec
+    w$; in other words, $\vec v_1-\vec v_2 = \vec w \in W$.}
+
+  \BB{Conversely, suppose that $\vec v_1 - \vec v_2 = \vec w$ for some $\vec w
+    \in W$. Then $\vec v_1 = \vec v_2 + \vec w$ so that $\vec v_1 \in \vec
+    v_2+W$. If $\vec v_1+\vec w' \in \vec v_1+W$ is arbitrary, then $\vec
+    v_1+\vec w' = \vec v_2+(\vec w+\vec w') \in \vec v_2+W$ since $\vec w+\vec
+    w' \in W$. Therefore, $\vec v_1+W \subseteqq \vec v_2+W$. Similarly, $\vec
+    v_2+W \subseteqq \vec v_1+W$, hence $\vec v_1+W = \vec v_2+W$. \\}
+  
+\item Every $\vec v \in V$ belongs to $\vec u+W$ for some $\vec u \in V$. \\
+
+  \BB{Since $\vec 0 \in W$, it follows that $\vec v = \vec v+\vec 0 \in \vec v
+    +W$. \\}
+\end{enumerate}
+We can define an arithmetic on $H = \{\vec v+W : \vec v \in V\}$. For $\vec
+v_1+W,\,\vec v_2+W \in H$ and $\alpha \in \R$, define $(\vec v_1+W)+(\vec v_2+W)
+= (\vec v_1+\vec v_2)+W$ and $\alpha(\vec v_1 + W) = (\alpha\vec v_1)+W$. Then:
+\begin{enumerate}[(a)]
+  \setcounter{enumi}{3}
+\item $H$ is a vector under the arithmetic defined above. We call $H$ the
+  quotient space of $V$ by $W$, and we denote it as $H = V/W$.
+\end{enumerate}
+
+\end{document}
