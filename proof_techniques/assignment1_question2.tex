@@ -1,0 +1,94 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amssymb, amsmath, amsthm, mathrsfs}
+\usepackage[left=1.0in,right=1.0in,top=1.0in,bottom=1.0in]{geometry}
+\usepackage[inline,shortlabels]{enumitem}
+\usepackage{times}
+\usepackage{xcolor}
+
+\newcommand{\R}{\mathbf{R}}
+
+\begin{document}
+
+\noindent{\bfseries Question.} Let $m$ and $n$ be positive integers such that $m
+\geqq n$, and let $a_1,\dots,a_m,c \in \R$ with $c \neq 0$ and
+$\text{span}\{a_1,\dots,\,a_m\} = \R^n$. Prove there exists an $i \in
+\{1,\dots,\,m\}$ for which
+\[
+  \text{span}\{a_1,\dots,\,a_{i-1},\,c,\,a_{i+1},\dots,\,a_m\} = \R^n.
+\] \\
+
+\noindent{\bfseries Solution.} We will prove the result by contradiction. The
+logical form of the proposition is
+\begin{align*}
+  (\forall m \geqq n)(\forall a_1,\dots,\,a_m,\,c \in \R^n)
+  &\Big[
+  \text{span}\{a_1,\dots,a_m\}=\R^n \Rightarrow
+  \Big(
+  c \neq 0 \Rightarrow \\
+  &(\exists i \in \{1,\dots,\,m\})
+  (\text{span}\{a_1,\dots,\,a_{i-1},\,c,\,a_{i+1},\dots,\,a_m\} = \R^n)
+  \Big)
+  \Big]
+\end{align*}
+To prove the result by contradiction, we assume the logical negation of the
+statement. This is given by
+\begin{align*}
+  (\exists m \geqq n)(\exists a_1,\dots,\,a_m,\,c \in \R^n)
+  &\Big[
+  \text{span}\{a_1,\dots,a_m\}=\R^n \text{ \& } c \neq 0 \text{ \& } \\
+  &(\forall i \in \{1,\dots,\,m\})
+  (\text{span}\{a_1,\dots,\,a_{i-1},\,c,\,a_{i+1},\dots,\,a_m\} \neq \R^n)
+  \Big]
+\end{align*}
+
+So, to prove the result by contradiction, we assume there are positive integers
+$m \geqq n$ such that there exists $a_1,\dots,\,a_m,\,c \in \R^n$ for which
+$\text{span}\{a_1,\dots,\,a_m\} = \R^n$ and $c \neq 0$ and, for every index $i
+\in \{1,\dots,\,m\}$,
+\[
+  \text{span}\{a_1,\dots,\,a_{i-1},\,c,\,a_{i+1},\dots,\,a_m\} \neq \R^n.
+\]
+
+Choose an arbitrary $i \in \{1,\dots,\,m\}$. By assumption, there is some $v \in
+\R^n$ such that $v \notin
+\text{span}\{a_1,\dots,\,a_{i-1},\,c,\,a_{i+1},\dots,\,a_m\}$. Since
+$\text{span}\{a_1,\dots,\,a_m\} = \R^n$, there are scalars
+$\alpha_1,\dots,\,\alpha_m \in \R$ such that
+\[
+  v = \alpha_1a_1 + \cdots + \alpha_ia_i + \cdots + \alpha_ma_m.
+\]
+If $\alpha_i = 0$, then
+\[
+  v \in \text{span}\{a_1,\dots,\,a_{i-1},\,a_{i+1},\dots,\,a_m\}
+    \subseteqq
+    \text{span}\{a_1,\dots,\,a_{i-1},\,c,\,a_{i+1},\dots,\,a_m\}
+\]
+which contradicts our assumptions about $v$; so, $\alpha_i \neq 0$.
+
+Since $c \in \R^n=\text{span}\{a_1,\dots,\,a_m\}$, there are scalars
+$\beta_1,\dots,\,\beta_m \in \R$ such that
+\[
+  c = \beta_1a_1 + \cdots + \beta_ia_i + \cdots + \beta_ma_m.
+\]
+Assume that $\beta_i \neq 0$. Then there is a unique $x \in \R$ such that $x
+\neq 0$ and $\alpha_i = x\beta_i$. But then
+\begin{align*}
+  &(\alpha_1-x\beta_1)a_1 + \cdots + (\alpha_{i-1}-x\beta_{i-1})a_{i-1} +
+  xc + (\alpha_{i+1}-x\beta_{i+1})a_{i+1} + \dots + (\alpha_m-x\beta_m)a_m \\
+  &= \alpha_1a_1 + \cdots + \alpha_{i-1}a_{i-1} + x\beta_ia_i +
+    \alpha_{i+1}a_{i+1} + \cdots + \alpha_ma_m \\
+  &= \alpha_1a_1 + \cdots + \alpha_{i-1}a_{i-1} + \alpha_ia_i +
+    \alpha_{i+1}a_{i+1} + \cdots + \alpha_ma_m \\
+  &= v
+\end{align*}
+which expresses $v$ as a linear combination of
+$a_1,\dots,\,a_{i-1},\,c,\,a_{i+1}\,\dots,\,a_m$, a contradiction. Thus,
+$\beta_i = 0$. Since $i$ was arbitrary, $\beta_i = 0$ for every $i \in
+\{1,\dots,\,m\}$. But this means that $c=0$, contrary to our assumption.
+Therefore, our assumption that the proposition was false is incorrect, that is,
+it must be true.
+
+\end{document}
