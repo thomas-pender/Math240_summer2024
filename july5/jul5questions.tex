@@ -21,7 +21,7 @@
   {\bfseries July 5}
 \end{center}
 
-\noindent{\bfseries Question .1} Consider the vector space $\R^3$, and let
+\noindent{\bfseries Question 1.} Consider the vector space $\R^3$, and let
 \[
   H=\left\{
     \begin{pmatrix}a\\0\\0\end{pmatrix}
@@ -64,7 +64,29 @@ following.
   for this subspace. \\
 \end{enumerate}
 
-\noindent{\bfseries Question 4.} Your course text proves the Dimension Theorem by
+\noindent{\bfseries Question 4.} Define
+\begin{align*}
+  H &=
+      \left\{
+      \begin{pmatrix}
+        u & -u-x \\ 0 & x
+      \end{pmatrix}
+      : u,x \in \R
+      \right\}, \\
+  K &=
+      \left\{
+      \begin{pmatrix}
+        v & 0 \\ w & -v
+      \end{pmatrix}
+      \right\}.
+\end{align*}
+Do the following.
+\begin{enumerate}[(a)]
+\item $H$ and $K$ are subspaces of $M_{2 \times 2}(\R)$.
+\item Construct bases for $H$, $K$, $H+K$, and $H \cap K$. \\
+\end{enumerate}
+
+\noindent{\bfseries Question 5.} Your course text proves the Dimension Theorem by
 counting pivot positions in matrices. Prove the theorem by arguing from the
 general definitions, without recourse to matrices, in the following way. Given a
 linear transformation $T : V \rightarrow W$, take a basis for $\text{ker}(T)$
@@ -72,11 +94,11 @@ and enlarge it to a basis for $V$. Apply $T$ to the vectors that were added to
 the basis of $\text{ker}(T)$, and argue that they form a linearly independent
 set that spans the range of $T$ in $W$. \\
 
-\noindent{\bfseries Question 5.} Use the Dimension Theorem to show a linear
+\noindent{\bfseries Question 6.} Use the Dimension Theorem to show a linear
 transformation $T: V \rightarrow V$ is invertible if and only if it is onto if
 and only if it is one-to-one. \\
 
-\noindent{\bfseries Question 6.} Let $V$ be a vector space of finite dimension,
+\noindent{\bfseries Question 7.} Let $V$ be a vector space of finite dimension,
 and let $H$ and $K$ be subspaces of $V$. Show
 \[
   \ddim(H+K) = \ddim(H) + \ddim(K) - \ddim(H \cap K).
