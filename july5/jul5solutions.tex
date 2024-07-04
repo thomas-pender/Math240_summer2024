@@ -1,0 +1,327 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amssymb, amsmath, amsthm, mathrsfs}
+\usepackage[left=1.0in,right=1.0in,top=1.0in,bottom=1.0in]{geometry}
+\usepackage[inline,shortlabels]{enumitem}
+\usepackage{times}
+\usepackage{xcolor}
+
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\PP}{\mathbf{P}}
+\newcommand{\ddim}{\text{dim}}
+\newcommand{\BB}[1]{\textcolor{blue}{#1}}
+\newcommand{\tr}{\text{tr}}
+\newcommand{\abs}[1]{\vert #1 \vert}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries Math 240 Tutorial \\ Solutions}
+\end{center}
+\begin{center}
+  {\bfseries July 5}
+\end{center}
+
+\noindent{\bfseries Question 1.} Consider the vector space $\R^3$, and let
+\[
+  H=\left\{
+    \begin{pmatrix}a\\0\\0\end{pmatrix}
+    : a \in \R
+  \right\}.
+\]
+Answer the following.
+\begin{enumerate}[(a)]
+\item Show that $H$ is a subspace of $\R^3$. \\
+
+  \BB{This is a clear consequence of the facts that $H$ is nonempty and
+    \begin{align*}
+      \begin{pmatrix}\alpha\\0\\0\end{pmatrix}+
+      \begin{pmatrix}\beta\\0\\0\end{pmatrix} &=
+      \begin{pmatrix}\alpha+\beta\\0\\0\end{pmatrix} \in H, \\
+      \alpha\begin{pmatrix}\beta\\0\\0\end{pmatrix} &=
+      \begin{pmatrix}\alpha\beta\\0\\0\end{pmatrix} \in H.
+    \end{align*}
+    }
+  
+\item What is the dimension of $H$? \\
+
+  \BB{$\ddim(H)=1$.}
+
+\item Construct a basis for $H$. \\
+
+  \BB{$H$ is spanned by $\left( \begin{smallmatrix}1\\0\\0\end{smallmatrix}
+    \right)$. \\}
+\end{enumerate}
+
+\noindent{\bfseries Question 2.} Let $\PP_3$ be the vector space of all polynomials
+of degree at most 3, and let
+\[
+  H = \{p(x) \in \PP_3 : p(3)=0\}.
+\]
+Answer the following.
+\begin{enumerate}[(a)]
+\item Show that $H$ is a subspace of $\PP_3$. \\
+
+  \BB{If $p,q \in H$, then $(p+q)(3)=p(3)+q(3)=0$ so that $p+q \in H$.
+    Furthermore, $\alpha p(3)=0$, so that $\alpha p \in H$ for every $\alpha \in
+    \R$. Since $0 \in H$, $H$ is nonempty. All this shows that $H$ is a subspace
+    of $\PP_3$. \\}
+  
+\item What is the dimension of $H$? \\
+
+  \BB{If $p \in H$, then $p$ can be written as $p(x)=(x-3)(a+bx+cx^2)$ for some
+    $a,b,c \in \R$. From this, it is clear that $\ddim(H)=3$. \\}
+  
+\item Construct a basis for $H$.
+
+  \BB{Note that every $p \in H$ can be written as $(x-3)q$ where $q \in \PP_2$.
+    Conversely, every element of $\PP_2$ gives an element of $H$ upon
+    multiplication by $x-3$. Since $\PP_2=\text{span}\{1,x,x^2\}$, we see that
+    $H=\text{span}\{x-3,x^2-3x,x^3-3x^2\}$. Since the degrees of each of
+    $\{x-3,x^2-3x,x^3-3x^2\}$ are distinct, they are independent. \\}
+
+\item Let $\PP_2$ be the vector space of polynomials of degree at most $2$.
+  $\PP_2$ is a subspace of $\PP_3$ (why?). Give an invertible linear
+  transformation that maps $\PP_2$ onto $H$. What is the matrix for the
+  transformation with respect to the standard basis of $\PP_3$? \\
+
+  \BB{The transformation is simply multiplication by $x-3$. The standard matrix
+    is given by
+    \[
+      T_A =
+      \left(
+        \begin{array}{rrrr}
+          -3 & 0 & 0 & 0 \\
+          1 & -3 & 0 & 0 \\
+          0 & 1 & -3 & 0 \\
+          0 & 0 & 1 & 1
+        \end{array}
+      \right).
+    \] \\
+  }
+\end{enumerate}
+
+\noindent{\bfseries Question 3.} Let $m$ and $n$ be positive integers. Show the
+following.
+\begin{enumerate}[(a)]
+\item The set $M_{m \times n}(\R)$ of $m \times n$ matrices with real entries is
+  a vector space. \\
+
+  \BB{Let $A,B \in M_{m \times n}(\R)$. Then $A+B=B+A \in M_{m \times n}(\R)$.
+    If $O$ is the $m \times n$ matrix of all zeros, then $A+O=O+A=A$. If $A \in
+    M_{m \times n}(\R)$, then $-A \in M_{m \times n}(\R)$ and $A-A=-A+A=O$. We
+    next note that matrix mutiplication is associative and $M_{m \times n}(\R)$
+    is clearly nonempty. Now, if $\alpha,\beta \in \R$, then we know that
+    $\alpha A \in M_{m \times n}$, $(\alpha\beta)A=\alpha(\beta A)$, $\alpha O =
+    O$, and $1 A = A$. All this shows that $M_{m \times n}(\R)$ is a vector
+    space. \\}
+
+\item What is the dimension of $M_{m \times n}(\R)$? \\
+
+  \BB{From below, $\ddim(M_{m \times n}(\R))=nm$. \\}
+  
+\item Construct a basis for $M_{m \times n}(\R)$. \\
+
+  \BB{Let $E_{i,j}$ be the matrix whose $(i,j)$-th entry is 1 and every other is
+    0. Then $M_{m \times n}(\R)=\text{span}\{E_{i,j} : 1 \leqq i \leqq m,\; 1
+    \leqq j \leqq n\}$. Since these matrices are disjoint, they are independent.
+    \\}
+
+\item Show the subset of matrices with trace 0 forms a subspace of $M_{n \times
+    n}(\R)$. Use the Dimension Theorem to find the dimension of this subset. You
+  will first need to show that the trace map is a linear map. Construct a basis
+  for this subspace. \\
+
+  \BB{Let $A,B \in M_{n \times n}(\R)$, and let $\alpha \in \R$. Then
+    $\tr(A+B)=\tr(A)+\tr(B)$ and $\tr(\alpha A)=\alpha\tr(A)$. This shows
+    that $\tr : M_{n \times n} \rightarrow \R$ is a linear map. The subset in
+    question is then given by $\text{ker}(\tr)$, which we recognize as a linear
+    subspace of $M_{n \times n}(\R)$.}
+
+    \BB{By the Dimension Theorem,
+      $\text{nullity}(\tr)+\text{rank}(\tr)=\ddim(M_{n \times n}(\R))$. Since
+      $\alpha \in \R$ has the preimage
+      \[
+        \begin{pmatrix}
+          \alpha & 0 & \cdots & 0 \\
+          0 & 0 & \cdots & 0 \\
+          \vdots & \vdots & \ddots & \vdots \\
+          0 & 0 & \cdots & 0
+        \end{pmatrix},
+      \]
+    the trace map is onto. Therefore, $\text{rank}(tr)=\ddim(\R)=1$.
+    Furthermore, as $\ddim(M_{n \times n}(\R))=n^2$, we obtain
+    $\text{nullity}(\tr)=n^2-1$.}
+
+  \BB{With $E_{i,j}$ defined as above, we find that $\{E_{i,j}\}_{i \neq
+      j}\cup\{E_{i,i}-E_{n,n}\}_{1 \leqq i < n}$ is a basis. \\}
+\end{enumerate}
+
+\noindent{\bfseries Question 4.} Define
+\begin{align*}
+  H &=
+      \left\{
+      \begin{pmatrix}
+        u & -u-x \\ 0 & x
+      \end{pmatrix}
+      : u,x \in \R
+      \right\}, \\
+  K &=
+      \left\{
+      \begin{pmatrix}
+        v & 0 \\ w & -v
+      \end{pmatrix}
+      \right\}.
+\end{align*}
+Do the following.
+\begin{enumerate}[(a)]
+\item $H$ and $K$ are subspaces of $M_{2 \times 2}(\R)$. \\
+
+  \BB{Note that $O \in H$ so that $H \neq \emptyset$. Define
+    \[
+      A_1 = \begin{pmatrix}
+              u_1 & -u_1-x_1 \\
+              0 & x_1
+            \end{pmatrix}, \qquad
+      A_2 = \begin{pmatrix}
+              u_2 & -u_2-x_2 \\
+              0 & x_2
+            \end{pmatrix}.
+    \]
+    Then
+    \[
+      A_1+A_2 =
+      \begin{pmatrix}
+        u_1+u_2 & -(u_1+u_2)-(x_1+x_2) \\
+        0 & x_1+x_2
+      \end{pmatrix}
+      \in H,
+    \]
+    and
+    \[
+      \alpha A_1 = \begin{pmatrix}
+                     \alpha u_1 & -\alpha u_1-\alpha x_1 \\
+                     0 & \alpha x_1
+                   \end{pmatrix}
+                   \in H.
+    \]
+    Hence, $H$ is a subspace of $M_{2 \times 2}(\R)$, Similarly, $K$ is also a
+    subspace of $M_{2 \times 2}(\R)$. \\}
+  
+\item Construct bases for $H$, $K$, $H+K$, and $H \cap K$. \\
+
+  \BB{Let $E_{i,j}$ be as in the solution to Question 3. Then
+    $\{E_{1,1}-E_{1,2},E_{2,2}-E_{1,2}\}$ is a basis for $H$,
+    $\{E_{1,1}-E_{2,2},E_{2,1}\}$ is a basis for $K$, and $\{E_{1,1}-E_{2,2}\}$
+    is a basis for $H \cap K$. Finally, we note that
+    \[
+      H+K=\text{span}\{E_{1,1}-E_{1,2},E_{2,2}-E_{1,2},E_{1,1}-E_{2,2},E_{2,1}\}
+      = \text{span}\{E_{1,1}-E_{1,2},E_{2,2}-E_{1,2},E_{2,1}\}.
+    \]
+    Since $\{E_{1,1}-E_{1,2},E_{2,2}-E_{1,2},E_{2,1}\}$ is linearly independent,
+    this is a basis for $H+K$. \\}
+\end{enumerate}
+
+\noindent{\bfseries Question 5.} Your course text proves the Dimension Theorem by
+counting pivot positions in matrices. Prove the theorem by arguing from the
+general definitions, without recourse to matrices, in the following way. Given a
+linear transformation $T : V \rightarrow W$, take a basis for $\text{ker}(T)$
+and enlarge it to a basis for $V$. Apply $T$ to the vectors that were added to
+the basis of $\text{ker}(T)$, and argue that they form a linearly independent
+set that spans the range of $T$ in $W$. \\
+
+\BB{Let $V$ and $W$ be vector spaces where $V$ has finite dimension, and let $T
+  : V \rightarrow W$ be a linear transformation. Let $\{\vec v_1,\dots,\,\vec
+  v_k\}$ be a basis for $\text{ker}(T)$, and enlarge it to a basis $B=\{\vec
+  v_1,\dots,\,\vec v_k\,\vec v_{k+1},\dots,\,\vec v_n\}$ of $V$. We claim that
+  $S=\{T(\vec v_{k+1},\dots,\,T(\vec v_n))\}$ is a basis for $\text{range}(T)$.}
+
+\BB{First, we prove that $S$ generates $\text{range}(T)$. Indeed,
+  \begin{align*}
+    \text{range}(T) &= \text{span}\{T(\vec v_1),\dots,\,T(\vec v_n)\} \\
+                    &= \text{span}\{T(\vec v_{k+1}),\dots,\,T(\vec v_n)\} \\
+                    &= \text{span}(S),
+  \end{align*}
+  where we have used the fact that $T(\vec v_i)=\vec 0$ for $1 \leqq i \leqq k$.}
+
+\BB{We next show that $S$ is linearly independent. Suppose there are scalars
+  $\alpha_{k+1},\dots,\,\alpha_n \in \R$ for which
+  \[
+    \sum_{i=k+1}^n \alpha_iT(\vec v_i) = \vec 0.
+  \]
+  Because $T$ is linear,
+  \[
+    T\left( \sum_{i=k+1}^n\alpha_i\vec v_i \right) = \vec 0
+  \]
+  so that $\sum_{i=k+1}^n\alpha_i\vec v_i \in \text{ker}(T)$. Hence, there are
+  scalars $\beta_1,\dots,\,\beta_k \in \R$ for which
+  \[
+    \sum_{i=1}^k(-\beta_i)\vec v_i + \sum_{i=k+1}^n\alpha_i\vec v_i = \vec 0.
+  \]
+  By the independence of $B$, each $\alpha_i=0$ and each $\beta_i=0$ so that $S$
+  is linearly independent. Furthermore, this argument shows that $T(\vec
+  v_{k+1}),\dots,\,T(\vec v_n)$ are distinct, whereupon $\text{rank}(T)=n-k$. \\}
+
+\noindent{\bfseries Question 6.} Use the Dimension Theorem to show a linear
+transformation $T: V \rightarrow V$ is invertible if and only if it is onto if
+and only if it is one-to-one. \\
+
+\BB{$T$ is invertible if and only if $\text{rank}(T)=n$ if and only if $T$ is
+  onto. Also, by the Dimension Theorem, $\text{rank}(T)=n$ if and only if
+  $\text{nullity}(T)=0$ if and only if $\text{ker}(T)=\{\vec 0\}$ if and only if
+  $T$ is one-to-one. \\}
+
+\noindent{\bfseries Question 7.} Let $V$ be a vector space of finite dimension,
+and let $H$ and $K$ be subspaces of $V$. Show
+\[
+  \ddim(H+K) = \ddim(H) + \ddim(K) - \ddim(H \cap K).
+\]
+
+\BB{Let $B_0=\{\vec v_1,\dots,\,\vec v_m\}$ be a basis for $H \cap K$. First,
+  enlarge $B_0$ to a basis
+  \[
+    B_1=\{\vec v_1,\dots,\,\vec v_m,\,\vec u_1,\dots,\,\vec u_j\}
+  \]
+  of $H$. Next, enlarge $B_0$ to a basis
+  \[B_2=\{\vec v_1,\dots,\,\vec v_m,\,\vec w_1,\,\dots,\,\vec w_k\}
+  \]
+  of $K$. Note that $\ddim(H \cap K)=m$, $\ddim(H)=m+j$, and $\ddim(K)=m+k$.}
+
+\BB{We have $\text{span}(B_1 \cup B_2)=H+K$ (why?). So it remains to show that
+  \[
+    B_1  \cup B_2 = \{\vec v_1,\dots,\,\vec v_m,\,\vec u_1,\dots,\,\vec u_j,\,\vec
+    w_1,\dots,\,\vec w_k\}
+  \]
+  is linearly independent. Indeed, suppose there are scalars
+  $\alpha_1,\dots,\,\alpha_m,\,\beta_1,\dots,\,\beta_j,\,\gamma_1,\dots,\,\gamma_k
+  \in \R$ for which
+  \[
+    \sum_{i=1}^m\alpha_i\vec v_i +
+    \sum_{i=1}^j\beta_i\vec u_i +
+    \sum_{i=1}^k\gamma_i\vec w_i
+    = \vec 0.
+  \]
+  Rearranging,
+  \[
+    \sum_{i=1}^k\gamma_i\vec w_i = 
+    -\sum_{i=1}^m\alpha_i\vec v_i -
+    \sum_{i=1}^j\beta_i\vec u_i \in H.
+  \]
+  Since $\sum_{i=1}^k\gamma_i\vec w_i \in K$, we have it is in $H \cap K$. So,
+  there are scalars $\delta_1,\dots,\,\delta_m \in \R$ for which
+  \[
+    \sum_{i=1}^k\gamma_i\vec w_i - \sum_{j=1}^m\delta_j\vec v_j = \vec 0.
+  \]
+  By the independence of $B_2$, each $\gamma_i=0$ and each $\delta_i=0$.
+  Therefore, our original equation becomes
+  \[
+    \sum_{i=1}^m\alpha_i\vec v_i +
+    \sum_{i=1}^j\beta_i\vec u_i +
+    = \vec 0.
+  \]
+  By the independence of $B_1$, each $\alpha_i=0$ and each $\beta_i=0$, thus
+  showing the independence of $B_1 \cup B_2$.}
+
+\end{document}
