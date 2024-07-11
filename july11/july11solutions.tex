@@ -1,0 +1,386 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amssymb, amsmath, amsthm, mathrsfs}
+\usepackage[left=1.0in,right=1.0in,top=1.0in,bottom=1.0in]{geometry}
+\usepackage[inline,shortlabels]{enumitem}
+\usepackage{times}
+\usepackage{xcolor}
+
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\C}{\mathbf{C}}
+\newcommand{\PP}{\mathbf{P}}
+\newcommand{\ddim}{\text{dim}}
+\newcommand{\BB}[1]{\textcolor{blue}{#1}}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries Math 240 Tutorial \\ Solutions}
+\end{center}
+\begin{center}
+  {\bfseries July 11}
+\end{center}
+
+\noindent{\bfseries Question 1.} Consider the matrix
+\[
+  A =
+  \left(
+    \begin{array}{rrrr}
+      1 & -1 & -1 & -1 \\
+      -1 & 1 & -1 & -1 \\
+      -1 & -1 & 1 & -1 \\
+      -1 & -1 & -1 & 1 \\
+    \end{array}
+  \right).
+\]
+\begin{enumerate}[(a)]
+\item Calculate the determinant of $A$ using
+  \begin{enumerate*}[(1)]
+  \item cofactor expansion, and
+  \item row reduction. \\
+  \end{enumerate*}
+
+  \BB{Using cofactor expansion along the first row, we have
+    \begin{align*}
+      \text{det}(A) &=
+      \left|
+      \begin{array}{rrr}
+        1 & -1 & -1 \\ -1 & 1 & -1 \\ -1 & -1 & 1
+      \end{array}
+      \right| + 
+      \left|
+      \begin{array}{rrr}
+        -1 & -1 & -1 \\ -1 & 1 & -1 \\ -1 & -1 & 1
+      \end{array}
+      \right| -
+      \left|
+      \begin{array}{rrr}
+        -1 & 1 & -1 \\ -1 & -1 & -1 \\ -1 & -1 & 1
+      \end{array}
+      \right| +
+      \left|
+      \begin{array}{rrr}
+        -1 & 1 & -1 \\ -1 & -1 & 1 \\ -1 & -1 & -1
+      \end{array}
+      \right| \\
+      &=
+      \left|
+      \begin{array}{rrr}
+        1 & -1 & -1 \\ -1 & 1 & -1 \\ -1 & -1 & 1
+      \end{array}
+      \right| + 3
+      \left|
+      \begin{array}{rrr}
+        -1 & -1 & -1 \\ -1 & 1 & -1 \\ -1 & -1 & -1
+      \end{array}
+      \right| \\
+      &=
+      8\left|
+      \begin{array}{rr}
+        -1 & -1 \\ -1 & 1
+      \end{array}
+      \right| \\
+          &= 8(-2) \\
+          &= -16.
+    \end{align*}
+    Using row reduction,
+    \begin{align*}
+      \text{det}(A) &=
+      \left|
+      \begin{array}{rrrr}
+        1 & -1 & -1 & -1 \\
+        -1 & 1 & -1 & -1 \\
+        -1 & -1 & 1 & -1 \\
+        -1 & -1 & -1 & 1 \\
+      \end{array}
+      \right|                     
+      =
+      \left|
+      \begin{array}{rrrr}
+        1 & -1 & -1 & -1 \\
+        0 & 0 & -2 & -2 \\
+        0 & -2 & 0 & -2 \\
+        0 & -2 & -2 & 0
+      \end{array}
+      \right|
+      =
+      \left|
+      \begin{array}{rrrr}
+        1 & -1 & -1 & -1 \\
+        0 & 0 & -2 & -2 \\
+        0 & -2 & 0 & -2 \\
+        0 & 0 & -2 & 2
+      \end{array}
+      \right| \\
+      &=
+      \left|
+      \begin{array}{rrrr}
+        1 & -1 & -1 & -1 \\
+        0 & 0 & -2 & -2 \\
+        0 & -2 & 0 & -2 \\         
+        0 & 0 & 0 & 4
+      \end{array}
+      \right|
+      = (-1)
+      \left|
+      \begin{array}{rrrr}
+        1 & -1 & -1 & -1 \\
+        0 & -2 & 0 & -2 \\
+        0 & 0 & -2 & -2 \\
+        0 & 0 & 0 & 4
+      \end{array}
+      \right| \\
+      &= (-1)(-2)(-2)(4) \\
+      &= -16.
+    \end{align*}
+  }
+  
+\item Calculate the inverse using
+  \begin{enumerate*}[(1)]
+  \item the adjugate of $A$, and
+  \item row reduction. \\
+  \end{enumerate*}
+
+  \BB{Omitting the tedious details, we have
+    \[
+      \text{adj}(A) =
+      \left(
+        \begin{array}{rrrr}
+          -4 & 4 & 4 & 4 \\
+          4 & -4 & 4 & 4 \\
+          4 & 4 & -4 & 4 \\
+          4 & 4 & 4 & -4 \\
+        \end{array}
+      \right)
+    \]
+    so that
+    \begin{align*}
+      A^{-1} &= \frac{1}{\text{det}(A)}\text{adj}(A) \\
+      &= \frac{1}{4}
+        \left(
+        \begin{array}{rrrr}
+          1 & -1 & -1 & -1 \\
+          -1 & 1 & -1 & -1 \\
+          -1 & -1 & 1 & -1 \\
+          -1 & -1 & -1 & 1 \\
+        \end{array}
+      \right).
+    \end{align*}
+  }
+  
+\item Do the columns (rows) of $A$ form a basis for $\R^4$? If they do, give
+  the change of basis matrix from the standard basis of $\R^4$ to the columns of
+  $A$. \\
+
+  \BB{Since the matrix is invertible, the columns of $A$ form a basis for
+    $\R^4$. The change of basis matrix is simply $A^{-1}$. \\}
+\end{enumerate}
+
+\noindent{\bfseries Question 2.} Consider the matrices
+\[
+  A =
+  \left(
+    \begin{array}{rrr}
+      -1 & 3 & -1 \\
+      -3 & 5 & -1 \\
+      -3 & 3 & 1
+    \end{array}
+  \right), \qquad
+  P = 
+  \left(
+    \begin{array}{rrr}
+      1 & 1 & -1 \\
+      1 & 1 & 0 \\
+      1 & 0 & 3
+    \end{array}
+  \right).
+\]
+The matrix $P$ is invertible. Find $P^{-1}$ by any means and calculate
+$P^{-1}AP=D$. Prove that $A$ is invertible if and only if $D$ is invertible. If
+$A$ is invertible, find its inverse by first finding the inverse of $D$ and then
+multiplying $D^{-1}$ by $P^{-1}$ and $P$ in some order. \\ 
+
+\BB{We have
+  \[
+    P^{-1} =
+    \left(
+      \begin{array}{rrr}
+        3 & -3 & 1 \\
+        -3 & 4 & -1 \\
+        -1 & 1 & 0
+      \end{array}
+    \right)
+  \]
+  so that
+  \[
+    P^{-1}AP = D =
+    \left(
+      \begin{array}{rrr}
+        1 & 0 & 0 \\
+        0 & 2 & 0 \\
+        0 & 0 & 2
+      \end{array}
+    \right).
+  \]
+  Since $D$ is a diagonal matrix with each diagonal entry nonzero, it follows
+  that it is invertible with inverse
+  \[
+    D^{-1} =
+    \left(
+      \begin{array}{rrr}
+        1 & 0 & 0 \\
+        0 & 1/2 & 0 \\
+        0 & 0 & 1/2
+      \end{array}
+    \right).
+  \]
+  From the properties of matrix inversion, we have
+  \[
+    P^{-1}A^{-1}P = D^{-1}
+  \]
+  so that
+  \[
+    P^{-1}D^{-1}P = A^{-1}.
+  \]
+  Doing the calculation, we find
+  \[
+    A^{-1} =
+    \left(
+      \begin{array}{rrr}
+        2 & -3/2 & 1/2 \\
+        3/2 & -1 & 1/2 \\
+        3/2 & -3/2 & 1
+      \end{array}
+    \right).
+  \] \\
+}
+
+\noindent{\bfseries Question 3.} Prove that the linear transformations of $\R^2$
+consisting of compositions of reflections and rotations have determinants $\pm
+1$. \\
+
+\BB{Using the geometry of $\R^2$, we see that every such transformation can be
+  written as a product
+  \[
+    \left(
+      \begin{array}{rr}
+        -1 & 0 \\ 0 & 1
+      \end{array}
+    \right)
+    \left(
+      \begin{array}{rr}
+        \cos\vartheta & -\sin\vartheta \\ \sin\vartheta & \cos\vartheta
+      \end{array}
+    \right).
+  \]
+  The determinant of the right factor is 1, while the determinant of the left
+  factor is $-1$. \\}
+
+\noindent{\bfseries Question 4.} An isomorphism is an invertible linear
+transformation from one vector space onto another. Give two distinct
+isomorphisms $\PP_3 \rightarrow \R^3$. NB: $\R^n$ (or $\C^n$) are often referred
+to as the coordinate spaces. This question shows that the coordinate
+representation of a vector is not in general unique; it depends on the choice of
+basis. \\
+
+\BB{One isomorphism is the standard one given by $e_i \leftrightarrows x^i$. For
+another isomorphism, we simply need another basis for $\PP_3$. One such basis is
+given by $\{1, x, x(x-1), x(x-1)(x-2)\}$. The isomorphism isn't difficult to
+find in this case as well. \\}
+
+\noindent{\bfseries Question 5.} Define
+\begin{align*}
+  H &=
+      \left\{
+      \begin{pmatrix}
+        u & -u-x \\ 0 & x
+      \end{pmatrix}
+                        : u,x \in \R
+                        \right\}, \\
+  K &=
+      \left\{
+      \begin{pmatrix}
+        v & 0 \\ w & -v
+      \end{pmatrix}
+                     \right\}.
+\end{align*}
+Do the following.
+\begin{enumerate}[(a)]
+\item $H$ and $K$ are subspaces of $M_{2 \times 2}(\R)$.
+
+  \BB{Note that $O \in H$ so that $H \neq \emptyset$. Define
+    \[
+      A_1 = \begin{pmatrix}
+              u_1 & -u_1-x_1 \\
+              0 & x_1
+            \end{pmatrix}, \qquad
+            A_2 = \begin{pmatrix}
+                    u_2 & -u_2-x_2 \\
+                    0 & x_2
+                  \end{pmatrix}.
+                \]
+                Then
+                \[
+                  A_1+A_2 =
+                  \begin{pmatrix}
+                    u_1+u_2 & -(u_1+u_2)-(x_1+x_2) \\
+                    0 & x_1+x_2
+                  \end{pmatrix}
+                  \in H,
+                \]
+                and
+                \[
+                  \alpha A_1 = \begin{pmatrix}
+                                 \alpha u_1 & -\alpha u_1-\alpha x_1 \\
+                                 0 & \alpha x_1
+                               \end{pmatrix}
+                               \in H.
+                             \]
+                             Hence, $H$ is a subspace of $M_{2 \times 2}(\R)$, Similarly, $K$ is also a
+                             subspace of $M_{2 \times 2}(\R)$. \\}
+
+\item Construct bases for $H$, $K$, $H+K$, and $H \cap K$. \\
+
+  \BB{Let $E_{i,j}$ be as in the solution to Question 3. Then
+    $\{E_{1,1}-E_{1,2},E_{2,2}-E_{1,2}\}$ is a basis for $H$,
+    $\{E_{1,1}-E_{2,2},E_{2,1}\}$ is a basis for $K$, and $\{E_{1,1}-E_{2,2}\}$
+    is a basis for $H \cap K$. Finally, we note that
+    \[
+      H+K=\text{span}\{E_{1,1}-E_{1,2},E_{2,2}-E_{1,2},E_{1,1}-E_{2,2},E_{2,1}\}
+      = \text{span}\{E_{1,1}-E_{1,2},E_{2,2}-E_{1,2},E_{2,1}\}.
+    \]
+    Since $\{E_{1,1}-E_{1,2},E_{2,2}-E_{1,2},E_{2,1}\}$ is linearly independent,
+    this is a basis for $H+K$. \\}
+\end{enumerate}
+
+\noindent{\bfseries Question 6.} Answer whether the following are subspaces of
+$\R^3$. The set of points $(x,\,y,\,z) \in \R^3$ such that
+\begin{enumerate}[(a)]
+\item $x+2y-3z=4$, \\
+
+  \BB{No. \\}
+
+\item $\frac{x-1}{2}=\frac{y+2}{3}=\frac{z}{4}$, \\
+
+  \BB{No. \\}
+  
+\item $x+y+z=0$ and $x-y+z=1$, \\
+
+  \BB{No. \\}
+  
+\item $x=-z$ and $x=z$, \\
+
+  \BB{Yes. \\}
+
+\item $x^2+y^2=z$, or \\
+
+  \BB{No. \\}
+  
+\item $\frac{x}{2} = \frac{y-3}{5}$. \\
+
+  \BB{No. \\}
+\end{enumerate}
+
+\end{document}
