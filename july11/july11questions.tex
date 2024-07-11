@@ -1,0 +1,121 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amssymb, amsmath, amsthm, mathrsfs}
+\usepackage[left=1.0in,right=1.0in,top=1.0in,bottom=1.0in]{geometry}
+\usepackage[inline,shortlabels]{enumitem}
+\usepackage{times}
+\usepackage{xcolor}
+
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\C}{\mathbf{C}}
+\newcommand{\PP}{\mathbf{P}}
+\newcommand{\ddim}{\text{dim}}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries Math 240 Tutorial \\ Questions}
+\end{center}
+\begin{center}
+  {\bfseries July 11}
+\end{center}
+
+\noindent{\bfseries Question 1.} Consider the matrix
+\[
+  A =
+  \left(
+    \begin{array}{rrrr}
+      1 & -1 & -1 & -1 \\
+      -1 & 1 & -1 & -1 \\
+      -1 & -1 & 1 & -1 \\
+      -1 & -1 & -1 & 1 \\
+    \end{array}
+  \right).
+\]
+\begin{enumerate}[(a)]
+\item Calculate the determinant of $A$ using
+  \begin{enumerate*}[(1)]
+  \item cofactor expansion, and
+  \item row reduction.
+  \end{enumerate*}
+\item Calculate the inverse using
+  \begin{enumerate*}[(1)]
+  \item the adjugate of $A$, and
+  \item row reduction.
+  \end{enumerate*}
+\item Do the columns (rows) of $A$ form a basis for $\R^4$? If they do, give
+  the change of basis matrix from the standard basis of $\R^4$ to the columns of
+  $A$. \\
+\end{enumerate}
+
+\noindent{\bfseries Question 2.} Consider the matrices
+\[
+  A =
+  \left(
+    \begin{array}{rrr}
+      -1 & 3 & -1 \\
+      -3 & 5 & -1 \\
+      -3 & 3 & 1
+    \end{array}
+  \right), \qquad
+  P = 
+  \left(
+    \begin{array}{rrr}
+      1 & 1 & -1 \\
+      1 & 1 & 0 \\
+      1 & 0 & 3
+    \end{array}
+  \right).
+\]
+The matrix $P$ is invertible. Find $P^{-1}$ by any means and calculate
+$P^{-1}AP=D$. Prove that $A$ is invertible if and only if $D$ is invertible. If
+$A$ is invertible, find its inverse by first finding the inverse of $D$ and then
+multiplying $D^{-1}$ by $P^{-1}$ and $P$ in some order. \\ 
+
+\noindent{\bfseries Question 3.} Prove that the linear transformations of $\R^2$
+consisting of compositions of reflections and rotations have determinants $\pm
+1$. \\
+
+\noindent{\bfseries Question 4.} An isomorphism is an invertible linear
+transformation from one vector space onto another. Give two distinct
+isomorphisms $\PP_3 \rightarrow \R^3$. NB: $\R^n$ (or $\C^n$) are often referred
+to as the coordinate spaces. This question shows that the coordinate
+representation of a vector is not in general unique; it depends on the choice of
+basis. \\
+
+\noindent{\bfseries Question 5.} Define
+\begin{align*}
+  H &=
+      \left\{
+      \begin{pmatrix}
+        u & -u-x \\ 0 & x
+      \end{pmatrix}
+                        : u,x \in \R
+                        \right\}, \\
+  K &=
+      \left\{
+      \begin{pmatrix}
+        v & 0 \\ w & -v
+      \end{pmatrix}
+                     \right\}.
+\end{align*}
+Do the following.
+\begin{enumerate}[(a)]
+\item $H$ and $K$ are subspaces of $M_{2 \times 2}(\R)$.
+\item Construct bases for $H$, $K$, $H+K$, and $H \cap K$. \\
+\end{enumerate}
+
+\noindent{\bfseries Question 6.} Answer whether the following are subspaces of
+$\R^3$. The set of points $(x,\,y,\,z) \in \R^3$ such that
+\begin{enumerate}[(a)]
+\item $x+2y-3z=4$,
+\item $\frac{x-1}{2}=\frac{y+2}{3}=\frac{z}{4}$,
+\item $x+y+z=0$ and $x-y+z=1$,
+\item $x=-z$ and $x=z$,
+\item $x^2+y^2=z$, or
+\item $\frac{x}{2} = \frac{y-3}{5}$.
+\end{enumerate}
+
+\end{document}
