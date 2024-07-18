@@ -1,0 +1,427 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amssymb, amsmath, amsthm, mathrsfs}
+\usepackage[left=1.0in,right=1.0in,top=1.0in,bottom=1.0in]{geometry}
+\usepackage[inline,shortlabels]{enumitem}
+\usepackage{times}
+\usepackage{xcolor}
+
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\C}{\mathbf{C}}
+\newcommand{\PP}{\mathbf{P}}
+\newcommand{\ddim}{\text{dim}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries Math 240 Tutorial \\ Solutions}
+\end{center}
+\begin{center}
+  {\bfseries July 18}
+\end{center}
+
+\noindent{\bfseries Question 1.} For the following matrices, give a basis for their
+null space.
+\begin{enumerate}[(a)]
+\item
+  \[
+    A =
+    \left(
+      \begin{array}{rrrr}
+        1 & 3 & 5 & 0 \\ 0 & 1 & 4 & -2
+      \end{array}
+    \right).
+  \] \\
+
+  \blue{We have
+    \[
+      A \sim
+      \left(
+        \begin{array}{rrrr}
+          1 & 0 & -7 & 6 \\ 0 & 1 & 4 & -2
+        \end{array}
+      \right).
+    \]
+    So every vector in $\text{ker}(A)$ can be written as
+    \[
+      \left(
+        \begin{array}{c}
+          7x-6y \\ -4x+2y \\ x \\ y
+        \end{array}
+      \right)
+      =x
+      \left(
+        \begin{array}{r}
+          7 \\ -4 \\ 1 \\ 0
+        \end{array}
+      \right)
+      +y
+      \left(
+        \begin{array}{r}
+          -6 \\ 2 \\ 0 \\ 1
+        \end{array}
+      \right).
+    \]
+    Therefore, a basis is given by
+    \[
+      \left\{
+        \left(
+          \begin{array}{r}
+            7 \\ -4 \\ 1 \\ 0
+          \end{array}
+        \right),
+        \left(
+          \begin{array}{r}
+            -6 \\ 2 \\ 0 \\ 1
+          \end{array}
+        \right)
+      \right\}.
+    \] \\}
+  
+\item
+  \[
+    A =
+    \left(
+      \begin{array}{rrrr}
+        1 & -6 & 4 & 0 \\ 0 & 0 & 2 & 0
+      \end{array}
+    \right).
+  \] \\
+
+  \blue{We have
+    \[
+      A \sim
+      \left(
+        \begin{array}{rrrr}
+          1 & -6 & 0 & 0 \\ 0 & 0 & 1 & 0
+        \end{array}
+      \right).
+    \]
+    So every vector in $\text{ker}(A)$ can be written as
+    \[
+      \left(
+        \begin{array}{c}
+          6x \\ x \\ 0 \\ y
+        \end{array}
+      \right)
+      =x
+      \left(
+        \begin{array}{r}
+          6 \\ 1 \\ 0 \\ 0
+        \end{array}
+      \right)
+      +y
+      \left(
+        \begin{array}{r}
+          0 \\ 0 \\ 0 \\ 1
+        \end{array}
+      \right).
+    \]
+    Therefore, a basis is given by
+    \[
+      \left\{
+        \left(
+          \begin{array}{r}
+            6 \\ 1 \\ 0 \\ 0
+          \end{array}
+        \right),
+        \left(
+          \begin{array}{r}
+            0 \\ 0 \\ 0 \\ 1
+          \end{array}
+        \right)
+      \right\}.
+    \] \\}
+  
+\item
+  \[
+    A =
+    \left(
+      \begin{array}{rrrrr}
+        1 & -2 & 0 & 4 & 0 \\
+        0 & 0 & 1 & -9 & 0 \\
+        0 & 0 & 0 & 0 & 1
+      \end{array}
+    \right).
+  \] \\
+
+  \blue{The matrix $A$ is alread in reduced row echelon form, so we see that
+    every vector in $\text{ker}(A)$ can be written as
+    \[
+      \left(
+        \begin{array}{c}
+          2x-4y \\ x \\ 9y \\ y \\ 0
+        \end{array}
+      \right)
+      =x
+      \left(
+        \begin{array}{r}
+          2 \\ 1 \\ 0 \\ 0 \\ 0
+        \end{array}
+      \right)
+      +y
+      \left(
+        \begin{array}{r}
+          -4 \\ 0 \\ 9 \\ 1 \\ 0
+        \end{array}
+      \right).
+    \]
+    Therefore, a basis is given by
+    \[
+      \left\{
+        \left(
+          \begin{array}{r}
+            2 \\ 1 \\ 0 \\ 0 \\ 0
+          \end{array}
+        \right),
+        \left(
+          \begin{array}{r}
+            -4 \\ 0 \\ 9 \\ 1 \\ 0
+          \end{array}
+        \right)
+      \right\}.
+    \] \\}
+\end{enumerate}
+
+\noindent{\bfseries Question 2.} Find a basis for the space spanned by
+\[
+  \left(
+    \begin{array}{r}
+      -8\\7\\6\\5\\-7
+    \end{array}
+  \right),
+  \left(
+    \begin{array}{r}
+      8\\-7\\-9\\-5\\7
+    \end{array}
+  \right),
+  \left(
+    \begin{array}{r}
+      -8\\7\\4\\5\\-7
+    \end{array}
+  \right),
+  \left(
+    \begin{array}{r}
+      1\\4\\9\\6\\-7
+    \end{array}
+  \right),
+  \left(
+    \begin{array}{r}
+      -9\\3\\-4\\-1\\0
+    \end{array}
+  \right).
+\] \\
+
+\blue{We reduce the follow matrix
+  \begin{align*}
+    \left(
+      \begin{array}{rrrrr}
+        -8 & 8 & -8 & 1 & -9 \\
+        7 & -7 & 7 & 4 & 3 \\
+        6 & -9 & 4 & 9 & -4 \\
+        5 & -5 & 5 & 6 & -1 \\
+        -7 & 7 & -7 & -7 & 0
+      \end{array}
+    \right)
+    &\sim
+    \left(
+      \begin{array}{rrrrr}
+        1 & 0 & \frac{5}{3} & 0 & \frac{4}{3} \\
+        0 & 1 & \frac{2}{3} & 0 & \frac{1}{3} \\
+        0 & 0 & 0 & 1 & -1 \\
+        0 & 0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 & 0
+      \end{array}
+    \right).
+  \end{align*}
+  So the span of the vectors is the column space of the matrix which has the
+  basis
+  \[
+    \left\{
+      \left(
+        \begin{array}{r}
+          -8\\7\\6\\5\\-7
+        \end{array}
+      \right),
+      \left(
+        \begin{array}{r}
+          8\\-7\\-9\\-5\\7
+        \end{array}
+      \right),
+      \left(
+        \begin{array}{r}
+          1\\4\\9\\6\\-7
+        \end{array}
+      \right)
+    \right\}.
+  \] \\}
+
+\noindent{\bfseries Question 3.} Given vectors $\vec u_1, \dots,\, \vec u_p$ in a
+vector space $V$, show $\vec x$ is a linear combination of $\vec u_1, \dots,\,
+\vec u_p$ if and only if $[\vec x]_B$ is a linear combination of $[\vec u_1]_B,
+\dots,\, [\vec u_p]_B$. \\
+
+\blue{This follows at once because change of basis is an invertible linear map.
+  \\}
+
+\noindent{\bfseries Question 4.} Find a basis for the vectors in $\R^4$ of the form
+\[
+  \left(
+    \begin{array}{c}
+      3a+6b-c \\
+      6a-2b-2c \\
+      -9a+5b+3c \\
+      -3a+b+c
+    \end{array}
+  \right)
+\]
+where $a,\,b,\,c \in \R$. \\
+
+\blue{We can write the vectors as
+  \[
+    a+
+    \left(
+      \begin{array}{r}
+        3 \\ 6 \\ -9 \\ -3
+      \end{array}
+    \right)
+    +b
+    \left(
+      \begin{array}{r}
+        6 \\ -2 \\ 5 \\ 1
+      \end{array}
+    \right)
+    +c
+    \left(
+      \begin{array}{r}
+        -1 \\ -2 \\ 3 \\ 1
+      \end{array}
+    \right)
+  \]
+  A maximal linearly independent set of these three vectors is given by
+  \[
+    \left\{
+      \left(
+        \begin{array}{r}
+          3 \\ 6 \\ -9 \\ -3
+        \end{array}
+      \right),
+      \left(
+        \begin{array}{r}
+          6 \\ -2 \\ 5 \\ 1
+        \end{array}
+      \right)
+    \right\}.
+  \] \\}
+
+\noindent{\bfseries Question 5.} Find a basis for
+\[
+  H_1 = \{(a,\,b,\,c) : a-3b+c=0,\,b-2c=0,\,2b-c=0\}
+\]
+and
+\[
+  H_2 = \{(a,\,b,\,c,\,d) : a-3b+c=0\}.
+\] \\
+
+\blue{We recognize $H_1$ has the kernel of the matrix
+  \[
+    A_1=
+    \left(
+      \begin{array}{rrr}
+        1 & -3 & 1 \\ 0 & 1 & -2 \\ 0 & 2 & -1
+      \end{array}
+    \right).
+  \]
+  $A_1$ is invertible, so $\ker(A_1)=\{\vec 0\}$ and $\text{dim ker}(A_1)=0$.}
+
+\blue{$H_2$ is the kernel of a linear functional and has dimension $4-1=3$. It
+  is the kernel of the matrix
+  \[
+    A_2 = \begin{pmatrix}
+            1 & -3 & 1 & 0
+          \end{pmatrix}.
+  \]
+  The vectors of this space are given by
+  \[
+    \left(
+      \begin{array}{c}
+        3b+c \\ b \\ c \\ d
+      \end{array}
+    \right)
+    =b
+    \left(
+      \begin{array}{r}
+        3 \\ 1 \\ 0 \\ 0
+      \end{array}
+    \right)
+    +c
+    \left(
+      \begin{array}{r}
+        1 \\ 0 \\ 1 \\ 0
+      \end{array}
+    \right)
+    +d
+    \left(
+      \begin{array}{r}
+        0 \\ 0 \\ 0 \\ 1
+      \end{array}
+    \right).
+  \] \\}
+
+\noindent{\bfseries Question 6.} The the space $C(\R)$ of all continuous functions
+on the real line is an infinite dimensional vector space. \\
+
+\blue{We already have that the set $C(\R)$ is a vector space under componentwise
+addition. That it is infinite dimensional follows from the fact that the space
+of all polynomials of finite degree $\PP_\infty$ is a proper subspace. \\}
+
+\noindent{\bfseries Question 7.} For an $n \times n$ matrix $A$, we use
+\[
+  A\begin{pmatrix}i_1 & \cdots & i_k \\ j_1 & \cdots & j_k\end{pmatrix}
+\]
+to denote the determinant of the submatrix formed by choosing the rows
+$i_1,\dots,\,i_k$ and the columns $j_1,\dots,\,j_k$. Let
+$\vartheta_1,\dots,\,\vartheta_n$ be the not necessarily distinct and possibly
+complex eigenvalues of $A$. Prove that
+\[
+  \sum_{1 \leqq i_1 < \cdots < i_k \leqq n} \vartheta_{i_1}\cdots\vartheta_{i_k}
+  = \sum_{1 \leqq i_1 < \cdots < i_k \leqq n} A
+  \begin{pmatrix}
+    i_1 & \cdots & i_k \\ i_1 & \cdots & i_k
+  \end{pmatrix}.
+\]
+Use this to prove $\text{tr}(A)=\sum_{i=1}^n A_{i,i} = \sum_{i=1}^n \vartheta_i$
+and $\text{det}(A)=\vartheta_1 \cdots \vartheta_n$. [Hint: You will need to
+consider the characteristic equation $\text{det}(xI-A)$ and the multilinearity
+of the determinant.] \\
+
+% \blue{By induction on $n$. The base case $n=1$ is immediate. Assume the result
+%   holds for $n-1$. We show it must hold for $n$ as well. Define
+%   \[
+%     E_k = \sum_{1 \leqq i_1 < \cdots < i_k \leqq n} A
+%     \begin{pmatrix}
+%       i_1 & \cdots & i_k \\ i_1 & \cdots & i_k
+%     \end{pmatrix}.
+%   \]
+%   Observe
+%   \begin{align*}
+%     \begin{pmatrix}
+%       A_{1,1}-x & A_{1,2} & \cdots & A_{1,n} \\
+%       A_{2,1} & A_{2,2}-x & \cdots & A_{2,n} \\
+%       \vdots & \vdots & \ddots & \vdots \\
+%       A_{n,1} & A_{n,2} & \cdots & A_{n,n}-x
+%     \end{pmatrix}
+%     &= \text{det}(A)
+%       \begin{pmatrix}
+%         -x & A_{1,2} & \cdots & A_{1,n} \\
+%         0 & A_{2,2}-x & \cdots & A_{2,n} \\
+%         \vdots & \vdots & \ddots & \vdots \\
+        
+%       \end{pmatrix}
+%   \end{align*}
+% }
+
+\end{document}
