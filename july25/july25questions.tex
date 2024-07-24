@@ -1,0 +1,105 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amssymb, amsmath, amsthm, mathrsfs}
+\usepackage[left=1.0in,right=1.0in,top=1.0in,bottom=1.0in]{geometry}
+\usepackage[inline,shortlabels]{enumitem}
+\usepackage{times}
+\usepackage{xcolor}
+
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\C}{\mathbf{C}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\PP}{\mathbf{P}}
+\newcommand{\ddim}{\text{dim}}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries Math 240 Tutorial \\ Questions}
+\end{center}
+\begin{center}
+  {\bfseries July 25}
+\end{center}
+
+\noindent{\bfseries Question 1.} Let a finite dimensional vector space $V$ have two
+bases $\beta$ and $\beta'$, and let $Q$ be the transformation matrix from
+$\beta'$-coordinates to $\beta$-coordinates. Show that for any linear
+transformation $T: V \rightarrow V$, it holds that
+\[
+  [T]_{\beta'} = Q^{-1}[T]_{\beta}Q.
+\] \\
+
+\noindent{\bfseries Question 2.} A scalar matrix is a matrix of the form $\lambda
+I$ for some scalar $\lambda$.
+\begin{enumerate}[(a)]
+\item Prove that is a square matrix $A$ is similar to a scalar matrix $\lambda
+  I$, then $A=\lambda I$.
+\item Show that a diagonalizable matrix having only one eigenvalue is a scalar
+  matrix.
+\item Prove that $\left( \begin{smallmatrix}1&1\\0&1\end{smallmatrix} \right)$
+  is not diagonalizable. \\
+\end{enumerate}
+
+\noindent{\bfseries Question 3.} For each of the following linear operators $T$ on
+a vector space $V$ and ordered basis $\beta$, compute $[T]_\beta$ and determine
+whether $\beta$ is a basis consisting of eigenvectors of $T$.
+\begin{enumerate}[(a)]
+\item $V=\R^2$,
+  $T\left( \begin{smallmatrix}a\\b\end{smallmatrix} \right)=
+  \left( \begin{smallmatrix}10a-6b\\17a-10b\end{smallmatrix} \right)$,
+  and
+  $\beta=\left\{ \left( \begin{smallmatrix}1\\2\end{smallmatrix} \right),
+  \left( \begin{smallmatrix}2\\3\end{smallmatrix} \right)\right\}$.
+
+\item $V=\PP_1(\R)$, $T=(a+bx)=(6a-6b)+(12a-11b)x$, and $\beta=\{3+4x, 2+3x\}$.
+  
+\item $V=\R^3$,
+  $T\left( \begin{smallmatrix}a\\b\\c\end{smallmatrix} \right)=
+  \left( \begin{smallmatrix}3a+2b-2c\\-4a-3b+2c\\-c\end{smallmatrix} \right)$,
+  and
+  $\beta=\left\{ \left( \begin{smallmatrix}0\\1\\1\end{smallmatrix} \right),
+    \left( \begin{smallmatrix}1\\-1\\0\end{smallmatrix} \right),
+  \left( \begin{smallmatrix}1\\0\\2\end{smallmatrix} \right)\right\}$.
+
+\item $V=\PP_2(\R)$, $T(a+bx+cx^2)=(-4a+2b-2c)-(7a+3b+7c)x+(7a+b+5c)x^2$, and
+  $\beta=\{x-x^2,-1+x^2,-1-x+x^2\}$.
+
+\item $V=P_3(\R)$, $T(a+bx+cx^2+dx^3)=-d+(-c+d)x+(a+b-2c)x^2+(-b+c-2d)x^3$, and
+  $\beta=\{1-x+x^3,1+x^2,1,x+x^2\}$.
+
+\item $V=\M_{2 \times 2}(\R)$,
+  $T\left( \begin{smallmatrix}a&b\\c&d\end{smallmatrix} \right)=
+  \left( \begin{smallmatrix}-7a-4b+4c-4d & b \\
+           -8a-4b+5c-4d & d\end{smallmatrix} \right)$, and
+       $\beta = \left\{ \left( \begin{smallmatrix}1&0\\1&0\end{smallmatrix}
+         \right),
+         \left( \begin{smallmatrix}-1&2\\0&0\end{smallmatrix} \right),
+         \left( \begin{smallmatrix}1&0\\2&0\end{smallmatrix} \right),
+       \left( \begin{smallmatrix}-1&0\\0&2\end{smallmatrix} \right)\right\}$. \\
+\end{enumerate}
+
+\noindent{\bfseries Question 4.} For each of the following matrices $A \in \M_{n
+  \times n}(F)$:
+\begin{enumerate}[(i)]
+\item Determine all the eigenvalues of $A$.
+\item For each eigenvalue $\lambda$ of $A$, find the set og eigenvectors
+  corresponding to $\lambda$.
+\item If possible, find a basis for $F^n$ consisting of eigenvectors of $A$.
+\item If successful in finding such a basis, determine an invertible matrix $Q$
+  and a diagonal matrix $D$ such that $Q^{-1}AQ=D$.
+\end{enumerate}
+\begin{enumerate}[(a)]
+\item $A=\left( \begin{smallmatrix}1&2\\3&2\end{smallmatrix} \right)$ for $F=\R$.
+\item $A=\left( \begin{smallmatrix}0&-2&-3\\-1&1&-1\\2&2&5\end{smallmatrix}
+  \right)$ for $R=\R$.
+\item $A=\left( \begin{smallmatrix}i&1\\2&-i\end{smallmatrix} \right)$ for $F=\C$.
+\item $A=\left( \begin{smallmatrix}2&0&-1\\4&1&-4\\2&0&-1\end{smallmatrix}
+  \right)$ for $F=\R$. \\
+\end{enumerate}
+
+\noindent{\bfseries Question 5.} Prove the geometric multiplicity of an eigenvalue
+is at most the algebraic multiplicity. \\
+
+\end{document}
