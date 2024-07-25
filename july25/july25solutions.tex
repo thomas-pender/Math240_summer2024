@@ -1,0 +1,507 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amssymb, amsmath, amsthm, mathrsfs}
+\usepackage[left=1.0in,right=1.0in,top=1.0in,bottom=1.0in]{geometry}
+\usepackage[inline,shortlabels]{enumitem}
+\usepackage{times}
+\usepackage{xcolor}
+
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\C}{\mathbf{C}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\PP}{\mathbf{P}}
+\newcommand{\ddim}{\text{dim}}
+\newcommand{\ddet}{\text{det}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries Math 240 Tutorial \\ Solutions}
+\end{center}
+\begin{center}
+  {\bfseries July 25}
+\end{center}
+
+\noindent{\bfseries Question 1.} Let a finite dimensional vector space $V$ have two
+bases $\beta$ and $\beta'$, and let $Q$ be the transformation matrix from
+$\beta'$-coordinates to $\beta$-coordinates. Show that for any linear
+transformation $T: V \rightarrow V$, it holds that
+\[
+  [T]_{\beta'} = Q^{-1}[T]_{\beta}Q.
+\] \\
+
+\blue{We may write $Q=[I]_{\beta'}^\beta$. Then
+  \[
+    Q[T]_{\beta'} = [I]_{\beta'}^\beta[T]_{\beta'}^{\beta'} =
+    [IT]_{\beta'}^\beta = [TI]_{\beta'}^\beta=[T]_\beta^\beta[I]_{\beta'}^\beta
+    = [T]_\beta Q.
+  \]
+  That is, $[T]_{\beta'}=Q^{-1}[T]_\beta Q$. \\}
+
+\noindent{\bfseries Question 2.} A scalar matrix is a matrix of the form $\lambda
+I$ for some scalar $\lambda$.
+\begin{enumerate}[(a)]
+\item Prove that is a square matrix $A$ is similar to a scalar matrix $\lambda
+  I$, then $A=\lambda I$. \\
+
+  \blue{Assume there is an invertible matrix $P$ such that $P^{-1}AP = \lambda
+    I$. Multiplying on the left by $P$ and on the right by $P^{-1}$, we have
+    $A=P(\lambda I)P^{-1} = \lambda I(PP^{-1}) = \lambda I$. \\}
+  
+\item Show that a diagonalizable matrix having only one eigenvalue is a scalar
+  matrix. \\
+
+  \blue{If $A$ has only one eigenvalue, then $A$ is similar to a scalar matrix
+    $\lambda I$. From part (a), it follows that $A=\lambda I$. \\}
+  
+\item Prove that $\left( \begin{smallmatrix}1&1\\0&1\end{smallmatrix} \right)$
+  is not diagonalizable. \\
+
+  \blue{The matrix has only one eigenvalue (namely, $\lambda = 1$). Therefore,
+    if it were diagonalizable, it must be that it is the identity matrix from
+    part (b). But clearly this is false, so the matrix is not diagonalizable. \\}
+\end{enumerate}
+
+\noindent{\bfseries Question 3.} For each of the following linear operators $T$ on
+a vector space $V$ and ordered basis $\beta$, compute $[T]_\beta$ and determine
+whether $\beta$ is a basis consisting of eigenvectors of $T$.
+\begin{enumerate}[(a)]
+\item $V=\R^2$,
+  $T\left( \begin{smallmatrix}a\\b\end{smallmatrix} \right)=
+  \left( \begin{smallmatrix}10a-6b\\17a-10b\end{smallmatrix} \right)$,
+  and
+  $\beta=\left\{ \left( \begin{smallmatrix}1\\2\end{smallmatrix} \right),
+    \left( \begin{smallmatrix}2\\3\end{smallmatrix} \right)\right\}$. \\
+
+  \blue{Let $\vec v_1=\left( \begin{smallmatrix}1\\2\end{smallmatrix} \right)$
+    and $\vec v_2=\left( \begin{smallmatrix}2\\3\end{smallmatrix} \right)$. Then
+    \[
+      \vec v_1 \mapsto
+      \left(
+        \begin{array}{r}
+          -2\\-3
+        \end{array}
+      \right) = -\vec v_2, \qquad
+      \vec v_2 \mapsto
+      \left(
+        \begin{array}{r}
+          2\\4
+        \end{array}
+      \right) = 2\vec v_1.
+    \]
+    So $[T]_\beta = \left( \begin{smallmatrix}0&2\\-1&0\end{smallmatrix}
+    \right)$, and $\beta$ is not a basis of eigenvalues for $T$. \\}
+
+\item $V=\PP_1(\R)$, $T(a+bx)=(6a-6b)+(12a-11b)x$, and $\beta=\{3+4x, 2+3x\}$.
+  \\
+
+  \blue{Let $\vec v_1=3+4x$ and $\vec v_2=2+3x$. Then
+    \[
+      \vec v_1 \mapsto -6-8x = -2\vec v_1, \qquad
+      \vec v_2 \mapsto -6-9x = -3\vec v_2.
+    \]
+    So $[T]_\beta = \left( \begin{smallmatrix}-2&0\\0&-3\end{smallmatrix}
+    \right)$, and $\beta$ is a basis of eigenvalues for $T$. \\}
+  
+\item $V=\R^3$,
+  $T\left( \begin{smallmatrix}a\\b\\c\end{smallmatrix} \right)=
+  \left( \begin{smallmatrix}3a+2b-2c\\-4a-3b+2c\\-c\end{smallmatrix} \right)$,
+  and
+  $\beta=\left\{ \left( \begin{smallmatrix}0\\1\\1\end{smallmatrix} \right),
+    \left( \begin{smallmatrix}1\\-1\\0\end{smallmatrix} \right),
+    \left( \begin{smallmatrix}1\\0\\2\end{smallmatrix} \right)\right\}$. \\
+
+  \blue{Let $\vec v_1 = \left( \begin{smallmatrix}0\\1\\1\end{smallmatrix}
+    \right)$, $\vec v_2 = \left( \begin{smallmatrix}1\\-1\\0\end{smallmatrix}
+    \right)$, and $\vec v_3 = \left( \begin{smallmatrix}1\\0\\2\end{smallmatrix}
+    \right)$. Then
+    \[
+      \vec v_1 \mapsto
+      \left(
+        \begin{array}{r}
+          0 \\ -1 \\ -1
+        \end{array}
+      \right) = -\vec v_1, \qquad
+      \vec v_2 \mapsto
+      \left(
+        \begin{array}{r}
+          1\\-1\\0
+        \end{array}
+      \right) = \vec v_2, \qquad
+      \vec v_3 \mapsto
+      \left(
+        \begin{array}{r}
+          -1\\0\\-2
+        \end{array}
+      \right) = - \vec v_3.
+    \]
+    So $[T]_\beta =
+    \left( \begin{smallmatrix}-1&0&0\\0&1&0\\0&0&-1\end{smallmatrix} \right)$,
+    and $\beta$ is a basis of eigenvectors for $T$. \\}
+
+\item $V=\PP_2(\R)$, $T(a+bx+cx^2)=(-4a+2b-2c)-(7a+3b+7c)x+(7a+b+5c)x^2$, and
+  $\beta=\{x-x^2,-1+x^2,-1-x+x^2\}$. \\
+
+  \blue{Let $\vec v_1 = x-x^2$, $\vec v_2=-1+x^2$, and $\vec v_3=-1-x+x^2$. Then
+    \[
+      \vec v_1 \mapsto 4+4x-4x^2 = -4 \vec v_3, \quad
+      \vec v_2 \mapsto 2-2x^2 = -2\vec v_2, \quad
+      \vec v_3 \mapsto 3x-3x^2 = 3\vec v_1.
+    \]
+    So $[T]_\beta =
+    \left( \begin{smallmatrix}0&0&3\\0&-2&0\\-4&0&0\end{smallmatrix} \right)$,
+    and $\beta$ is not a basis of eigenvectors for $T$. \\}
+
+\item $V=P_3(\R)$, $T(a+bx+cx^2+dx^3)=-d+(-c+d)x+(a+b-2c)x^2+(-b+c-2d)x^3$, and
+  $\beta=\{1-x+x^3,1+x^2,1,x+x^2\}$. \\
+
+  \blue{Let $\vec v_1=1-x+x^3$, $\vec v_2=2+x^2$, $\vec v_3=1$, and $\vec
+    v_4=x+x^2$. Then
+    \begin{align*}
+      \vec v_1 &\mapsto -1+x-x^3 = -\vec v_1, &
+      \vec v_3 &\mapsto x^2 = \vec v_2-\vec v_3, \\
+      \vec v_2 &\mapsto -x-x^2+x^3 = \vec v_1-\vec v_2, &
+      \vec v_4 &\mapsto -x-x^2 = -\vec v_4.
+    \end{align*}
+    So 
+    \[
+      [T]_\beta =
+      \left(
+        \begin{array}{rrrr}
+          -1 & 1 & 0 & 0 \\
+          0 & -1 & 1 & 0 \\
+          0 & 0 & -1 & 0 \\
+          0 & 0 & 0 & -1
+        \end{array}
+      \right),
+    \]
+    and $\beta$ is not a basis of eigenvectors for $T$. \\}
+
+\item $V=\M_{2 \times 2}(\R)$,
+  $T\left( \begin{smallmatrix}a&b\\c&d\end{smallmatrix} \right)=
+  \left( \begin{smallmatrix}-7a-4b+4c-4d & b \\
+           -8a-4b+5c-4d & d\end{smallmatrix} \right)$, and
+       $\beta = \left\{ \left( \begin{smallmatrix}1&0\\1&0\end{smallmatrix}
+         \right),
+         \left( \begin{smallmatrix}-1&2\\0&0\end{smallmatrix} \right),
+         \left( \begin{smallmatrix}1&0\\2&0\end{smallmatrix} \right),
+       \left( \begin{smallmatrix}-1&0\\0&2\end{smallmatrix} \right)\right\}$. \\
+
+     \blue{Let $\vec v_1=\left( \begin{smallmatrix}1&0\\1&0\end{smallmatrix}
+       \right)$, $\vec v_2=\left( \begin{smallmatrix}-1&2\\0&0\end{smallmatrix}
+       \right)$, $\vec v_3=\left( \begin{smallmatrix}1&0\\2&0\end{smallmatrix}
+       \right)$, and $\vec
+       v_4=\left( \begin{smallmatrix}-1&0\\0&2\end{smallmatrix} \right)$. Then
+       \begin{align*}
+         \vec v_1 &\mapsto
+         \left(
+         \begin{array}{rr}
+           -3&0\\-3&0
+         \end{array}
+         \right) = -3\vec v_1,
+         &
+         \vec v_3 &\mapsto
+         \left(
+         \begin{array}{rr}
+           1&0\\2&0
+         \end{array}
+         \right) = \vec v_3, \\
+         \vec v_2 &\mapsto
+         \left(
+         \begin{array}{rr}
+           -1&2\\0&0
+         \end{array}
+         \right) = \vec v_2,
+         &
+         \vec v_4 &\mapsto
+         \left(
+         \begin{array}{rr}
+           -1&0\\0&2
+         \end{array}
+         \right) = \vec v_4.
+       \end{align*}
+       So
+       \[
+         [T]_\beta =
+         \left(
+           \begin{array}{rrrr}
+             -3&0&0&0\\
+             0&1&0&0\\
+             0&0&1&0\\
+             0&0&0&1
+           \end{array}
+         \right),
+       \]
+       and $\beta$ is a basis of eigenvectors of $T$. \\}
+\end{enumerate}
+
+\noindent{\bfseries Question 4.} For each of the following matrices $A \in \M_{n
+  \times n}(F)$:
+\begin{enumerate}[(i)]
+\item Determine all the eigenvalues of $A$.
+\item For each eigenvalue $\lambda$ of $A$, find the set of eigenvectors
+  corresponding to $\lambda$.
+\item If possible, find a basis for $F^n$ consisting of eigenvectors of $A$.
+\item If successful in finding such a basis, determine an invertible matrix $Q$
+  and a diagonal matrix $D$ such that $Q^{-1}AQ=D$.
+\end{enumerate}
+\begin{enumerate}[(a)]
+\item $A=\left( \begin{smallmatrix}1&2\\3&2\end{smallmatrix} \right)$ for
+  $F=\R$. \\
+
+  \blue{We have $\ddet(tI-A)=t^2-3t-4=(t-4)(t+1)$, so the eigenvalues for $A$
+    are $\lambda_1=4$ and $\lambda_2=-1$.}
+
+  \blue{For $\lambda_1=4$, we have
+    \[
+      4I-A =
+      \left(
+        \begin{array}{rr}
+          3&-2\\-3&2
+        \end{array}
+      \right)
+      \sim
+      \left(
+        \begin{array}{rr}
+          3&-2\\0&0
+        \end{array}
+      \right).
+    \]
+    So $E_4=\left\{ \left( \begin{smallmatrix}2a\\3a\end{smallmatrix}
+      \right) : a \in \R \right\}$ is spanned by the eigenvector
+    $\left( \begin{smallmatrix}2\\3\end{smallmatrix} \right)$.}
+
+  \blue{For $\lambda_2=-1$, we have
+    \[
+      -I-A =
+      \left(
+        \begin{array}{rr}
+          -2&-2\\-3&-3
+        \end{array}
+      \right)
+      \sim
+      \left(
+        \begin{array}{rr}
+          1&1\\0&0
+        \end{array}
+      \right).
+    \]
+    So $E_{-1}=\left\{ \left( \begin{smallmatrix}-a\\a\end{smallmatrix} \right)
+      : a \in \R \right\}$ is spanned by the eigenvector
+    $\left( \begin{smallmatrix}-1\\1\end{smallmatrix} \right)$.}
+
+  \blue{We may take $Q=\left( \begin{smallmatrix}2&-1\\3&1\end{smallmatrix}
+    \right)$ and $D=\left( \begin{smallmatrix}4&0\\0&-1\end{smallmatrix}
+    \right)$. \\}
+  
+\item $A=\left( \begin{smallmatrix}0&-2&-3\\-1&1&-1\\2&2&5\end{smallmatrix}
+  \right)$ for $F=\R$. \\
+
+  \blue{We have $\ddet(tI-A)=t^3-6t^2+11t-6=(t-3)(t-2)(t-1)$, so the eigenvalues
+    for $A$ are 1, 2, and 3.}
+
+  \blue{For $t=1$, we have
+    \[
+      I-A =
+      \left(
+        \begin{array}{rrr}
+          1&2&3\\
+          1&0&1\\
+          -2&-2&-4
+        \end{array}
+      \right)
+      \sim
+      \left(
+        \begin{array}{rrr}
+          1&0&1\\
+          0&1&1\\
+          0&0&0
+        \end{array}
+      \right).
+    \]
+    So $E_1=\left\{ \left( \begin{smallmatrix}-a\\-a\\a\end{smallmatrix} \right)
+    : a \in R\right\}$ is spanned by
+  $\left( \begin{smallmatrix}-1\\-1\\1\end{smallmatrix} \right)$.}
+
+\blue{For $t=2$, we have
+  \[
+    2I-A =
+    \left(
+      \begin{array}{rrr}
+        2&2&3\\
+        1&1&1\\
+        -2&-2&-3
+      \end{array}
+    \right)
+    \sim
+    \left(
+      \begin{array}{rrr}
+        1&1&0\\
+        0&0&1\\
+        0&0&0
+      \end{array}
+    \right).
+  \]
+  So $E_2=\left\{ \left( \begin{smallmatrix}-a\\a\\0\end{smallmatrix} \right) :
+    a \in \R \right\}$ is spanned by
+  $\left( \begin{smallmatrix}-1\\1\\0\end{smallmatrix} \right)$.}
+
+\blue{For $t=3$, we have
+  \[
+    3I-A =
+    \left(
+      \begin{array}{rrr}
+        3&2&3\\
+        1&2&1\\
+        -2&-2&-2
+      \end{array}
+    \right)
+    \sim
+    \left(
+      \begin{array}{rrr}
+        1&0&1\\
+        0&1&0\\
+        0&0&0
+      \end{array}
+    \right).
+  \]
+  So $E_3 = \left\{ \left( \begin{smallmatrix}-a\\0\\a\end{smallmatrix} \right)
+    : a \in \R \right\}$ is spanned by
+  $\left( \begin{smallmatrix}-1\\0\\1\end{smallmatrix} \right)$.}
+
+\blue{We may take
+  $Q=\left( \begin{smallmatrix}-1&-1&-1\\-1&1&0\\1&0&1\end{smallmatrix}
+  \right)$ and $D=\left( \begin{smallmatrix}1&0&0\\0&2&0\\0&0&3\end{smallmatrix}
+  \right)$. \\}
+  
+\item $A=\left( \begin{smallmatrix}i&1\\2&-i\end{smallmatrix} \right)$ for
+  $F=\C$. \\
+
+  \blue{We have $\ddet(tI-A)=t^2-1=(t+1)(t-1)$, so the eigenvalues for $A$ are 1
+    and $-1$.}
+
+  \blue{For $t=1$, we have
+    \[
+      I-A =
+      \left(
+        \begin{array}{rr}
+          1-i&-1\\-2&1+i
+        \end{array}
+      \right)
+      \sim
+      \left(
+        \begin{array}{rr}
+          2&-1-i\\0&0
+        \end{array}
+      \right).
+    \]
+    So $E_1=\left\{ \left( \begin{smallmatrix}(1+i)a\\2a\end{smallmatrix} \right)
+    : a \in \R \right\}$ is spanned by
+  $\left( \begin{smallmatrix}1+i\\2\end{smallmatrix} \right)$.}
+
+\blue{For $t=-1$, we have
+  \[
+    -I-A =
+    \left(
+      \begin{array}{rr}
+        -1-i&-1\\-2&-1+i
+      \end{array}
+    \right)
+    \sim
+    \left(
+      \begin{array}{rr}
+        2&1-i\\0&0
+      \end{array}
+    \right).
+  \]
+  So $E_{-1}=\left\{ \left( \begin{smallmatrix}(1-i)a\\2a\end{smallmatrix}
+    \right) : a \in \R \right\}$ is spanned by
+  $\left( \begin{smallmatrix}1-i\\2\end{smallmatrix} \right)$.}
+
+\blue{We may take $Q=\left( \begin{smallmatrix}1+i&1-i\\2&2\end{smallmatrix}
+  \right)$ and $D=\left( \begin{smallmatrix}1&0\\0&-1\end{smallmatrix} \right)$.
+\\}
+  
+\item $A=\left( \begin{smallmatrix}2&0&-1\\4&1&-4\\2&0&-1\end{smallmatrix}
+  \right)$ for $F=\R$. \\
+
+  \blue{We have $\ddet(tI-A)=t^3-2t^2+t=t(t-1)^2$, so the eigenvalues for $A$
+    are 0 and 1 with multiplicities 1 and 2, respectively.}
+
+  \blue{For $t=0$, we have
+    \[
+      -A =
+      \left(
+        \begin{array}{rrr}
+          -2&0&1\\
+          -4&-1&4\\
+          -2&0&1
+        \end{array}
+      \right)
+      \sim
+      \left(
+        \begin{array}{rrr}
+          2&0&1\\
+          0&1&-2\\
+          0&0&0
+        \end{array}
+      \right).
+    \]
+    So $E_0=\left\{ \left( \begin{smallmatrix}-a\\2a\\a\end{smallmatrix} \right)
+    : a \in \R\right\}$ is spanned by
+  $\left( \begin{smallmatrix}-1\\2\\1\end{smallmatrix} \right)$.}
+
+\blue{For $t=1$, we have
+  \[
+    I-A =
+    \left(
+      \begin{array}{rrr}
+        -1&0&1\\
+        -4&0&4\\
+        -2&0&2
+      \end{array}
+    \right)
+    \sim
+    \left(
+      \begin{array}{rrr}
+        1&0&-1\\
+        0&0&0\\
+        0&0&0
+      \end{array}
+    \right).
+  \]
+  so $E_1=\left\{ \left( \begin{smallmatrix}a\\b\\a\end{smallmatrix} \right) :
+    a,\,b \in \R \right\}$ is spanned by $\left\{
+    \left( \begin{smallmatrix}1\\0\\1\end{smallmatrix}
+    \right),\,\left( \begin{smallmatrix}0\\1\\0\end{smallmatrix} \right)
+  \right\}$.}
+
+\blue{We may take
+  $Q=\left( \begin{smallmatrix}-1&1&0\\2&0&1\\1&1&0\end{smallmatrix} \right)$
+  and $D=\left( \begin{smallmatrix}0&0&0\\0&1&0\\0&0&1\end{smallmatrix}
+  \right)$. \\}
+\end{enumerate}
+
+\noindent{\bfseries Question 5.} Prove the geometric multiplicity of an eigenvalue
+is at most the algebraic multiplicity. \\
+
+\blue{Let $A$ be an $n \times n$ matrix with eigenvalue $\lambda$ where
+  $\ddim(E_\lambda) = p$. Let $\{\vec v_1, \dots,\,\vec v_p\}$ be a basis of
+  eigenvectors for the eigenspace $E_\lambda$, and enlarge this to a basis
+  $\beta=\{\vec v_1,\dots,\,\vec v_p,\,\vec v_{p+1},\dots,\,\vec v_n\}$ for
+  $\R^n$ (or $\C^n$). Then
+  \[
+    tI - [A]_\beta=
+    \begin{pmatrix}
+      (t-\lambda)I & A_2 \\ O & tI - A_3
+    \end{pmatrix}
+  \]
+  It then follows (by induction) that $\ddet(tI-A) =
+  (t-\lambda)^p\ddet(tI-A_3)=(t-\lambda)^pg(t)$, where $g(t)$ is a polynomial.
+  If $\lambda$ has algebraic multiplicty $m$, then since $(t-\lambda)^p$ is a
+  factor of $\ddet(tI-A)$ it follows that $p \leqq m$. \\}
+
+\end{document}
