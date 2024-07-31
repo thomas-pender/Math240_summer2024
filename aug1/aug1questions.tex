@@ -1,0 +1,103 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amssymb, amsmath, amsthm, mathrsfs}
+\usepackage[left=1.0in,right=1.0in,top=1.0in,bottom=1.0in]{geometry}
+\usepackage[inline,shortlabels]{enumitem}
+\usepackage{times}
+\usepackage{xcolor}
+
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\C}{\mathbf{C}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\PP}{\mathbf{P}}
+\newcommand{\ddim}{\text{dim}}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries Math 240 Tutorial \\ Questions}
+\end{center}
+\begin{center}
+  {\bfseries August 1}
+\end{center}
+
+\noindent{\bfseries Question 1.} Find the unit vector in the direction of the given
+vectors
+\begin{enumerate*}[(a)]
+\item $\left( \begin{smallmatrix}-30//40\end{smallmatrix} \right)$,
+\item $\left( \begin{smallmatrix}7/4\\1/2\\1\end{smallmatrix} \right)$, and
+\item $\left( \begin{smallmatrix}8/3\\2\end{smallmatrix} \right)$. \\
+\end{enumerate*}
+
+\noindent{\bfseries Question 2.}
+\begin{enumerate*}
+\item Let $\vec u_1=\left( \begin{smallmatrix}2\\-3\end{smallmatrix} \right)$,
+  $\vec u_2=\left( \begin{smallmatrix}6\\4\end{smallmatrix} \right)$, and $\vec
+  x=\left( \begin{smallmatrix}9\\-7\end{smallmatrix} \right)$. Does $\{\vec
+  u_1,\,\vec u_2\}$ form an orthogonal basis for $\R^2$? If it does, write $\vec
+  x$ in terms of this basis.
+\item Compute the orthogonal projection of
+  $\left( \begin{smallmatrix}1\\7\end{smallmatrix} \right)$ onto the line
+  through $\left( \begin{smallmatrix}-4\\2\end{smallmatrix} \right)$ and the
+  origin. \\
+\end{enumerate*}
+
+\noindent{\bfseries Question 3.} Let $\vec y \in \R^n$. Prove $\vec x \mapsto
+\langle \vec x,\,\vec y \rangle$ is a linear transformation $\R^n \rightarrow
+\R$. \\
+
+\noindent{\bfseries Question 4.} Let
+\[
+  \vec y =
+  \left(
+    \begin{array}{r}
+      -1\\4\\3
+    \end{array}
+  \right), \quad
+  \vec u_1 =
+  \left(
+    \begin{array}{r}
+      1\\1\\0
+    \end{array}
+  \right), \quad
+  \vec u_2 =
+  \left(
+    \begin{array}{r}
+      -1\\1\\0
+    \end{array}
+  \right).
+\]
+
+\noindent Verify that $\{\vec u_1,\,\vec u_2\}$ is an orthogonal set, and find
+the orthogonal projection of $\vec y$ onto $\text{span}\{\vec u_1,\,\vec u_2\}$.
+Construct a nonzero vector $\vec z$ that is orthogonal to $\vec u_1$ and $\vec
+u_2$. Find the distance from $\vec y$ to $\text{span}\{\vec u_1,\,\vec u_2\}$.
+\\
+
+\noindent{\bfseries Question 5.} Let $W$ be a subspace of $\R^n$ with an orthogonal
+basis $\beta_1=\{\vec w_1, \dots,\,\vec w_p\}$, and let $\beta_2=\{\vec
+v_1,\dots,\,\vec v_q\}$ be an orthogonal basis for $W^\perp$.
+\begin{enumerate}[(a)]
+\item Explain why $\beta_1 \cup \beta_2$ is an orthogonal set.
+\item Explain why the set in part (a) spans $\R^n$.
+\item Show that $\dim(W)+\dim(W)=n$. \\
+\end{enumerate}
+
+\noindent{\bfseries Question 6.} Let $A$ be an $m \times n$ matrix with linearly
+independent columns, and let $A=QR$ be its $QR$-factorization. Prove that $R$ is
+invertible in to ways. \\
+
+\noindent{\bfseries Question 7.} Do the following.
+\begin{enumerate}[(a)]
+\item Verify that $\langle p,q \rangle \equiv \int_{-1}^1pq\text{ d}x$ is an
+  inner product on $\PP_n(\R)$.
+\item Recall the standard basis $\beta=\{1,\,x,\,x^2\}$ for $\PP_2(\R)$. Use the
+  Gram--Schmidt Process to find an orthogonal basis for $\PP_2(\R)$.
+\item Let $T$ be the linear map $\PP_2(\R) \rightarrow \PP_1(\R)$ defined by $p
+  \mapsto \frac{\text{d}p}{\text{d}x}$. Find the $QR$-factorization of
+  $[T]_\beta$.
+\end{enumerate}
+
+\end{document}
