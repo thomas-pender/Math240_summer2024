@@ -1,0 +1,254 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amssymb, amsmath, amsthm, mathrsfs}
+\usepackage[left=1.0in,right=1.0in,top=1.0in,bottom=1.0in]{geometry}
+\usepackage[inline,shortlabels]{enumitem}
+\usepackage{times}
+\usepackage{xcolor}
+
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\C}{\mathbf{C}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\PP}{\mathbf{P}}
+\newcommand{\ddim}{\text{dim}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries Math 240 Tutorial \\ Solutions}
+\end{center}
+\begin{center}
+  {\bfseries August 1}
+\end{center}
+
+\noindent{\bfseries Question 1.} Find the unit vector in the direction of the given
+vectors
+\begin{enumerate*}[(a)]
+\item $\left( \begin{smallmatrix}-30\\40\end{smallmatrix} \right)$,
+\item $\left( \begin{smallmatrix}7/4\\1/2\\1\end{smallmatrix} \right)$, and
+\item $\left( \begin{smallmatrix}8/3\\2\end{smallmatrix} \right)$. \\
+\end{enumerate*}
+
+\blue{
+  \begin{enumerate}[(a)]
+  \item We have $\Vert \vec v \Vert = \sqrt{\langle \vec v,\,\vec v \rangle} =
+    \sqrt{(-30)^2+40^2} = 50$ so that the unit vector is given by $\frac{\vec
+      v}{\Vert \vec v
+      \Vert}=\left( \begin{smallmatrix}-3/5\\4/5\end{smallmatrix} \right)$.
+  \item We have $\Vert \vec v \Vert = \sqrt{\langle \vec v,\,\vec v \rangle} =
+    \sqrt{(7/4)^2+(1/2)^2+1^2} = \frac{1}{2}\sqrt{49+4+16}=\frac{\sqrt{69}}{2}$
+    so that the unit vector is given by $\frac{\vec v}{\Vert \vec v
+      \Vert}=\frac{1}{\sqrt{69}}\left(
+      \begin{smallmatrix}7/2\\1\\2\end{smallmatrix}\right)$.
+  \item We have $\Vert v \Vert = \sqrt{\langle \vec v,\,\vec v \rangle} =
+    \sqrt{(8/3)^2+2^2} = \frac{10}{3}$ so that the unit vector is given by
+    $\frac{\vec v}{\Vert \vec v
+      \Vert}=\left( \begin{smallmatrix}4/5\\3/5\end{smallmatrix} \right)$. \\
+  \end{enumerate}
+}
+
+\noindent{\bfseries Question 2.}
+\begin{enumerate*}[(a)]
+\item Let $\vec u_1=\left( \begin{smallmatrix}2\\-3\end{smallmatrix} \right)$,
+  $\vec u_2=\left( \begin{smallmatrix}6\\4\end{smallmatrix} \right)$, and $\vec
+  x=\left( \begin{smallmatrix}9\\-7\end{smallmatrix} \right)$. Does $\{\vec
+  u_1,\,\vec u_2\}$ form an orthogonal basis for $\R^2$? If it does, write $\vec
+  x$ in terms of this basis.
+\item Compute the orthogonal projection of
+  $\vec x=\left( \begin{smallmatrix}1\\7\end{smallmatrix} \right)$ onto the line
+  through $\vec y = \left( \begin{smallmatrix}-4\\2\end{smallmatrix} \right)$
+  and the origin. \\
+\end{enumerate*}
+
+\blue{
+  \begin{enumerate}[(a)]
+  \item Note that $\langle \vec u_1,\,\vec u_2 \rangle = 12-12 = 0$ so that
+    $\{\vec u_1,\,\vec u_2\}$ is an orthogonal basis for $\R^2$. We have
+    \[
+      \vec x = \frac{\langle \vec x,\,\vec u_1 \rangle}{\Vert \vec u_1
+        \Vert}\vec u_1 + \frac{\langle \vec x,\,\vec u_2 \rangle}{\Vert \vec u_2
+        \Vert}\vec u_2 = \frac{39}{\sqrt{13}}\vec u_1 + \frac{13}{\sqrt{13}}\vec
+      u_2.
+    \]
+  \item The projection is given by
+    \[
+      \frac{\langle \vec x,\,\vec y \rangle}{\Vert \vec y \Vert}\vec y
+      = \frac{-4+14}{\sqrt{16+4}}
+      \left(
+        \begin{array}{r}
+          -4\\2
+        \end{array}
+      \right)
+      =\frac{5}{\sqrt{5}}
+      \left(
+        \begin{array}{r}
+          -2\\1
+        \end{array}
+      \right).
+    \] \\
+  \end{enumerate}
+}
+
+\noindent{\bfseries Question 3.} Let $\vec y \in \R^n$. Prove $\vec x \mapsto
+\langle \vec x,\,\vec y \rangle$ is a linear transformation $\R^n \rightarrow
+\R$. \\
+
+\blue{Let $\vec w,\,\vec x \in \R^n$, and let $\alpha \in \R$. Then
+  \[
+    \langle \vec w+\vec x,\,\vec y \rangle =
+    \sum_{j=1}^n (w_j+x_j)y_j = \sum_{j=1}^nw_jy_j+\sum_{j=1}^nx_jy_j = \langle
+    \vec w,\,\vec y \rangle + \langle \vec x,\,\vec y \rangle.
+  \]
+  and
+  \[
+    \langle \alpha\vec w,\,\vec y \rangle = \sum_{j=1}^n\alpha w_jy_j =
+    \alpha\sum_{j=1}^nw_jy_j = \alpha\langle \vec w,\,\vec y \rangle.
+  \]
+  It follows, therefore, that the map is a linear map. \\}
+
+\noindent{\bfseries Question 4.} Let
+\[
+  \vec y =
+  \left(
+    \begin{array}{r}
+      -1\\4\\3
+    \end{array}
+  \right), \quad
+  \vec u_1 =
+  \left(
+    \begin{array}{r}
+      1\\1\\0
+    \end{array}
+  \right), \quad
+  \vec u_2 =
+  \left(
+    \begin{array}{r}
+      -1\\1\\0
+    \end{array}
+  \right).
+\]
+
+\noindent Verify that $\{\vec u_1,\,\vec u_2\}$ is an orthogonal set, and find
+the orthogonal projection of $\vec y$ onto $\text{span}\{\vec u_1,\,\vec u_2\}$.
+Construct a nonzero vector $\vec z$ that is orthogonal to $\vec u_1$ and $\vec
+u_2$. Find the distance from $\vec y$ to $\text{span}\{\vec u_1,\,\vec u_2\}$.
+\\
+
+\blue{Observe $\langle \vec u_1,\,\vec u_2 \rangle=-1+1=0$, so they are
+  orthogonal. To simplify the calculations, however, observe that
+  $\text{span}\{\vec u_1,\,\vec u_2\} = \text{span}\{\hat u_1,\,\hat u_2'\}$
+  where
+  \[
+    \hat u_1 =
+    \left(
+      \begin{array}{r}
+        1 \\ 0 \\ 0
+      \end{array}
+    \right), \qquad
+    \hat u_2 =
+    \left(
+      \begin{array}{r}
+        0 \\ 1 \\ 0
+      \end{array}
+    \right).
+  \]
+  Applying Gram--Schmidt with this new basis gives that the projection is given
+  by
+  \[
+    \hat y = \langle y,\,\hat u_1 \rangle\hat u_1 + \langle y,\,\hat u_2
+    \rangle\hat u_2 = -\hat u_1 + 4\hat u_2 =
+    \left(
+      \begin{array}{r}
+        -1\\4\\0
+      \end{array}
+    \right).
+  \]
+  A vector orthogonal to the span is given by
+  \[
+    \vec z = \vec y-\hat y =
+    \left(
+      \begin{array}{r}
+        0\\0\\3
+      \end{array}
+    \right).
+  \]
+  Therefore, the distance from $y$ to $\text{span}\{\vec u_1,\,\vec u_2\}$ is
+  given by $\Vert \vec z \Vert = 3$. \\}
+
+\noindent{\bfseries Question 5.} Let $W$ be a subspace of $\R^n$ with an
+orthogonal basis $\beta_1=\{\vec w_1, \dots,\,\vec w_p\}$, and let
+$\beta_2=\{\vec v_1,\dots,\,\vec v_q\}$ be an orthogonal basis for $W^\perp$.
+\begin{enumerate}[(a)]
+\item Explain why $\beta_1 \cup \beta_2$ is an orthogonal set. \\
+
+  \blue{Every vector in $\beta_1$ is orthogonal to every other vector in
+    $\beta_1$ as well as every vector in $\beta_2$. Similarly, every vector in
+    $\beta_2$ is orthogonal to every other vector in $\beta_2$ as well as every
+    vector in $\beta_1$. \\}
+
+\item Explain why the set in part (a) spans $\R^n$. \\
+
+  \blue{Every vector $\vec x$ in $\R^n$ can be written uniquely as $\vec x =
+    \vec w_1 + \vec w_2$ where $\vec w_1 \in W$ and $\vec w_2 \in W^\perp$. \\}
+
+\item Show that $\dim(W)+\dim(W)=n$. \\
+
+  \blue{Part (b) shows that $\R^n = W \cup W^\perp$. Recall that
+    $n=\dim(\R^n)=\dim(W \cup W^\perp) = \dim(W) + \dim(W^\perp) - \dim(W \cap
+    W^\perp)$. But $W \cap W^\perp = \{0\}$ has dimension 0, so
+    $\dim(W)+\dim(W^\perp)=n$. \\}
+\end{enumerate}
+
+\noindent{\bfseries Question 6.} Let $A$ be an $m \times n$ matrix with linearly
+independent columns, and let $A=QR$ be its $QR$-factorization. Prove that $R$ is
+invertible with positive eigenvalues. \\
+
+\blue{Note that if $R\vec x=\vec 0$, then $A \vec x = QR\vec x = Q\vec 0 = \vec
+  0$. Since $A$ has linearly independent columns, it must be that $\vec x\vec
+  0$, and it follows that $R$ is invertible.}
+
+\blue{The proof in the text shows that $R$ is an upper triangular matrix with
+  nonnegative diagonal entries. Since $R$ is invertible, these entries are
+  actually positive. The eigenvalues of a triangular matrix are its diagnal
+  entries. \\}
+
+\noindent{\bfseries Question 7.} Recall that
+$H=\text{span}\{x-3,\,x^2-3x\}$ is the subspace of $\PP_2(\R)$
+consisting of all those vectors divisible by $x-3$. Do the following.
+\begin{enumerate}[(a)]
+\item Verify that $\langle p,q \rangle \equiv \int_{-1}^1pq\text{ d}x$ is an
+  inner product on $\PP_n(\R)$. \\
+
+  \blue{This simply follows by the linearity of the integral. \\}
+
+\item Use the Gram--Schmidt Process to find an orthogonal basis $\beta$ for $H$.
+  \\
+
+  \blue{We construct the orthogonal basis $\beta=\{\vec f_1,\,\vec f_2\}$.
+    First, take $\vec f_1=x-3$. Then we calculate
+    \[
+      \vec f_2 = x^2-3x - \frac{\langle x^2-3x,\,\vec f_1 \rangle}{\Vert \vec f_1 \Vert}\vec f_1 = x^2-\left( 3-\frac{6}{\sqrt{14}} \right)x-\frac{9}{\sqrt{14}}.
+    \] \\
+  }
+
+\item Let $T$ be the linear map $H \rightarrow \PP_1(\R)$ defined by $p
+  \mapsto \frac{\text{d}p}{\text{d}x}$. Find the $QR$-factorization of
+  $[T]_{\beta}^\gamma$ where $\gamma$ is the standard basis $\{1,\,x\}$ of
+  $\PP_1(\R)$. \\
+
+  \blue{We have
+    \[
+      [T]_\beta^\gamma = \left[ \left[ \frac{\text{d}f_1}{\text{d}x} \right]_S
+        \mid \left[ \frac{\text{d}f_2}{\text{d}x} \right] \right] =
+      \begin{pmatrix}
+        1 & -3+\frac{6}{\sqrt{14}} \\
+        0 & 2
+      \end{pmatrix}.
+    \]
+    But this is already in the required form. \\}
+\end{enumerate}
+
+\end{document}
